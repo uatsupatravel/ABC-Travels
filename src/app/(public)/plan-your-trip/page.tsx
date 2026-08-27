@@ -325,7 +325,7 @@ export default function PlanYourTripPage() {
                 Prefer immediate consultation on room availability or private aviation?
               </p>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/918700406415"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block pt-1 font-bold text-foreground underline hover:opacity-80"

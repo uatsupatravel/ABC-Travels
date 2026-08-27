@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { Tour } from '@/types';
 import { Clock, MapPin, ArrowRight, Shield } from 'lucide-react';
 import { formatUSD, formatINR } from '@/lib/utils';
-import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 
@@ -17,37 +16,37 @@ interface TourCardProps {
 
 export default function TourCard({ tour, onQuickInquire }: TourCardProps) {
   return (
-    <Card className="group overflow-hidden flex flex-col h-full hover:border-foreground/30 transition-colors duration-200">
+    <article className="card-monograph group bg-surface-container-lowest border border-silk-border rounded-lg overflow-hidden flex flex-col h-full">
       {/* Image Container */}
-      <div className="relative h-64 w-full overflow-hidden bg-muted">
+      <div className="relative h-72 w-full media-container bg-surface-dim">
         <Image
           src={tour.hero_image}
           alt={tour.title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+          className="media-reveal object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-black/70 via-black/20 to-transparent" />
 
         {/* Badges */}
-        <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-          <Badge variant="secondary" className="bg-black/60 backdrop-blur-sm text-white border-0 text-[11px]">
+        <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+          <Badge variant="default">
             {tour.travel_style}
           </Badge>
           {tour.is_featured && (
-            <Badge variant="accent" className="bg-accent text-accent-foreground text-[11px]">
+            <Badge variant="accent">
               Signature
             </Badge>
           )}
         </div>
 
         {/* Bottom Image Info */}
-        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs">
-          <div className="flex items-center gap-1 font-medium">
+        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-alabaster-cream font-label-caps text-[11px] tracking-wider">
+          <div className="flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 opacity-80" />
             <span>{tour.duration_days} Days / {tour.duration_nights} Nights</span>
           </div>
-          <div className="flex items-center gap-1 font-medium">
+          <div className="flex items-center gap-1.5">
             <MapPin className="w-3.5 h-3.5 opacity-80" />
             <span>{tour.destination_name || 'India'}</span>
           </div>
@@ -55,28 +54,28 @@ export default function TourCard({ tour, onQuickInquire }: TourCardProps) {
       </div>
 
       {/* Content Section */}
-      <div className="p-5 flex flex-col flex-grow justify-between gap-4">
-        <div className="space-y-2">
-          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+      <div className="p-8 flex flex-col flex-grow justify-between gap-4">
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 font-label-caps text-[10px] tracking-widest text-slate-taupe uppercase">
             <Shield className="w-3 h-3" />
             <span>{tour.group_type} • {tour.activity_level}</span>
           </div>
 
-          <h3 className="font-serif text-lg font-bold text-foreground leading-snug group-hover:text-primary transition-colors line-clamp-2">
+          <h3 className="font-headline-lg text-headline-lg text-ink-black leading-snug group-hover:text-bronze-hover transition-colors duration-300 line-clamp-2">
             <Link href={`/tours/${tour.slug}`}>
               {tour.title}
             </Link>
           </h3>
 
-          <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2">
+          <p className="font-body-base text-body-base text-slate-taupe line-clamp-3">
             {tour.subtitle}
           </p>
 
           {/* Highlights Preview */}
-          <div className="space-y-1 pt-1">
+          <div className="space-y-1.5 pt-1">
             {tour.highlights.slice(0, 2).map((highlight, idx) => (
-              <div key={idx} className="flex items-start gap-2 text-xs text-foreground/80">
-                <span className="w-1 h-1 rounded-full bg-accent mt-1.5 shrink-0" />
+              <div key={idx} className="flex items-start gap-2 font-body-base text-sm text-on-surface-variant">
+                <span className="w-1.5 h-1.5 rounded-full bg-bronze-hover mt-1.5 shrink-0" />
                 <span className="line-clamp-1">{highlight}</span>
               </div>
             ))}
@@ -84,35 +83,34 @@ export default function TourCard({ tour, onQuickInquire }: TourCardProps) {
         </div>
 
         {/* Pricing & CTA Footer */}
-        <div className="pt-4 border-t border-border flex items-center justify-between mt-auto">
+        <div className="pt-6 border-t border-silk-border flex items-center justify-between mt-auto">
           <div>
-            <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-medium">
+            <span className="block font-label-caps text-[10px] tracking-widest text-slate-taupe uppercase">
               From
             </span>
             <div className="flex items-baseline gap-1">
-              <span className="font-serif text-lg font-bold text-foreground">
+              <span className="font-body-base font-medium text-ink-black">
                 {formatUSD(tour.price_usd)}
               </span>
-              <span className="text-[11px] text-muted-foreground">/ person</span>
+              <span className="text-sm text-slate-taupe">/ person</span>
             </div>
-            <span className="text-[10px] text-muted-foreground block">
+            <span className="text-[10px] text-slate-taupe block">
               approx. {formatINR(tour.price_inr)}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             {onQuickInquire && (
               <Button
                 size="sm"
                 variant="outline"
                 onClick={() => onQuickInquire(tour)}
-                className="text-xs"
               >
                 Inquire
               </Button>
             )}
             <Link href={`/tours/${tour.slug}`}>
-              <Button size="sm" variant="default" className="text-xs gap-1">
+              <Button size="sm" variant="default" className="gap-1.5">
                 <span>Details</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Button>
@@ -120,6 +118,6 @@ export default function TourCard({ tour, onQuickInquire }: TourCardProps) {
           </div>
         </div>
       </div>
-    </Card>
+    </article>
   );
 }

@@ -1,72 +1,71 @@
 import React from 'react';
 import Link from 'next/link';
 import { Compass, Mail, Phone, MapPin, ShieldCheck, Award, HeartHandshake } from 'lucide-react';
-import { Separator } from '@/components/ui/Separator';
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground border-t border-border pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-tertiary-container w-full border-t border-outline-variant pt-16 pb-8 px-margin-mobile md:px-margin-desktop mt-section-gap-lg">
+      <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12">
           {/* Brand Intro & Accreditations */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full border border-primary-foreground/30 flex items-center justify-center bg-primary-foreground/10">
-                <Compass className="w-4 h-4 text-primary-foreground" />
+              <div className="w-8 h-8 rounded-full border border-primary-fixed/30 flex items-center justify-center bg-primary-fixed/10">
+                <Compass className="w-4 h-4 text-primary-fixed" />
               </div>
-              <span className="font-serif text-xl font-bold tracking-tight">
+              <span className="font-display-xl text-xl font-bold tracking-tight text-primary-fixed">
                 ABC <span className="font-normal text-xs uppercase tracking-widest opacity-80">Travels</span>
               </span>
             </div>
-            <p className="text-primary-foreground/80 text-sm leading-relaxed max-w-md">
+            <p className="text-on-primary-container text-sm leading-relaxed max-w-md">
               Specialists in private, high-touch inbound luxury travel across India. We curate palace stays, tiger safaris, Himalayan expeditions, and secluded wellness retreats for discerning travelers worldwide.
             </p>
-            
+
             {/* Trust Accreditations */}
-            <div className="pt-2 grid grid-cols-3 gap-2 text-center text-primary-foreground/90">
-              <div className="bg-primary-foreground/5 border border-primary-foreground/15 rounded-md p-2 flex flex-col items-center gap-1">
+            <div className="pt-2 grid grid-cols-3 gap-2 text-center text-primary-fixed/90">
+              <div className="bg-primary-fixed/5 border border-primary-fixed/15 rounded p-2 flex flex-col items-center gap-1">
                 <Award className="w-4 h-4 opacity-80" />
-                <span className="text-[10px] uppercase tracking-wider font-semibold">Virtuoso Partner</span>
+                <span className="text-[10px] uppercase tracking-wider font-label-caps">Virtuoso Partner</span>
               </div>
-              <div className="bg-primary-foreground/5 border border-primary-foreground/15 rounded-md p-2 flex flex-col items-center gap-1">
+              <div className="bg-primary-fixed/5 border border-primary-fixed/15 rounded p-2 flex flex-col items-center gap-1">
                 <ShieldCheck className="w-4 h-4 opacity-80" />
-                <span className="text-[10px] uppercase tracking-wider font-semibold">Govt. Accredited</span>
+                <span className="text-[10px] uppercase tracking-wider font-label-caps">Govt. Accredited</span>
               </div>
-              <div className="bg-primary-foreground/5 border border-primary-foreground/15 rounded-md p-2 flex flex-col items-center gap-1">
+              <div className="bg-primary-fixed/5 border border-primary-fixed/15 rounded p-2 flex flex-col items-center gap-1">
                 <HeartHandshake className="w-4 h-4 opacity-80" />
-                <span className="text-[10px] uppercase tracking-wider font-semibold">100% Tailormade</span>
+                <span className="text-[10px] uppercase tracking-wider font-label-caps">100% Tailormade</span>
               </div>
             </div>
           </div>
 
           {/* Featured Journeys */}
           <div className="space-y-3">
-            <h3 className="text-sm font-semibold tracking-wider uppercase opacity-90">
+            <h3 className="font-label-caps text-label-caps tracking-widest uppercase text-primary-fixed/90">
               Curated Journeys
             </h3>
-            <ul className="space-y-2 text-xs text-primary-foreground/80">
+            <ul className="space-y-2 text-xs text-on-primary-container">
               <li>
-                <Link href="/tours/golden-triangle-royal-palaces" className="hover:text-primary-foreground transition-colors">
+                <Link href="/tours/golden-triangle-royal-palaces" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   The Royal Golden Triangle
                 </Link>
               </li>
               <li>
-                <Link href="/tours/kerala-backwaters-ayurveda-sanctuary" className="hover:text-primary-foreground transition-colors">
+                <Link href="/tours/kerala-backwaters-ayurveda-sanctuary" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   Kerala Ayurveda Sanctuary
                 </Link>
               </li>
               <li>
-                <Link href="/tours/ladakh-high-himalayas-expedition" className="hover:text-primary-foreground transition-colors">
+                <Link href="/tours/ladakh-high-himalayas-expedition" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   Ladakh & High Himalayas
                 </Link>
               </li>
               <li>
-                <Link href="/tours/royal-bengal-tiger-safari" className="hover:text-primary-foreground transition-colors">
+                <Link href="/tours/royal-bengal-tiger-safari" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   Royal Bengal Tiger Safari
                 </Link>
               </li>
               <li>
-                <Link href="/tours/spiritual-ganges-varanasi-odyssey" className="hover:text-primary-foreground transition-colors">
+                <Link href="/tours/spiritual-ganges-varanasi-odyssey" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   Varanasi Spiritual Odyssey
                 </Link>
               </li>
@@ -75,32 +74,32 @@ export default function Footer() {
 
           {/* Regions of India */}
           <div className="space-y-3">
-            <h3 className="text-sm font-semibold tracking-wider uppercase opacity-90">
+            <h3 className="font-label-caps text-label-caps tracking-widest uppercase text-primary-fixed/90">
               Destinations
             </h3>
-            <ul className="space-y-2 text-xs text-primary-foreground/80">
+            <ul className="space-y-2 text-xs text-on-primary-container">
               <li>
-                <Link href="/destinations/rajasthan" className="hover:text-primary-foreground transition-colors">
+                <Link href="/destinations/rajasthan" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   Rajasthan Heritage
                 </Link>
               </li>
               <li>
-                <Link href="/destinations/kerala" className="hover:text-primary-foreground transition-colors">
+                <Link href="/destinations/kerala" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   Kerala Backwaters
                 </Link>
               </li>
               <li>
-                <Link href="/destinations/ladakh" className="hover:text-primary-foreground transition-colors">
+                <Link href="/destinations/ladakh" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   Ladakh & Himalayas
                 </Link>
               </li>
               <li>
-                <Link href="/destinations/ranthambore" className="hover:text-primary-foreground transition-colors">
+                <Link href="/destinations/ranthambore" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   Ranthambore Wildlife
                 </Link>
               </li>
               <li>
-                <Link href="/destinations/goa" className="hover:text-primary-foreground transition-colors">
+                <Link href="/destinations/goa" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   Goa Portuguese Estates
                 </Link>
               </li>
@@ -109,23 +108,23 @@ export default function Footer() {
 
           {/* Private Concierge Contacts */}
           <div className="space-y-3">
-            <h3 className="text-sm font-semibold tracking-wider uppercase opacity-90">
+            <h3 className="font-label-caps text-label-caps tracking-widest uppercase text-primary-fixed/90">
               Private Concierge
             </h3>
-            <ul className="space-y-2.5 text-xs text-primary-foreground/80">
+            <ul className="space-y-2.5 text-xs text-on-primary-container">
               <li className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 opacity-80 shrink-0 mt-0.5" />
                 <span>Janpath, New Delhi & Fort Kochi, Kerala, India</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 opacity-80 shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-primary-foreground transition-colors">
-                  +91 (0) 98765 43210
+                <a href="tel:+918700406415" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
+                  +91 87004 06415
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 opacity-80 shrink-0" />
-                <a href="mailto:concierge@abctravels.com" className="hover:text-primary-foreground transition-colors">
+                <a href="mailto:concierge@abctravels.com" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   concierge@abctravels.com
                 </a>
               </li>
@@ -133,19 +132,20 @@ export default function Footer() {
           </div>
         </div>
 
-        <Separator className="bg-primary-foreground/15 mb-8" />
+        {/* Divider */}
+        <div className="h-px w-full bg-outline-variant/30 mb-8" />
 
         {/* Bottom copyright */}
-        <div className="flex flex-col md:flex-row items-center justify-between text-xs text-primary-foreground/60 gap-4">
-          <p>© {new Date().getFullYear()} ABC Travels India. Crafted for exceptional inbound luxury journeys.</p>
+        <div className="flex flex-col md:flex-row items-center justify-between font-label-caps text-[10px] tracking-widest uppercase text-on-primary-container gap-4">
+          <span>© {new Date().getFullYear()} ABC Travels India. All rights reserved.</span>
           <div className="flex items-center gap-6">
-            <Link href="/about" className="hover:text-primary-foreground transition-colors">
+            <Link href="/about" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
               Our Story
             </Link>
-            <Link href="/contact" className="hover:text-primary-foreground transition-colors">
+            <Link href="/contact" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
               Contact Concierge
             </Link>
-            <Link href="/plan-your-trip" className="hover:text-primary-foreground transition-colors">
+            <Link href="/plan-your-trip" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
               Custom Itinerary Builder
             </Link>
           </div>

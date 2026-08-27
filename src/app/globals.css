@@ -4,35 +4,139 @@
 
 @layer base {
   :root {
-    --background: 40 20% 98%;
-    --foreground: 222 24% 12%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 24% 12%;
-    --muted: 40 18% 93%;
-    --muted-foreground: 220 12% 44%;
-    --border: 40 14% 88%;
-    --input: 40 14% 88%;
-    --primary: 222 47% 16%;
-    --primary-foreground: 40 20% 98%;
-    --secondary: 40 18% 93%;
-    --secondary-foreground: 222 24% 12%;
-    --accent: 36 55% 40%;
-    --accent-foreground: 40 20% 98%;
-    --ring: 222 47% 16%;
-    --font-serif: 'Playfair Display', Georgia, serif;
-    --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    /* === Modern Monograph Palette === */
+    /* Core Surfaces */
+    --alabaster-cream: #FBF9F5;
+    --cream-container: #F4F0E8;
+    --surface-lowest: #FFFFFF;
+    --surface: #F9F9F9;
+    --surface-dim: #DADADA;
+
+    /* Core Text & Ink */
+    --ink-black: #1C1C1E;
+    --on-surface: #1B1B1B;
+    --slate-taupe: #686461;
+    --on-surface-variant: #4C4546;
+
+    /* Borders */
+    --silk-border: #E4DDD0;
+    --outline-variant: #CFC4C5;
+
+    /* Accents */
+    --bronze-hover: #9E7D53;
+    --secondary: #725B38;
+    --secondary-container: #FEDEB1;
+
+    /* Dark surfaces (footer, containers) */
+    --tertiary-container: #1B1B1B;
+    --primary-container: #1B1B1B;
+
+    /* Mapped semantic tokens (backward compat with existing components) */
+    --background: 43 33% 97%;       /* maps to alabaster-cream */
+    --foreground: 240 3% 11%;       /* maps to ink-black */
+    --card: 0 0% 100%;              /* maps to surface-lowest */
+    --card-foreground: 240 3% 11%;  /* maps to ink-black */
+    --muted: 36 19% 93%;            /* maps to cream-container */
+    --muted-foreground: 24 4% 40%;  /* maps to slate-taupe */
+    --border: 34 19% 86%;           /* maps to silk-border */
+    --input: 34 19% 86%;            /* maps to silk-border */
+    --primary: 240 3% 11%;          /* maps to ink-black */
+    --primary-foreground: 43 33% 97%; /* maps to alabaster-cream */
+    --secondary: 36 19% 93%;        /* maps to cream-container */
+    --secondary-foreground: 240 3% 11%; /* maps to ink-black */
+    --accent: 32 31% 47%;           /* maps to bronze-hover */
+    --accent-foreground: 43 33% 97%; /* maps to alabaster-cream */
+    --ring: 240 3% 11%;             /* maps to ink-black */
+
+    /* Font variables */
+    --font-display: 'Bodoni Moda', Georgia, serif;
+    --font-body: 'Hanken Grotesk', -apple-system, sans-serif;
+
+    /* Legacy aliases */
+    --font-serif: var(--font-display);
+    --font-sans: var(--font-body);
+
+    /* Error */
+    --error: #BA1A1A;
+    --on-error: #FFFFFF;
+    --error-container: #FFDAD6;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-    font-family: var(--font-sans);
+    background-color: var(--alabaster-cream);
+    color: var(--ink-black);
+    font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, .font-serif {
-    font-family: var(--font-serif);
-    letter-spacing: -0.015em;
+  /* Monograph Display Typography */
+  h1, h2, h3, h4, .font-serif, .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Text selection */
+  ::selection {
+    background-color: var(--secondary-container);
+    color: var(--ink-black);
+  }
+}
+
+@layer components {
+  /* ===========================
+     Monograph Interaction Patterns
+     =========================== */
+
+  /* Card: subtle lift + border-darken on hover, no heavy shadows */
+  .card-monograph {
+    transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .card-monograph:hover {
+    border-color: var(--ink-black);
+    transform: translateY(-2px);
+    box-shadow: 0px 12px 40px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Media Reveal: zoom image inside overflow-hidden container on card hover */
+  .media-container {
+    overflow: hidden;
+  }
+  .media-reveal {
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .card-monograph:hover .media-reveal,
+  .group:hover .media-reveal {
+    transform: scale(1.05);
+  }
+
+  /* Minimal Input: underline-only, no border-radius, transparent bg */
+  .minimal-input {
+    border: none;
+    border-bottom: 1px solid var(--silk-border);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    transition: border-color 0.3s ease;
+  }
+  .minimal-input:focus {
+    outline: none;
+    box-shadow: none;
+    border-bottom: 2px solid var(--ink-black);
+  }
+  .minimal-input::placeholder {
+    color: var(--slate-taupe);
+  }
+
+  /* Hover Lift: for standalone cards that aren't using card-monograph */
+  .hover-lift {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 12px 40px rgba(0, 0, 0, 0.03);
   }
 }

@@ -1,17 +1,23 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  inputStyle?: 'minimal' | 'bordered';
+}
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
+  ({ className, type, inputStyle = 'bordered', ...props }, ref) => {
+    const styles = {
+      minimal:
+        'flex w-full minimal-input py-2 font-body-base text-body-base text-ink-black placeholder:text-slate-taupe disabled:cursor-not-allowed disabled:opacity-50',
+      bordered:
+        'flex h-10 w-full rounded border border-silk-border bg-surface-container-lowest px-3 py-2 font-body-base text-sm text-ink-black placeholder:text-slate-taupe focus-visible:outline-none focus-visible:border-ink-black focus-visible:ring-1 focus-visible:ring-ink-black/10 disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-300',
+    };
+
     return (
       <input
         type={type}
-        className={cn(
-          'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-200',
-          className
-        )}
+        className={cn(styles[inputStyle], className)}
         ref={ref}
         {...props}
       />
@@ -27,7 +33,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <textarea
         className={cn(
-          'flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-200',
+          'flex min-h-[80px] w-full rounded border border-silk-border bg-surface-container-lowest px-3 py-2 font-body-base text-sm text-ink-black placeholder:text-slate-taupe focus-visible:outline-none focus-visible:border-ink-black focus-visible:ring-1 focus-visible:ring-ink-black/10 disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-300',
           className
         )}
         ref={ref}
@@ -39,5 +45,5 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 Textarea.displayName = 'Textarea';
 
 export function Separator({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn('h-px w-full bg-border', className)} {...props} />;
+  return <div className={cn('h-px w-full bg-silk-border', className)} {...props} />;
 }

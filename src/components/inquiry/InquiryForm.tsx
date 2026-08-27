@@ -95,7 +95,7 @@ export default function InquiryForm({
             <span>Need immediate priority assistance?</span>
           </div>
           <a
-            href="https://wa.me/919876543210"
+            href="https://wa.me/918700406415"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-accent font-bold hover:underline"

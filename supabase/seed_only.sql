@@ -108,12 +108,12 @@ VALUES
     320000.00,
     'Leisurely',
     'Heritage & Palaces',
-    'Private Bespoke Journey',
+    'Private Tailormade Journey',
     true,
     'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80',
     $$Step into the timeless grandeur of royal India. From the Mughal monuments of Delhi and the ethereal ivory marble of the Taj Mahal at dawn to Jaipur pink palaces and Udaipur floating marble sanctuaries.$$,
     $$["VIP sunrise viewing of Taj Mahal", "Exclusive high-tea in private Jaipur royal quarters", "Champagne sunset cruise on Lake Pichola", "Oberoi Amarvilas & Taj Lake Palace stays"]$$::jsonb,
-    $$["8 nights in premier 5-star palace hotels", "Daily champagne breakfasts & 3 bespoke gourmet dinners", "Private chauffeur Mercedes E-Class/BMW", "All internal domestic flights in premium class", "Expert licensed academic historians"]$$::jsonb,
+    $$["8 nights in premier 5-star palace hotels", "Daily champagne breakfasts & 3 curated gourmet dinners", "Private chauffeur Mercedes E-Class/BMW", "All internal domestic flights in premium class", "Expert licensed academic historians"]$$::jsonb,
     $$["International airfare", "Indian tourist visa", "Travel insurance"]$$::jsonb
 ),
 (

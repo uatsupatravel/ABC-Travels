@@ -41,7 +41,7 @@ export default function ContactPage() {
             </p>
 
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/918700406415"
               target="_blank"
               rel="noopener noreferrer"
               className="block"
@@ -51,7 +51,7 @@ export default function ContactPage() {
                 size="sm"
                 className="w-full text-xs font-semibold uppercase tracking-wider"
               >
-                Chat on WhatsApp: +91 98765 43210
+                Chat on WhatsApp: +91 87004 06415
               </Button>
             </a>
           </Card>
@@ -71,7 +71,7 @@ export default function ContactPage() {
                 Janpath, Connaught Place, New Delhi 110001
               </p>
               <p className="pl-5 text-muted-foreground">
-                Direct: +91 (0) 11 4567 8900
+                Direct: +91 87004 06415
               </p>
             </div>
 
@@ -84,7 +84,7 @@ export default function ContactPage() {
                 Calvathy Road, Fort Kochi, Kerala 682001
               </p>
               <p className="pl-5 text-muted-foreground">
-                Direct: +91 (0) 484 221 4500
+                Direct: +91 87004 06415
               </p>
             </div>
 
