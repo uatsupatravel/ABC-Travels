@@ -1,132 +1,349 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import {
+  Compass,
+  ShieldCheck,
+  Award,
+  HeartHandshake,
+  MapPin,
+  PhoneCall,
+  ArrowRight,
+  CheckCircle2,
+} from 'lucide-react';
 
 export default function AboutPage() {
   return (
-    <div className="pt-28 pb-20">
-      {/* Header Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="max-w-3xl space-y-3">
-          <Badge variant="secondary" className="text-xs uppercase tracking-widest">
-            Our Purpose & Heritage
-          </Badge>
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-foreground">
-            Tailormade Inbound Luxury Travel Across India
+    <div className="pt-28 pb-20 bg-alabaster-cream text-ink-black selection:bg-secondary-container selection:text-ink-black">
+      {/* ========================================================================= */}
+      {/* 1. HERO BANNER: PURPOSE & POSITIONING                                     */}
+      {/* ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop mb-20">
+        <div className="max-w-3xl space-y-4">
+          <div className="flex items-center gap-2.5">
+            <div className="w-6 h-px bg-bronze-hover" />
+            <span className="font-label-caps text-xs tracking-[0.3em] uppercase text-bronze-hover">
+              Our Story & Philosophy
+            </span>
+          </div>
+
+          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-ink-black leading-[1.1] text-balance">
+            Born from a Passion to Unveil the <span className="italic font-light">Soul of India</span>
           </h1>
-          <p className="text-muted-foreground text-xs sm:text-base leading-relaxed">
-            Founded with a singular vision: to unlock the aristocratic heritage, untamed biodiversity, and ancient traditions of India with unprecedented intimacy, elegance, and ease.
+
+          <p className="font-body-base text-slate-taupe text-sm sm:text-lg leading-relaxed pt-2">
+            Headquartered in New Delhi, ABC Travels was founded with a singular purpose: to offer international travelers an intimate, dignified, and unhurried gateway into the extraordinary heritage and landscapes of the Indian subcontinent.
           </p>
         </div>
       </section>
 
-      {/* Editorial Story Split */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative h-96 sm:h-[480px] rounded-lg overflow-hidden border border-border">
-            <Image
-              src="https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=80"
-              alt="Rajasthan Lake Palace Story"
-              fill
-              className="object-cover"
-            />
+      {/* ========================================================================= */}
+      {/* 2. THE GENESIS: WHY WE BEGAN (STORY SPLIT)                                */}
+      {/* ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Narrative Text */}
+          <div className="lg:col-span-6 space-y-6">
+            <span className="font-label-caps text-xs tracking-[0.25em] text-slate-taupe uppercase block">
+              The Genesis
+            </span>
+            <h2 className="font-serif text-2xl sm:text-4xl text-ink-black font-normal leading-tight">
+              Beyond Commercial Tourism: An Intimate Invitation
+            </h2>
+
+            <p className="font-body-base text-slate-taupe text-sm sm:text-base leading-relaxed">
+              India is one of the most culturally profound and emotionally evocative lands on Earth. Yet for international travelers visiting from across the globe, planning a trip across the subcontinent often comes with unnecessary friction—impersonal mass-market bus tours, confusing logistics, and rigid commercial itineraries.
+            </p>
+
+            <p className="font-body-base text-slate-taupe text-sm sm:text-base leading-relaxed">
+              We built ABC Travels as an antidote to mass tourism. We believe that true luxury in India is not gold leaf or crowded spectacles; it is <strong className="text-ink-black font-medium">space, unhurried time, authenticity, and peace of mind</strong>.
+            </p>
+
+            <p className="font-body-base text-slate-taupe text-sm sm:text-base leading-relaxed">
+              As your on-ground host headquartered in the capital, we curate private journeys where you are treated not as a tourist in a database, but as an honored guest. From private heritage palace suites and sunrise boat rides on sacred rivers to dawn tiger safaris with veteran naturalists, every single itinerary is custom-sculpted around your personal rhythm.
+            </p>
+
+            {/* Quick Stats */}
+            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-silk-border text-ink-black">
+              <div>
+                <span className="font-serif text-2xl sm:text-3xl font-bold block text-ink-black">100%</span>
+                <span className="font-label-caps text-[10px] text-slate-taupe tracking-wider uppercase">Tailor-Made Departures</span>
+              </div>
+              <div>
+                <span className="font-serif text-2xl sm:text-3xl font-bold block text-ink-black">New Delhi</span>
+                <span className="font-label-caps text-[10px] text-slate-taupe tracking-wider uppercase">Headquarters & Ops</span>
+              </div>
+              <div>
+                <span className="font-serif text-2xl sm:text-3xl font-bold block text-ink-black">24/7</span>
+                <span className="font-label-caps text-[10px] text-slate-taupe tracking-wider uppercase">On-Ground Concierge</span>
+              </div>
+            </div>
           </div>
 
-          <div className="space-y-5">
-            <span className="text-xs uppercase tracking-widest font-semibold text-muted-foreground block">
-              The ABC Travels Philosophy
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-foreground leading-tight">
-              Beyond Commercial Tourism: Genuine Royal Hospitality
-            </h2>
-            <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
-              India is a land of staggering contrasts and infinite layers. For the discerning international voyager, navigating these wonders should never feel overwhelming.
-            </p>
-            <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
-              At ABC Travels, we curate journeys that feel like personal aristocratic invitations. From the moment you clear VIP immigration at New Delhi to the silent dawn rows on the sacred Ganges and private dinners in Jaipur havelis, every detail is orchestrated with white-glove precision.
-            </p>
-
-            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border text-xs">
-              <div className="space-y-0.5">
-                <span className="font-serif text-2xl font-bold text-foreground block">100%</span>
-                <span className="text-muted-foreground">Tailormade Departures</span>
-              </div>
-              <div className="space-y-0.5">
-                <span className="font-serif text-2xl font-bold text-foreground block">5-Star</span>
-                <span className="text-muted-foreground">Heritage Luxury Partners</span>
-              </div>
+          {/* Image Slot 1 (Landscape Format) */}
+          <div className="lg:col-span-6">
+            <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] rounded-lg overflow-hidden border border-silk-border shadow-sm group">
+              <Image
+                src="/images/aboutUsPage/image1.jpg"
+                alt="Amber Fort Jaipur & Heritage Lake"
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-black/30 via-transparent to-transparent" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pillars of Excellence */}
-      <section className="bg-muted/30 py-20 border-y border-border mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl mb-12 space-y-1">
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-              Our 4 Pillars of Excellence
+      {/* ========================================================================= */}
+      {/* 3. THE 4 TENETS OF THE BOUTIQUE STANDARD                                  */}
+      {/* ========================================================================= */}
+      <section className="w-full py-20 bg-cream-container border-y border-silk-border mb-24 px-margin-mobile md:px-margin-desktop">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <span className="font-label-caps text-xs tracking-[0.3em] uppercase text-bronze-hover">
+              The Boutique Distinction
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl text-ink-black">
+              The Four Tenets of Our Craft
             </h2>
+            <p className="font-body-base text-slate-taupe text-sm leading-relaxed">
+              How our boutique, high-touch approach elevates your journey across the Indian subcontinent.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="p-6 space-y-2">
-              <span className="font-mono text-xs font-bold text-muted-foreground block">01 / ACCESS</span>
-              <h3 className="font-serif font-bold text-base text-foreground">Royal Access</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Private living quarter high-teas, after-hours monument visits, and chartered royal barges.
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Tenet 1 */}
+            <div className="bg-alabaster-cream border border-silk-border p-8 rounded-lg space-y-4 shadow-sm">
+              <span className="font-label-caps text-xs tracking-widest text-bronze-hover block pb-2 border-b border-silk-border">
+                01 / INTIMACY
+              </span>
+              <h3 className="font-serif text-xl font-semibold text-ink-black">
+                Intimacy Over Volume
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-taupe leading-relaxed">
+                We consciously limit the number of active departures we manage. You are never passed down to automated systems; your journey is directly overseen by senior travel designers.
               </p>
-            </Card>
+            </div>
 
-            <Card className="p-6 space-y-2">
-              <span className="font-mono text-xs font-bold text-muted-foreground block">02 / SECURITY</span>
-              <h3 className="font-serif font-bold text-base text-foreground">Seamless Care</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Pre-vetted luxury transport, sanitized 5-star kitchens, and 24/7 dedicated local managers.
+            {/* Tenet 2 */}
+            <div className="bg-alabaster-cream border border-silk-border p-8 rounded-lg space-y-4 shadow-sm">
+              <span className="font-label-caps text-xs tracking-widest text-bronze-hover block pb-2 border-b border-silk-border">
+                02 / SANCTUARY
+              </span>
+              <h3 className="font-serif text-xl font-semibold text-ink-black">
+                Hand-Vetted Sanctuaries
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-taupe leading-relaxed">
+                We personally inspect every hotel partner—from historic Taj & Oberoi palace suites to private spice plantation villas and boutique Himalayan glamping camps.
               </p>
-            </Card>
+            </div>
 
-            <Card className="p-6 space-y-2">
-              <span className="font-mono text-xs font-bold text-muted-foreground block">03 / SCHOLARS</span>
-              <h3 className="font-serif font-bold text-base text-foreground">Academic Historians</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Every guide is an accredited scholar, architect, or master wildlife tracker.
+            {/* Tenet 3 */}
+            <div className="bg-alabaster-cream border border-silk-border p-8 rounded-lg space-y-4 shadow-sm">
+              <span className="font-label-caps text-xs tracking-widest text-bronze-hover block pb-2 border-b border-silk-border">
+                03 / SCHOLARS
+              </span>
+              <h3 className="font-serif text-xl font-semibold text-ink-black">
+                Historians & Naturalists
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-taupe leading-relaxed">
+                We don&apos;t use generic tourist guides. You are accompanied by licensed academic historians at monuments and veteran trackers in national wildlife reserves.
               </p>
-            </Card>
+            </div>
 
-            <Card className="p-6 space-y-2">
-              <span className="font-mono text-xs font-bold text-muted-foreground block">04 / ETHICS</span>
-              <h3 className="font-serif font-bold text-base text-foreground">Sustainable Luxury</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Direct patron support for artisan weavers, tiger habitat conservation, and local communities.
+            {/* Tenet 4 */}
+            <div className="bg-alabaster-cream border border-silk-border p-8 rounded-lg space-y-4 shadow-sm">
+              <span className="font-label-caps text-xs tracking-widest text-bronze-hover block pb-2 border-b border-silk-border">
+                04 / GUARDIAN
+              </span>
+              <h3 className="font-serif text-xl font-semibold text-ink-black">
+                Your On-Ground Guardian
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-taupe leading-relaxed">
+                From arrival at Indira Gandhi International Airport to your final flight home, travel in private luxury vehicles with vetted English-speaking chauffeurs and 24/7 concierge backup.
               </p>
-            </Card>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-4xl mx-auto px-4 text-center space-y-5">
-        <h2 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-          Ready to Curate Your India Itinerary?
-        </h2>
-        <p className="text-muted-foreground text-xs sm:text-sm max-w-md mx-auto">
-          Contact our Senior Concierge Desk for a private consultation.
-        </p>
-        <div className="flex items-center justify-center gap-3 pt-1">
-          <Link href="/plan-your-trip">
-            <Button size="sm" className="text-xs uppercase tracking-wider font-semibold">
-              Launch Itinerary Planner
-            </Button>
-          </Link>
-          <Link href="/contact">
-            <Button variant="outline" size="sm" className="text-xs uppercase tracking-wider font-semibold">
-              Contact Concierge Desk
-            </Button>
-          </Link>
+      {/* ========================================================================= */}
+      {/* 4. VISUAL EDITORIAL SHOWCASE (3 IMAGE SLOTS WITH GUIDELINES)               */}
+      {/* ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop mb-24">
+        <div className="max-w-2xl mb-12 space-y-2">
+          <span className="font-label-caps text-xs tracking-[0.3em] uppercase text-bronze-hover block">
+            Visual Storytelling
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl text-ink-black">
+            The Tapestry of India We Celebrate
+          </h2>
+          <p className="font-body-base text-slate-taupe text-sm">
+            Three visual chapters illustrating the diversity and dignity of the journeys we sculpt.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Image Slot 2 */}
+          <div className="space-y-4">
+            <div className="relative h-72 sm:h-80 rounded-lg overflow-hidden border border-silk-border shadow-sm group">
+              <Image
+                src="/images/aboutUsPage/image2.jpg"
+                alt="Royal Heritage & Dynasties"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-black/40 via-transparent to-transparent" />
+            </div>
+            <div>
+              <h4 className="font-serif text-lg font-semibold text-ink-black">Royal Heritage & Dynasties</h4>
+              <p className="text-xs text-slate-taupe leading-relaxed">
+                Centuries-old living fortresses, palace suites, and royal polo traditions of North India.
+              </p>
+            </div>
+          </div>
+
+          {/* Image Slot 3 */}
+          <div className="space-y-4">
+            <div className="relative h-72 sm:h-80 rounded-lg overflow-hidden border border-silk-border shadow-sm group">
+              <Image
+                src="/images/aboutUsPage/image3.jpg"
+                alt="Sacred Rivers & Traditions"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-black/40 via-transparent to-transparent" />
+            </div>
+            <div>
+              <h4 className="font-serif text-lg font-semibold text-ink-black">Sacred Rivers & Traditions</h4>
+              <p className="text-xs text-slate-taupe leading-relaxed">
+                Witnessing ancient rituals, sacred music, and dawn river contemplation with cultural scholars.
+              </p>
+            </div>
+          </div>
+
+          {/* Image Slot 4 */}
+          <div className="space-y-4">
+            <div className="relative h-72 sm:h-80 rounded-lg overflow-hidden border border-silk-border shadow-sm group">
+              <Image
+                src="/images/aboutUsPage/image4.jpg"
+                alt="Sanctuaries & Untamed Flora"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-black/40 via-transparent to-transparent" />
+            </div>
+            <div>
+              <h4 className="font-serif text-lg font-semibold text-ink-black">Sanctuaries & Untamed Flora</h4>
+              <p className="text-xs text-slate-taupe leading-relaxed">
+                Exclusive open-top wildlife tracking in tiger reserves and luxury glamping in high alpine valleys.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. OUR PLEDGE TO TRAVELERS (TRANSPARENCY & INTEGRITY)                     */}
+      {/* ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop mb-24">
+        <div className="bg-cream-container border border-silk-border rounded-xl p-8 sm:p-12">
+          <div className="max-w-2xl mb-8 space-y-2">
+            <span className="font-label-caps text-xs tracking-[0.3em] uppercase text-bronze-hover block">
+              Our Code of Integrity
+            </span>
+            <h2 className="font-serif text-2xl sm:text-3xl text-ink-black">
+              The ABC Travels Pledge
+            </h2>
+            <p className="font-body-base text-slate-taupe text-xs sm:text-sm">
+              Principles we hold sacred on every single itinerary we craft.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-ink-black font-semibold text-sm">
+                <CheckCircle2 className="w-4 h-4 text-bronze-hover" />
+                <span>Zero Commission Tourist Traps</span>
+              </div>
+              <p className="text-xs text-slate-taupe leading-relaxed">
+                We never force unwanted &apos;shopping stops&apos; or kickback tourist emporiums. Your time is precious and 100% dedicated to genuine cultural exploration.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-ink-black font-semibold text-sm">
+                <CheckCircle2 className="w-4 h-4 text-bronze-hover" />
+                <span>Transparent Luxury Pricing</span>
+              </div>
+              <p className="text-xs text-slate-taupe leading-relaxed">
+                Benefiting from India&apos;s purchasing power parity (PPP), we provide true 5-star palace luxury and executive transport at transparent, fair international rates.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-ink-black font-semibold text-sm">
+                <CheckCircle2 className="w-4 h-4 text-bronze-hover" />
+                <span>Patronage of Living Heritage</span>
+              </div>
+              <p className="text-xs text-slate-taupe leading-relaxed">
+                A portion of our itineraries supports traditional artisan communities, restoration of historic havelis, and tiger habitat conservation initiatives.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 6. CLOSING INVITATION (THE CONCIERGE CALL)                                */}
+      {/* ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+        <div className="bg-ink-black text-alabaster-cream rounded-xl p-10 sm:p-14 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-10 border border-silk-border shadow-xl">
+          <div className="space-y-4 max-w-2xl text-center lg:text-left">
+            <Badge
+              variant="secondary"
+              className="bg-white/10 text-alabaster-cream border-0 text-[10px] uppercase tracking-widest font-label-caps"
+            >
+              Private Consultation
+            </Badge>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-normal leading-tight">
+              Let Us Introduce You to India
+            </h2>
+            <p className="font-body-base text-white/70 text-sm sm:text-base leading-relaxed">
+              Whether you are planning your first voyage to the Golden Triangle or returning to explore the monasteries of Ladakh, our New Delhi concierge desk is at your service.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full sm:w-auto">
+            <Link href="/plan-your-trip" className="w-full sm:w-auto">
+              <Button variant="accent" size="lg" className="w-full sm:w-auto px-8 shadow-md">
+                Build Custom Itinerary
+              </Button>
+            </Link>
+            <a
+              href="https://wa.me/918700406415?text=Hello%20ABC%20Travels%2C%20I%20would%20like%20to%20speak%20with%20your%20concierge%20about%20traveling%20to%20India."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+            >
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 gap-2"
+              >
+                <PhoneCall className="w-4 h-4" />
+                <span>WhatsApp Concierge</span>
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
     </div>

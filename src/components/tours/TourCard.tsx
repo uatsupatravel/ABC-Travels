@@ -11,10 +11,10 @@ import { Button } from '@/components/ui/Button';
 
 interface TourCardProps {
   tour: Tour;
-  onQuickInquire?: (tour: Tour) => void;
+  onContactSpecialist?: (tour: Tour) => void;
 }
 
-export default function TourCard({ tour, onQuickInquire }: TourCardProps) {
+export default function TourCard({ tour, onContactSpecialist }: TourCardProps) {
   return (
     <article className="card-monograph group bg-surface-container-lowest border border-silk-border rounded-lg overflow-hidden flex flex-col h-full">
       {/* Image Container */}
@@ -100,13 +100,13 @@ export default function TourCard({ tour, onQuickInquire }: TourCardProps) {
           </div>
 
           <div className="flex items-center gap-3">
-            {onQuickInquire && (
+            {onContactSpecialist && (
               <Button
                 size="sm"
                 variant="outline"
-                onClick={() => onQuickInquire(tour)}
+                onClick={() => onContactSpecialist(tour)}
               >
-                Inquire
+                Speak to a Specialist
               </Button>
             )}
             <Link href={`/tours/${tour.slug}`}>

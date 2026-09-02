@@ -1,5 +1,5 @@
 import React from 'react';
-import InquiryForm from '@/components/inquiry/InquiryForm';
+import SimpleContactForm from '@/components/inquiry/SimpleContactForm';
 import { Mail, Phone, MapPin, PhoneCall } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -112,7 +112,7 @@ export default function ContactPage() {
               </h2>
             </div>
 
-            <InquiryForm />
+            <SimpleContactForm />
           </Card>
         </div>
       </div>

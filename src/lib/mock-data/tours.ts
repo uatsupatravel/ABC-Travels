@@ -2,803 +2,972 @@ import { Tour } from '@/types';
 
 export const mockTours: Tour[] = [
   {
-    id: 'tour-1',
-    slug: 'golden-triangle-royal-palaces',
-    destination_id: 'dest-1',
-    destination_name: 'Rajasthan',
-    title: 'The Royal Odyssey: Golden Triangle & Palaces of Udaipur',
-    subtitle: 'An opulent journey through Delhi, Agra, Jaipur & the Lake City of Udaipur in true Maharaja style.',
-    duration_days: 9,
-    duration_nights: 8,
-    price_usd: 3850,
-    price_inr: 320000,
-    activity_level: 'Leisurely',
-    travel_style: 'Heritage & Palaces',
-    group_type: 'Private Tailormade Journey',
-    is_featured: true,
-    hero_image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1920&q=80',
+    "id": "tour-1",
+    "slug": "golden-triangle-royal-palaces",
+    "destination_id": "dest-1",
+    "destination_name": "Rajasthan",
+    "title": "The Royal Odyssey: Golden Triangle & Palaces of Udaipur",
+    "subtitle": "An opulent journey through Delhi, Agra, Jaipur & the Lake City of Udaipur in true Maharaja style.",
+    "duration_days": 10,
+    "duration_nights": 9,
+    "price_usd": 4200,
+    "price_inr": 350000,
+    "activity_level": "Leisurely",
+    "travel_style": "Heritage & Palaces",
+    "group_type": "100% Private Custom",
+    "is_featured": true,
+    "hero_image": "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1920&q=80"
     ],
-    overview:
-      'Step into the timeless grandeur of royal India. From the majestic Mughal domes of Delhi and the ethereal ivory marble of the Taj Mahal at sunrise to the rose-pink courtyards of Jaipur and the fairytale floating palaces of Lake Pichola. Enjoy private chauffeur-driven luxury sedans, premier heritage palace suites, skip-the-line VIP entrances, and dinners hosted in private royal quarters.',
-    highlights: [
-      'VIP sunrise private viewing of the Taj Mahal with expert architectural historian',
-      'Exclusive high-tea in the private living quarters of the Jaipur Royal Family',
-      'Champagne sunset cruise aboard a royal barge on Lake Pichola, Udaipur',
-      'Stay in world-renowned palace hotels: The Oberoi Amarvilas & Taj Lake Palace',
-      'Private culinary masterclass with a royal Rajasthani chef in a restored haveli',
+    "overview": "Step into the timeless grandeur of royal India. From the majestic Mughal domes of Delhi and the ethereal ivory marble of the Taj Mahal at sunrise to the rose-pink courtyards of Jaipur and the fairytale floating palaces of Lake Pichola. Enjoy private chauffeur-driven luxury sedans, premier heritage palace suites, skip-the-line VIP entrances, and dinners hosted in private royal quarters.",
+    "highlights": [
+      "VIP sunrise private viewing of the Taj Mahal with expert architectural historian",
+      "Exclusive high-tea in the private living quarters of the Jaipur Royal Family",
+      "Champagne sunset cruise aboard a royal barge on Lake Pichola, Udaipur",
+      "Stay in world-renowned palace hotels: The Oberoi Amarvilas & Taj Lake Palace",
+      "Private culinary masterclass with a royal Rajasthani chef in a restored haveli"
     ],
-    itinerary: [
+    "itinerary": [
       {
-        day: 1,
-        title: 'Arrival in New Delhi – The Grand Welcome',
-        location: 'Delhi',
-        description:
-          'Arrive at Indira Gandhi International Airport where your private airport concierge greets you at the jet bridge and whisks you through VIP immigration. Transfer in a private luxury chauffeur-driven Mercedes to The Imperial, New Delhi. Unwind with an evening welcome cocktail in the historic 1911 Bar.',
-        stay: 'The Imperial, New Delhi (Heritage Suite)',
-        meals: 'Dinner Included',
-        highlights: ['VIP Airport Fast-Track', 'Welcome Champagne'],
-        image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1920&q=80',
+        "day": 1,
+        "title": "Arrival in New Delhi – The Grand Welcome",
+        "location": "Delhi",
+        "description": "Arrive at Indira Gandhi International Airport where your private airport concierge greets you at the jet bridge and whisks you through VIP immigration. Transfer in a private luxury chauffeur-driven Mercedes to The Imperial, New Delhi. Unwind with an evening welcome cocktail in the historic 1911 Bar.",
+        "stay": "The Imperial, New Delhi (Heritage Suite)",
+        "meals": "Dinner Included",
+        "highlights": [
+          "VIP Airport Fast-Track",
+          "Welcome Champagne"
+        ],
+        "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1920&q=80",
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 2,
-        title: 'Imperial Delhi: Monuments of Empires',
-        location: 'Delhi',
-        description:
-          'Explore Old Delhi’s labyrinthine bazaars via custom vintage rickshaw, visiting the Jama Masjid and the Red Fort. In the afternoon, transition to the grand tree-lined avenues of Lutyens’ New Delhi, visiting Humayun’s Tomb and Qutub Minar with your private historian guide.',
-        stay: 'The Imperial, New Delhi',
-        meals: 'Breakfast & Gourmet Lunch',
-        highlights: ['Private Rickshaw Spice Market Safari', 'UNESCO Heritage Monuments'],
+        "day": 2,
+        "title": "Imperial Delhi: Monuments of Empires",
+        "location": "Delhi",
+        "description": "Explore Old Delhi’s labyrinthine bazaars via custom vintage rickshaw, visiting the Jama Masjid and the Red Fort. In the afternoon, transition to the grand tree-lined avenues of Lutyens’ New Delhi, visiting Humayun’s Tomb and Qutub Minar with your private historian guide.",
+        "stay": "The Imperial, New Delhi",
+        "meals": "Breakfast & Gourmet Lunch",
+        "highlights": [
+          "Private Rickshaw Spice Market Safari",
+          "UNESCO Heritage Monuments"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 3,
-        title: 'Agra – The Monument to Eternal Love',
-        location: 'Agra',
-        description:
-          'Travel in comfort along the Yamuna Expressway to Agra. Check into The Oberoi Amarvilas, where every single room enjoys uninterrupted views of the Taj Mahal. In the late afternoon, witness the sunset over the Taj Mahal from the lush Mehtab Bagh gardens across the river.',
-        stay: 'The Oberoi Amarvilas, Agra (Premier Room with Taj View)',
-        meals: 'Breakfast & Dinner',
-        highlights: ['Uninterrupted Taj Mahal views from private balcony', 'Sunset riverbank viewpoint'],
-        image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1920&q=80',
+        "day": 3,
+        "title": "Agra – The Monument to Eternal Love",
+        "location": "Agra",
+        "description": "Travel in comfort along the Yamuna Expressway to Agra. Check into The Oberoi Amarvilas, where every single room enjoys uninterrupted views of the Taj Mahal. In the late afternoon, witness the sunset over the Taj Mahal from the lush Mehtab Bagh gardens across the river.",
+        "stay": "The Oberoi Amarvilas, Agra (Premier Room with Taj View)",
+        "meals": "Breakfast & Dinner",
+        "highlights": [
+          "Uninterrupted Taj Mahal views from private balcony",
+          "Sunset riverbank viewpoint"
+        ],
+        "image": "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1920&q=80",
+        "transit": {
+          "type": "drive",
+          "duration": "3.5 hrs",
+          "route_notes": "Via Yamuna Expressway"
+        }
       },
       {
-        day: 4,
-        title: 'Sunrise at Taj Mahal & Royal Agra Fort',
-        location: 'Agra to Jaipur',
-        description:
-          'Enter the Taj Mahal at dawn before the crowds arrive. Watch the morning sun bathe the white marble in warm pink and amber hues. After a lavish breakfast, explore the royal pavilions of Agra Fort before embarking on the scenic drive to Jaipur, stopping at the stunning 9th-century Chand Baori stepwell in Abhaneri.',
-        stay: 'The Rambagh Palace, Jaipur (Palace Room)',
-        meals: 'Breakfast & Traditional Lunch',
-        highlights: ['Sunrise Taj Mahal Experience', 'Abhaneri Stepwell Exploration'],
+        "day": 4,
+        "title": "Sunrise at Taj Mahal & Royal Drive to Jaipur",
+        "location": "Agra to Jaipur",
+        "description": "Enter the Taj Mahal at dawn before the crowds arrive. Watch the morning sun bathe the white marble in warm pink and amber hues. After a lavish breakfast, embark on the scenic drive to Jaipur, stopping at the stunning 16th-century ghost capital of Fatehpur Sikri and the 9th-century Chand Baori stepwell in Abhaneri.",
+        "stay": "Rambagh Palace, Jaipur (Palace Room)",
+        "meals": "Breakfast & Traditional Lunch",
+        "highlights": [
+          "Sunrise Taj Mahal Experience",
+          "Fatehpur Sikri & Abhaneri Stepwell"
+        ],
+        "transit": {
+          "type": "drive",
+          "duration": "4.5 hrs",
+          "route_notes": "Via Fatehpur Sikri & Abhaneri"
+        }
       },
       {
-        day: 5,
-        title: 'Jaipur – The Pink City & Amber Fort in Royal Splendor',
-        location: 'Jaipur',
-        description:
-          'Ascend to the hilltop Amber Fort for an exclusive tour of the Sheesh Mahal (Mirror Palace). Return to the city to visit the Hawa Mahal (Palace of Winds), the royal Jantar Mantar astronomical observatory, and the opulent City Palace, culminating in an exclusive afternoon high-tea in the private royal apartments.',
-        stay: 'The Rambagh Palace, Jaipur',
-        meals: 'Breakfast & High-Tea Dinner',
-        highlights: ['Amber Fort VIP Access', 'Private Royal Family Quarters High-Tea'],
-        image: 'https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=1920&q=80',
+        "day": 5,
+        "title": "Jaipur – The Pink City & Amber Fort in Royal Splendor",
+        "location": "Jaipur",
+        "description": "Ascend to the hilltop Amber Fort for an exclusive tour of the Sheesh Mahal (Mirror Palace). Return to the city to visit the Hawa Mahal (Palace of Winds), the royal Jantar Mantar astronomical observatory, and the opulent City Palace, culminating in an exclusive afternoon high-tea in the private royal apartments.",
+        "stay": "Rambagh Palace, Jaipur",
+        "meals": "Breakfast & High-Tea Dinner",
+        "highlights": [
+          "Amber Fort VIP Access",
+          "Private Royal Family Quarters High-Tea"
+        ],
+        "image": "https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=1920&q=80",
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 6,
-        title: 'Jaipur to Udaipur – The Venice of the East',
-        location: 'Jaipur to Udaipur',
-        description:
-          'Board a short luxury flight or private transfer to Udaipur. Arrive at the iconic Taj Lake Palace, floating majestically in the middle of Lake Pichola. Check in via private royal boat transfer with rose-petal blessings. Relax by the marble pool as the sun dips behind the Aravalli Hills.',
-        stay: 'Taj Lake Palace, Udaipur (Lake View Luxury Room)',
-        meals: 'Breakfast & Candlelight Dinner',
-        highlights: ['Royal Boat Transfer', 'Iconic Floating Palace Experience'],
+        "day": 6,
+        "title": "Jaipur to Udaipur – The Venice of the East",
+        "location": "Jaipur to Udaipur",
+        "description": "Board a short luxury flight to Udaipur. Arrive at the iconic Taj Lake Palace, floating majestically in the middle of Lake Pichola. Check in via private royal boat transfer with rose-petal blessings. Relax by the marble pool as the sun dips behind the Aravalli Hills.",
+        "stay": "Taj Lake Palace, Udaipur (Lake View Luxury Room)",
+        "meals": "Breakfast & Candlelight Dinner",
+        "highlights": [
+          "Royal Boat Transfer",
+          "Iconic Floating Palace Experience"
+        ],
+        "transit": {
+          "type": "flight",
+          "duration": "1h 15m",
+          "route_notes": "Direct Flight to Udaipur"
+        }
       },
       {
-        day: 7,
-        title: 'Udaipur – City Palace & Sunset Royal Barge Cruise',
-        location: 'Udaipur',
-        description:
-          'Tour the sprawling Udaipur City Palace complex overlooking the lake. Browse artisan miniature painting studios with a master craftsman. In the evening, step aboard a 150-year-old ceremonial royal barge for a private sunset champagne cruise past Jag Mandir Island.',
-        stay: 'Taj Lake Palace, Udaipur',
-        meals: 'Breakfast & Royal Barge Drinks',
-        highlights: ['Udaipur City Palace', 'Private Royal Barge Sunset Cruise'],
-        image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80',
+        "day": 7,
+        "title": "Udaipur – City Palace & Sunset Royal Barge Cruise",
+        "location": "Udaipur",
+        "description": "Tour the sprawling Udaipur City Palace complex overlooking the lake. Browse artisan miniature painting studios with a master craftsman. In the evening, step aboard a 150-year-old ceremonial royal barge for a private sunset champagne cruise past Jag Mandir Island.",
+        "stay": "Taj Lake Palace, Udaipur",
+        "meals": "Breakfast & Royal Barge Drinks",
+        "highlights": [
+          "Udaipur City Palace",
+          "Private Royal Barge Sunset Cruise"
+        ],
+        "image": "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80",
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 8,
-        title: 'Rural Udaipur & Vintage Car Sanctuary',
-        location: 'Udaipur',
-        description:
-          'Drive into the surrounding Aravalli countryside for a leisurely walk through local villages and organic spice farms. Visit the Mewar Royal Vintage Car collection followed by a private lakeside farewell gala dinner with live Sufi musicians.',
-        stay: 'Taj Lake Palace, Udaipur',
-        meals: 'Breakfast & Gala Farewell Dinner',
-        highlights: ['Rural Countryside Immersion', 'Lakeside Gala Dinner with Live Sufi Music'],
+        "day": 8,
+        "title": "Rural Udaipur & Ranakpur Marble Temples",
+        "location": "Udaipur",
+        "description": "Drive into the surrounding Aravalli countryside to visit the architectural masterpiece of Ranakpur Jain Temples, supported by 1,444 uniquely hand-carved marble pillars. Return for an exclusive lakeside gala dinner with live Sufi musicians.",
+        "stay": "Taj Lake Palace, Udaipur",
+        "meals": "Breakfast & Gala Farewell Dinner",
+        "highlights": [
+          "Ranakpur 1,444 Marble Pillars",
+          "Lakeside Gala Dinner with Live Sufi Music"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 9,
-        title: 'Farewell Udaipur & Onward Journey',
-        location: 'Udaipur / Delhi',
-        description:
-          'Enjoy a leisurely champagne breakfast on the palace terrace. Transfer to Maharana Pratap Airport with full concierge assistance for your domestic connection to Delhi/Mumbai and onward international flight home.',
-        stay: 'Departure',
-        meals: 'Breakfast',
-        highlights: ['Private Airport Transfer & Concierge Support'],
+        "day": 9,
+        "title": "Udaipur to Delhi – Farewell Royal Reception",
+        "location": "Udaipur to Delhi",
+        "description": "Enjoy a leisurely morning breakfast on the palace lily pond terrace. Board your flight back to New Delhi. Check into The Imperial for a farewell tasting dinner celebrating the royal culinary heritage of India.",
+        "stay": "The Imperial, New Delhi",
+        "meals": "Breakfast & Farewell Dinner",
+        "highlights": [
+          "Palace Morning Leisure",
+          "Farewell Royal Feast"
+        ],
+        "transit": {
+          "type": "flight",
+          "duration": "1h 20m",
+          "route_notes": "Domestic Flight to Delhi"
+        }
       },
+      {
+        "day": 10,
+        "title": "Delhi – VIP Departure",
+        "location": "Delhi",
+        "description": "Enjoy a final morning at your own pace before your private chauffeur transfers you to Indira Gandhi International Airport with VIP departure lounge assistance for your international flight home.",
+        "stay": "Day Room Available",
+        "meals": "Breakfast Included",
+        "highlights": [
+          "VIP Airport Chauffeur & Departure Assistance"
+        ],
+        "transit": {
+          "type": "none"
+        }
+      }
     ],
-    inclusions: [
-      '8 nights accommodation in premier 5-star palace hotels (The Imperial, Oberoi Amarvilas, Rambagh Palace, Taj Lake Palace)',
-      'Daily lavish champagne breakfasts, 3 curated private gourmet dinners, and afternoon high-teas',
-      'Private air-conditioned luxury sedan (Mercedes E-Class or BMW) with experienced English-speaking chauffeur',
-      'All internal domestic flights in premium class (Jaipur/Delhi to Udaipur)',
-      'Dedicated expert licensed academic historians and local guides in each city',
-      'All monument VIP entrance fees, camera permissions, and boat charters',
-      '24/7 dedicated ABC Travels Senior Concierge on call throughout your journey',
+    "inclusions": [
+      "9 nights in premier 5-star legend palace hotels (Oberoi Amarvilas, Rambagh Palace, Taj Lake Palace, The Imperial)",
+      "All internal domestic flights in premium class (Jaipur to Udaipur, Udaipur to Delhi)",
+      "Dedicated private chauffeur and luxury executive sedan (Toyota Innova Crysta / BMW) throughout",
+      "Daily champagne breakfasts, 3 curated royal dining experiences & private high-tea at Jaipur City Palace",
+      "All monument entrance tickets with VIP skip-the-line passes and battery-cart transfers at Taj Mahal",
+      "Expert licensed academic historians and private English-speaking scholar guides in each city",
+      "24/7 dedicated New Delhi concierge assistance with direct WhatsApp channel"
     ],
-    exclusions: [
-      'International flights to/from India',
-      'Indian tourist visa fees (available as eVisa)',
-      'Travel insurance and medical coverage',
-      'Personal discretionary expenses and gratuities',
+    "exclusions": [
+      "International roundtrip airfare to/from New Delhi (DEL)",
+      "Indian tourist visa fees",
+      "Comprehensive international travel insurance",
+      "Discretionary personal expenses, laundry, and guide gratuities"
     ],
-    accommodations: [
+    "accommodations": [
       {
-        name: 'The Imperial, New Delhi',
-        location: 'Janpath, New Delhi',
-        tier: '5-Star Heritage Landmark',
-        image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1920&q=80',
-        description: 'Voted India’s best luxury heritage hotel, combining Victorian charm with art deco elegance.',
+        "name": "The Imperial",
+        "location": "New Delhi",
+        "tier": "Heritage Legend 5-Star",
+        "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "description": "1930s Art Deco masterpiece set in 8 acres of lush gardens in Lutyens’ Delhi."
       },
       {
-        name: 'The Oberoi Amarvilas, Agra',
-        location: 'Agra (600m from Taj Mahal)',
-        tier: 'Ultra-Luxury Resort',
-        image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1920&q=80',
-        description: 'Unmatched views of the Taj Mahal from every room, reflecting pool courtyards, and Mughal architecture.',
+        "name": "The Oberoi Amarvilas",
+        "location": "Agra",
+        "tier": "Ultra Luxury 5-Star",
+        "image": "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80",
+        "description": "Every room enjoys uninterrupted direct views of the Taj Mahal just 600m away."
       },
       {
-        name: 'Rambagh Palace, Jaipur',
-        location: 'Jaipur, Rajasthan',
-        tier: 'Historic Royal Residence',
-        image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1920&q=80',
-        description: 'The former residence of the Maharaja of Jaipur, featuring 47 acres of tranquil gardens and peacock lawns.',
+        "name": "Rambagh Palace",
+        "location": "Jaipur",
+        "tier": "Royal Palace 5-Star",
+        "image": "https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=800&q=80",
+        "description": "Former official residence of the Maharaja of Jaipur with 47 acres of manicured gardens."
       },
       {
-        name: 'Taj Lake Palace, Udaipur',
-        location: 'Lake Pichola, Udaipur',
-        tier: 'World Heritage Island Palace',
-        image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80',
-        description: 'An 18th-century white marble fantasy floating serenely on Lake Pichola, accessible only by private boat.',
-      },
-    ],
+        "name": "Taj Lake Palace",
+        "location": "Udaipur",
+        "tier": "Floating Palace 5-Star",
+        "image": "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=800&q=80",
+        "description": "18th-century white marble palace floating in the serene waters of Lake Pichola."
+      }
+    ]
   },
   {
-    id: 'tour-2',
-    slug: 'kerala-backwaters-ayurveda-sanctuary',
-    destination_id: 'dest-2',
-    destination_name: 'Kerala & The Spice Coast',
-    title: 'Kerala Sanctuary: Private Houseboats, Spice Hills & Ayurvedic Bliss',
-    subtitle: 'Immerse your senses in emerald tea plantations, private backwater cruises, and restorative holistic wellness.',
-    duration_days: 8,
-    duration_nights: 7,
-    price_usd: 3200,
-    price_inr: 265000,
-    activity_level: 'Leisurely',
-    travel_style: 'Spiritual & Wellness',
-    group_type: 'Private Wellness Journey',
-    is_featured: true,
-    hero_image: 'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1920&q=80',
+    "id": "tour-2",
+    "slug": "kerala-backwaters-ayurveda-sanctuary",
+    "destination_id": "dest-2",
+    "destination_name": "Kerala & The Spice Coast",
+    "title": "Kerala Sanctuary: Private Houseboats, Spice Hills & Ayurvedic Bliss",
+    "subtitle": "Immerse your senses in emerald tea plantations, private backwater cruises, and restorative holistic wellness.",
+    "duration_days": 8,
+    "duration_nights": 7,
+    "price_usd": 3450,
+    "price_inr": 288000,
+    "activity_level": "Leisurely",
+    "travel_style": "Spiritual & Wellness",
+    "group_type": "100% Private Custom",
+    "is_featured": true,
+    "hero_image": "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1920&q=80"
     ],
-    overview:
-      'Discover the serene pace of Southern India. Begin among the Dutch and Portuguese colonial avenues of Fort Kochi, journey up into the cool misty cardamom hills of Munnar, glide aboard your private staffed air-conditioned kettuvallam through the Vembanad Lake backwaters, and conclude with three days of customized Ayurvedic rejuvenating therapies at Kumarakom Lake Resort.',
-    highlights: [
-      '2 nights aboard an exclusive private luxury houseboat with private chef and butler',
-      'Doctor-prescribed daily Ayurvedic herbal massages & organic farm-to-table cuisine',
-      'Private sunset performance of Kathakali dance and Kalaripayattu martial arts',
-      'Exclusive estate tea-tasting session with a third-generation planter in Munnar',
-      'Canoe safari into narrow village canals off the tourist path',
+    "overview": "Discover the serene rhythm of Southern India. Stroll colonial Fort Kochi, ascend misty Munnar tea hills, walk through organic spice forests, and cruise aboard a private, air-conditioned luxury Kettuvallam houseboat through palm-fringed canals. Conclude with doctor-curated Ayurvedic rejuvenation overlooking Lake Vembanad.",
+    "highlights": [
+      "24-hour private cruise aboard a luxury air-conditioned Kettuvallam with private chef",
+      "Doctor-prescribed daily Ayurvedic herbal oil therapies and wellness consultations",
+      "Private Kathakali classical dance performance & backstage makeup masterclass",
+      "Single-estate organic tea sommelier walk in Munnar hills",
+      "Stays in boutique heritage properties: Brunton Boatyard & Kumarakom Lake Resort"
     ],
-    itinerary: [
+    "itinerary": [
       {
-        day: 1,
-        title: 'Arrival in Kochi – Ancient Spice Capital',
-        location: 'Fort Kochi',
-        description:
-          'Arrive at Cochin International Airport. Transfer to Brunton Boatyard, a luxury heritage hotel on the harbor. In the late afternoon, take a private harbor cruise to see the historic Chinese Fishing Nets silhouetted against the sunset.',
-        stay: 'Brunton Boatyard (Sea Facing Suite)',
-        meals: 'Dinner Included',
-        highlights: ['Harbor Sunset Cruise', 'Chinese Fishing Nets'],
+        "day": 1,
+        "title": "Arrival in Fort Kochi – Heritage Harbor Gateway",
+        "location": "Kochi",
+        "description": "Arrive at Cochin International Airport (COK) and transfer in a private air-conditioned vehicle to Brunton Boatyard, set on the historic harbor of Fort Kochi. Evening private Kathakali performance showcasing Kerala’s 400-year-old dance drama.",
+        "stay": "Brunton Boatyard, Fort Kochi",
+        "meals": "Dinner Included",
+        "highlights": [
+          "Harbor View Check-in",
+          "Private Kathakali Performance"
+        ],
+        "image": "https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=1920&q=80",
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 2,
-        title: 'Colonial Kochi & Classical Art Forms',
-        location: 'Fort Kochi',
-        description:
-          'Explore Mattancherry Palace (Dutch Palace), the 16th-century Jewish Synagogue, and the fragrant spice warehouses of Jew Town. Evening private demonstration of Kathakali costume makeup and storytelling performance.',
-        stay: 'Brunton Boatyard',
-        meals: 'Breakfast & Lunch',
-        highlights: ['Jewish Synagogue & Jew Town', 'Private Kathakali Performance'],
+        "day": 2,
+        "title": "Colonial Kochi & Sunset Harbor Cruise",
+        "location": "Kochi",
+        "description": "Explore Fort Kochi with a private historian: the 16th-century Jewish Synagogue, Mattancherry Dutch Palace, and the iconic Chinese fishing nets. Evening private harbor cruise at golden hour.",
+        "stay": "Brunton Boatyard, Fort Kochi",
+        "meals": "Breakfast & Seafood Lunch",
+        "highlights": [
+          "Jewish Synagogue & Dutch Palace",
+          "Chinese Fishing Nets Sunset"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 3,
-        title: 'Misty Cardamom & Tea Hills of Munnar',
-        location: 'Munnar',
-        description:
-          'Drive up the scenic Western Ghats past cascading waterfalls and spice plantations to Munnar. Check into Windermere Estate, surrounded by coffee and tea bushes. Enjoy an evening walk through the aromatic cardamom orchards.',
-        stay: 'Windermere Estate / Spice Tree Munnar',
-        meals: 'Breakfast & Plantation Dinner',
-        highlights: ['Western Ghats Scenic Mountain Drive', 'Plantation Walk'],
+        "day": 3,
+        "title": "Ascending to Munnar – Emerald Tea Plantations",
+        "location": "Munnar",
+        "description": "Drive through winding mountain roads into the Western Ghats to Munnar (5,200 ft). Check into Windermere Estate, a boutique colonial plantation retreat nestled among tea bushes and cardamom orchards.",
+        "stay": "Windermere Estate, Munnar",
+        "meals": "Breakfast & Estate Dinner",
+        "highlights": [
+          "Western Ghats Mountain Drive",
+          "Plantation Estate Stay"
+        ],
+        "transit": {
+          "type": "drive",
+          "duration": "3.5 hrs",
+          "route_notes": "Scenic Mountain Pass"
+        }
       },
       {
-        day: 4,
-        title: 'Tea Masters & Hilltop Panoramic Views',
-        location: 'Munnar',
-        description:
-          'Visit a historic private tea processing factory to understand tea plucking, fermenting, and grading. Sample rare artisanal single-estate white and green teas with a master blender.',
-        stay: 'Windermere Estate',
-        meals: 'Breakfast & High-Tea',
-        highlights: ['Exclusive Tea Tasting', 'Panoramic Ridge Walk'],
+        "day": 4,
+        "title": "Munnar – Tea Sommelier Trails & Eravikulam",
+        "location": "Munnar",
+        "description": "Morning private walk with a resident tea expert through colonial tea gardens. Visit the Lock Hart Tea Factory for a private tasting of orthodox black and green teas. Afternoon wildlife spotting in Eravikulam National Park.",
+        "stay": "Windermere Estate, Munnar",
+        "meals": "Breakfast & High-Tea Lunch",
+        "highlights": [
+          "Tea Sommelier Masterclass",
+          "Nilgiri Tahr Wildlife Sanctuary"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 5,
-        title: 'Embark on Private Luxury Houseboat Cruise',
-        location: 'Alleppey Backwaters',
-        description:
-          'Descend from the mountains to Alleppey. Step aboard your private luxury kettuvallam crafted with teak and coir. Drift past paddy fields, water lilies, and riverside villages. Your private chef serves freshly caught Karimeen fish and Malabar delicacies.',
-        stay: 'Oberoi Vrinda / Luxury Private Houseboat',
-        meals: 'All Meals & Refreshments',
-        highlights: ['Private Houseboat Boarding', 'Authentic Malabar Feast'],
+        "day": 5,
+        "title": "Thekkady – Periyar Spice Sanctuaries",
+        "location": "Thekkady",
+        "description": "Scenic drive south to Thekkady. Check into Spice Village. Afternoon sensory walk through an organic spice plantation with an expert botanist, discovering cardamom, vanilla, cinnamon, and black pepper.",
+        "stay": "Spice Village, Thekkady",
+        "meals": "Breakfast & Organic Dinner",
+        "highlights": [
+          "Organic Spice Sanctuary Walk",
+          "Eco-Luxury Forest Chalet"
+        ],
+        "transit": {
+          "type": "drive",
+          "duration": "2.5 hrs",
+          "route_notes": "Cardamom Hills Highway"
+        }
       },
       {
-        day: 6,
-        title: 'Kumarakom – Ayurvedic Retreat on the Lake',
-        location: 'Kumarakom',
-        description:
-          'Disembark at Kumarakom Lake Resort, nestled on the banks of Vembanad Lake. Consult with an Ayurvedic Vaidya (doctor) to customize your 2-day wellness and herbal therapy regime.',
-        stay: 'Kumarakom Lake Resort (Heritage Villa with Private Pool)',
-        meals: 'Breakfast & Ayurvedic Dinner',
-        highlights: ['Ayurvedic Doctor Consultation', 'Private Pool Villa'],
+        "day": 6,
+        "title": "Alleppey – Private Luxury Houseboat Cruise",
+        "location": "Alleppey",
+        "description": "Descend to the backwaters of Alleppey and board your private, handcrafted luxury Kettuvallam houseboat. Cruise through narrow canals shaded by coconut palms. Your onboard private chef prepares fresh Karimeen fish and Malabar delicacies.",
+        "stay": "Private Luxury Air-Conditioned Houseboat",
+        "meals": "All Meals Included Onboard",
+        "highlights": [
+          "24-Hour Private Houseboat Charter",
+          "Sunset Backwater Gliding"
+        ],
+        "image": "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1920&q=80",
+        "transit": {
+          "type": "boat",
+          "duration": "24-hr Cruise",
+          "route_notes": "Private Backwaters Navigation"
+        }
       },
       {
-        day: 7,
-        title: 'Rejuvenation, Yoga & Canoe Safaris',
-        location: 'Kumarakom',
-        description:
-          'Begin with dawn yoga on the lake pier. Indulge in warm herbal oil Abhyanga and Shirodhara treatments. In the afternoon, take a quiet wooden canoe through bird-sanctuary waterways.',
-        stay: 'Kumarakom Lake Resort',
-        meals: 'All Meals (Wellness Curated)',
-        highlights: ['Abhyanga & Shirodhara Treatments', 'Dawn Meditation & Yoga'],
+        "day": 7,
+        "title": "Kumarakom – Ayurvedic Rejuvenation",
+        "location": "Kumarakom",
+        "description": "Disembark at Kumarakom Lake Resort on Lake Vembanad. Enjoy a personalized Ayurvedic doctor consultation followed by traditional Abhyanga and Shirodhara therapies. Farewell lakeside candlelight dinner.",
+        "stay": "Kumarakom Lake Resort (Heritage Villa with Private Pool)",
+        "meals": "Breakfast & Farewell Dinner",
+        "highlights": [
+          "Authentic Ayurvedic Spa Therapies",
+          "Lake Vembanad Pool Villa"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 8,
-        title: 'Farewell Kochi & Departure',
-        location: 'Cochin Airport',
-        description:
-          'Leisurely breakfast on the lakefront terrace. Private transfer to Cochin International Airport for your return or onward flight.',
-        stay: 'Departure',
-        meals: 'Breakfast',
-        highlights: ['Airport Transfer & Concierge'],
-      },
+        "day": 8,
+        "title": "Kochi – Departure",
+        "location": "Kochi",
+        "description": "Morning breakfast overlooking the lake. Private chauffeur transfer to Cochin International Airport (COK) for your onward journey.",
+        "stay": "Departure",
+        "meals": "Breakfast Included",
+        "highlights": [
+          "Private Airport Chauffeur Transfer"
+        ],
+        "transit": {
+          "type": "none"
+        }
+      }
     ],
-    inclusions: [
-      '7 nights in premier luxury retreats and private air-conditioned houseboat',
-      'Private car and personal chauffeur throughout Kerala',
-      'All meals on the private houseboat and wellness dining at Kumarakom',
-      'Full Ayurvedic consultation and daily tailored massage therapies',
-      'All guided excursions, entrance tickets, and boat transfers',
+    "inclusions": [
+      "7 nights in luxury eco-resorts & 24-hour private air-conditioned luxury houseboat charter",
+      "Dedicated private air-conditioned vehicle and chauffeur throughout Kerala",
+      "All meals included during the houseboat cruise & daily gourmet breakfasts",
+      "Doctor-curated Ayurvedic spa therapy session at Kumarakom Lake Resort",
+      "All entrance passes, plantation permits, and local naturalist guides"
     ],
-    exclusions: [
-      'International flights to/from India',
-      'Travel insurance and medical coverage',
-      'Personal laundry and telephone charges',
+    "exclusions": [
+      "International and domestic flights",
+      "Alcoholic beverages and personal laundry",
+      "Travel insurance and optional wellness treatment upgrades"
     ],
-    accommodations: [
+    "accommodations": [
       {
-        name: 'Brunton Boatyard',
-        location: 'Fort Kochi',
-        tier: '5-Star Colonial Heritage',
-        image: 'https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=1920&q=80',
-        description: 'Restored Victorian shipyard hotel overlooking the historic spice harbor.',
+        "name": "Brunton Boatyard",
+        "location": "Fort Kochi",
+        "tier": "Heritage 5-Star",
+        "image": "https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=800&q=80",
+        "description": "Restored Victorian shipyard hotel overlooking Fort Kochi harbor."
       },
       {
-        name: 'Luxury Private Kettuvallam',
-        location: 'Alleppey Backwaters',
-        tier: 'Ultra-Luxury Houseboat',
-        image: 'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1920&q=80',
-        description: 'Air-conditioned bedroom suite with private sundeck, personal chef, and dedicated crew.',
+        "name": "Windermere Estate",
+        "location": "Munnar",
+        "tier": "Boutique Plantation Luxury",
+        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
+        "description": "Intimate colonial retreat set inside a working tea and cardamom estate."
       },
       {
-        name: 'Kumarakom Lake Resort',
-        location: 'Kumarakom, Vembanad Lake',
-        tier: 'Luxury Ayurvedic Sanctuary',
-        image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1920&q=80',
-        description: 'Heritage pool villas reconstructed from 16th-century traditional Kerala wooden homes.',
+        "name": "Private Luxury Houseboat",
+        "location": "Alleppey Backwaters",
+        "tier": "Exclusive Charter",
+        "image": "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
+        "description": "Handcrafted air-conditioned wooden barge with private crew and master chef."
       },
-    ],
+      {
+        "name": "Kumarakom Lake Resort",
+        "location": "Kumarakom",
+        "tier": "Luxury Ayurvedic Resort",
+        "image": "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80",
+        "description": "Award-winning lakeside sanctuary with heritage villas and Ayurvedic center."
+      }
+    ]
   },
   {
-    id: 'tour-3',
-    slug: 'ladakh-high-himalayas-expedition',
-    destination_id: 'dest-3',
-    destination_name: 'Ladakh & High Himalayas',
-    title: 'Himalayan High Passes: Glacial Valleys, Monasteries & Luxury Glamping',
-    subtitle: 'Venture into the mystical mountain desert of Ladakh, crossing the highest motorable roads on earth.',
-    duration_days: 8,
-    duration_nights: 7,
-    price_usd: 3450,
-    price_inr: 285000,
-    activity_level: 'Active Adventure',
-    travel_style: 'Himalayan Exploration',
-    group_type: 'Private Expedition',
-    is_featured: true,
-    hero_image: 'https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1596701062351-8c2c14d1fdd0?auto=format&fit=crop&w=1920&q=80',
+    "id": "tour-3",
+    "slug": "ladakh-high-himalayas-expedition",
+    "destination_id": "dest-3",
+    "destination_name": "Ladakh & High Himalayas",
+    "title": "Himalayan High Passes: Monasteries, Glacial Valleys & Luxury Glamping",
+    "subtitle": "Venture into the mystical mountain desert of Ladakh, crossing the highest motorable roads on earth.",
+    "duration_days": 9,
+    "duration_nights": 8,
+    "price_usd": 3950,
+    "price_inr": 330000,
+    "activity_level": "Active Adventure",
+    "travel_style": "Himalayan Exploration",
+    "group_type": "100% Private Custom",
+    "is_featured": true,
+    "hero_image": "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80"
     ],
-    overview:
-      'An exhilarating, high-comfort expedition across the Trans-Himalayan desert of Ladakh. Visit ancient 11th-century Buddhist monasteries, sleep in heated luxury geodesic domes in the Nubra Valley, witness the surreal changing colors of high-altitude Pangong Lake at 14,000 feet, and gaze at unpolluted starry constellations through professional optical telescopes.',
-    highlights: [
-      'Private early morning chant and blessing session with the Rinpoche at Thiksey Gompa',
-      'Crossing Khardung La Pass (17,582 ft) and Chang La Pass in customized 4x4 SUVs',
-      'Heated luxury nomadic glamping camp in the sand dunes of Hunder',
-      'Bactrian double-humped camel safari across high-altitude sand dunes',
-      'Professional astrophotography and stargazing session under Bortle Class 1 night skies',
+    "overview": "An exhilarating high-comfort expedition across the Trans-Himalayan mountain desert. Discover 1,000-year-old cliffside Buddhist monasteries, cross the legendary Khardung La pass (17,582 ft) in private 4x4 SUVs, sleep under heated luxury yurt domes in Nubra Valley, and gaze into the sapphire infinity of Pangong Lake.",
+    "highlights": [
+      "Private dawn prayer blessing at Thiksey Gompa with senior Buddhist lamas",
+      "Crossing Khardung La Pass (17,582 ft) in luxury 4x4 Toyota Fortuner with expert driver",
+      "Heated luxury glamping domes at Hunder Sand Dunes & Pangong Lake (14,270 ft)",
+      "Bactrian two-humped camel safari across high-altitude dunes in Nubra Valley",
+      "Stargazing under Bortle Class 1 Himalayan night skies with astronomical telescope"
     ],
-    itinerary: [
+    "itinerary": [
       {
-        day: 1,
-        title: 'Scenic Himalayan Flight & Acclimatization in Leh',
-        location: 'Leh (11,500 ft)',
-        description:
-          'Fly over the snow-capped Himalayan ranges into Leh. Check into The Grand Dragon Ladakh. Spend the day resting and gently acclimatizing with herbal ginger-honey tea and oxygen-assisted luxury suites.',
-        stay: 'The Grand Dragon Ladakh (Royal Suite)',
-        meals: 'Dinner Included',
-        highlights: ['Himalayan Aerial Views', 'Acclimatization Care'],
+        "day": 1,
+        "title": "Arrival in Leh – Acclimatization in the High Desert",
+        "location": "Leh",
+        "description": "Fly over the snow-crested Himalayas into Leh (11,500 ft). Check into The Grand Dragon Ladakh. Mandatory 24-hour gentle rest for acclimatization with warm Kashmiri Kahwa tea.",
+        "stay": "The Grand Dragon Ladakh (Royal Suite)",
+        "meals": "Dinner Included",
+        "highlights": [
+          "Spectacular Himalayan Mountain Flight",
+          "Gentle High-Altitude Acclimatization"
+        ],
+        "image": "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1920&q=80",
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 2,
-        title: 'Monasteries of the Indus Valley: Thiksey & Hemis',
-        location: 'Leh & Indus Valley',
-        description:
-          'Witness the sunrise prayer ceremony at Thiksey Monastery, reminiscent of Lhasa’s Potala Palace. Tour the treasure museum of Hemis Gompa, followed by an organic Ladakhi lunch at a traditional farm in Stok.',
-        stay: 'The Grand Dragon Ladakh',
-        meals: 'Breakfast & Farm Lunch',
-        highlights: ['Thiksey Morning Chants', 'Hemis Museum'],
+        "day": 2,
+        "title": "Leh Heritage – Shanti Stupa & Old Town Bazaar",
+        "location": "Leh",
+        "description": "Gentle walking tour of 17th-century Leh Palace, the serene Shanti Stupa with 360-degree mountain views, and the Tibetan handicraft markets.",
+        "stay": "The Grand Dragon Ladakh",
+        "meals": "Breakfast & Gourmet Lunch",
+        "highlights": [
+          "Leh Palace & Shanti Stupa",
+          "Tibetan Artisan Market"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 3,
-        title: 'Over Khardung La to the Nubra Valley',
-        location: 'Khardung La to Nubra Valley',
-        description:
-          'Ascend through winding mountain switchbacks over Khardung La Pass (17,582 ft). Descend into the dramatic green valley of Nubra where glacial streams meet white sand dunes. Check into Chamba Camp Diskit.',
-        stay: 'The Ultimate Travelling Camp (TUTC) / Chamba Camp',
-        meals: 'All Meals Included',
-        highlights: ['Khardung La Mountain Pass', 'Luxury Glamping Arrival'],
+        "day": 3,
+        "title": "Indus Valley Monasteries – Thiksey & Hemis Gompas",
+        "location": "Leh",
+        "description": "Attend early morning chanting at Thiksey Monastery, home to the 49-ft Maitreya Buddha statue. Continue to Hemis Monastery, the wealthiest and largest Buddhist monastery in Ladakh.",
+        "stay": "The Grand Dragon Ladakh",
+        "meals": "Breakfast & Monastery Picnic",
+        "highlights": [
+          "Morning Lama Chanting",
+          "Hemis Museum Royal Relics"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 4,
-        title: 'Bactrian Camels & Diskit Monastery',
-        location: 'Nubra Valley',
-        description:
-          'Ride double-humped Bactrian camels across the Hunder sand dunes against a backdrop of snow-capped peaks. Visit the towering 106-foot Maitreya Buddha statue overlooking the valley at Diskit Monastery.',
-        stay: 'The Ultimate Travelling Camp / Chamba Camp',
-        meals: 'All Meals Included',
-        highlights: ['Camel Dunes Ride', '106ft Maitreya Buddha Statue'],
+        "day": 4,
+        "title": "Over Khardung La (17,582 ft) to Nubra Valley",
+        "location": "Nubra",
+        "description": "Drive up the world’s highest motorable highway over Khardung La Pass (17,582 ft). Descend into the dramatic Nubra Valley and check into luxury heated yurt camp.",
+        "stay": "Luxury Chamba Glamping Yurts, Nubra",
+        "meals": "Breakfast & Camp Dinner",
+        "highlights": [
+          "Khardung La High Mountain Pass",
+          "Heated Luxury Glamping"
+        ],
+        "transit": {
+          "type": "drive",
+          "duration": "4.5 hrs",
+          "route_notes": "Via Khardung La Pass (17,582 ft)"
+        }
       },
       {
-        day: 5,
-        title: 'Journey to the Azure Waters of Pangong Tso',
-        location: 'Nubra to Pangong Tso (14,270 ft)',
-        description:
-          'Drive along the wild Shyok River route to Pangong Tso Lake. Marvel as the crystal-clear waters shift through hues of turquoise, cobalt, and emerald. Settle into your heated lakefront luxury dome.',
-        stay: 'Merak Luxury Glamping Camp (Heated Lakefront Dome)',
-        meals: 'All Meals Included',
-        highlights: ['Pangong Tso Turquoise Waters', 'Lakeside Sunset'],
+        "day": 5,
+        "title": "Nubra Valley – Diskit Monastery & Camel Safari",
+        "location": "Nubra",
+        "description": "Visit the 106-ft outdoor statue of Maitreya Buddha at Diskit Monastery. Afternoon two-humped Bactrian camel ride across the white sand dunes of Hunder.",
+        "stay": "Luxury Chamba Glamping Yurts, Nubra",
+        "meals": "Breakfast & Barbecue Dinner",
+        "highlights": [
+          "Diskit 106-ft Buddha",
+          "Bactrian Camel Safari in Sand Dunes"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 6,
-        title: 'Pangong Sunrise & Return over Chang La to Leh',
-        location: 'Pangong to Leh',
-        description:
-          'Wake early for a magical sunrise reflection over Pangong Lake. Journey back over Chang La Pass (17,590 ft), stopping to visit the 16th-century Chemrey Monastery built into a steep rocky cliff.',
-        stay: 'The Grand Dragon Ladakh',
-        meals: 'Breakfast & Dinner',
-        highlights: ['Pangong Dawn Reflection', 'Chemrey Monastery'],
+        "day": 6,
+        "title": "To Sapphire Pangong Lake (14,270 ft)",
+        "location": "Pangong",
+        "description": "Drive along the wild Shyok River canyon to Pangong Tso, a 134-km long sapphire lake spanning India and Tibet. Check into heated lakefront glamping domes.",
+        "stay": "Pangong Luxury Lakefront Glamping Domes",
+        "meals": "All Meals Included",
+        "highlights": [
+          "Sapphire Pangong Lake Sunset",
+          "Heated Shoreline Domes"
+        ],
+        "image": "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=1920&q=80",
+        "transit": {
+          "type": "drive",
+          "duration": "4.0 hrs",
+          "route_notes": "Along Shyok River Canyon"
+        }
       },
       {
-        day: 7,
-        title: 'Leh Old Town, Royal Palace & Farewell Gala',
-        location: 'Leh',
-        description:
-          'Stroll the stone alleys of Old Leh bazaar, visiting local pashmina weavers and Tibetan silversmiths. Enjoy a farewell dinner with traditional Ladakhi folk dance under the stars.',
-        stay: 'The Grand Dragon Ladakh',
-        meals: 'Breakfast & Farewell Gala Dinner',
-        highlights: ['Old Leh Heritage Walk', 'Authentic Ladakhi Folk Gala'],
+        "day": 7,
+        "title": "Pangong Sunrise & Return to Leh via Chang La",
+        "location": "Leh",
+        "description": "Watch the turquoise hues shift at dawn. Return to Leh crossing Chang La Pass (17,688 ft). Return to The Grand Dragon Ladakh for hot stone spa relaxation.",
+        "stay": "The Grand Dragon Ladakh",
+        "meals": "Breakfast & Dinner",
+        "highlights": [
+          "Pangong Dawn Reflection",
+          "Chang La Pass Crossing"
+        ],
+        "transit": {
+          "type": "drive",
+          "duration": "5.0 hrs",
+          "route_notes": "Via Chang La Pass (17,688 ft)"
+        }
       },
       {
-        day: 8,
-        title: 'Departure Flight over the Himalayas',
-        location: 'Leh Airport',
-        description:
-          'Early morning transfer to Kushok Bakula Rimpochee Airport for your mountain flight back to Delhi.',
-        stay: 'Departure',
-        meals: 'Breakfast',
-        highlights: ['Private Airport Transfer'],
+        "day": 8,
+        "title": "Leh – Pashmina Weaving & Farewell Banquet",
+        "location": "Leh",
+        "description": "Private masterclass on authentic Ladakhi Pashmina wool spinning and weaving. Evening farewell traditional Ladakhi banquet.",
+        "stay": "The Grand Dragon Ladakh",
+        "meals": "Breakfast & Farewell Banquet",
+        "highlights": [
+          "Pashmina Artisan Masterclass",
+          "Traditional Ladakhi Feast"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
+      {
+        "day": 9,
+        "title": "Leh – Departure",
+        "location": "Leh",
+        "description": "Private transfer to Leh Airport for your morning flight over the Himalayas back to Delhi.",
+        "stay": "Departure",
+        "meals": "Breakfast Included",
+        "highlights": [
+          "VIP Airport Chauffeur Transfer"
+        ],
+        "transit": {
+          "type": "none"
+        }
+      }
     ],
-    inclusions: [
-      '7 nights in premier luxury hotels and heated glamping dome tents',
-      'Private 4x4 Toyota Fortuner with experienced high-altitude Himalayan driver',
-      'All meals throughout the expedition (including gourmet field camp meals)',
-      'Oxygen cylinders and medical first-responder kit in vehicle',
-      'Protected Area Wildlife and Inner Line Permits for Nubra and Pangong',
-      'Expert private English-speaking Ladakhi cultural guide',
+    "inclusions": [
+      "8 nights in premier luxury hotels & heated glamping domes with private bathrooms",
+      "Private 4x4 Toyota Fortuner with veteran high-altitude mountain driver and oxygen equipment",
+      "All Inner Line Permits, Wildlife Sanctuary fees, and monastery entrance tickets",
+      "All meals throughout the expedition, including gourmet heated dining in Nubra and Pangong",
+      "Specialist Ladakhi cultural guide and local scholar"
     ],
-    exclusions: [
-      'International flights to/from India',
-      'Personal thermal outerwear (available for rent)',
-      'Travel and high-altitude emergency insurance',
+    "exclusions": [
+      "Flights to/from Leh (IXL)",
+      "High-altitude thermal mountain gear (can be rented locally)",
+      "Discretionary guide and driver gratuities"
     ],
-    accommodations: [
+    "accommodations": [
       {
-        name: 'The Grand Dragon Ladakh',
-        location: 'Leh',
-        tier: '5-Star Luxury Mountain Hotel',
-        image: 'https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1920&q=80',
-        description: 'Solar-heated luxury hotel with oxygen-enriched suites and views of the Stok Kangri mountain range.',
+        "name": "The Grand Dragon Ladakh",
+        "location": "Leh",
+        "tier": "Luxury 5-Star Hotel",
+        "image": "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=800&q=80",
+        "description": "Premier eco-luxury hotel with oxygen-enriched suites and solar underfloor heating."
       },
       {
-        name: 'Chamba Camp Diskit (TUTC)',
-        location: 'Nubra Valley',
-        tier: 'Ultra-Luxury Mobile Glamping',
-        image: 'https://images.unsplash.com/photo-1596701062351-8c2c14d1fdd0?auto=format&fit=crop&w=1920&q=80',
-        description: 'Colonial-style heated safari tents with private butler service and four-poster beds.',
-      },
-    ],
+        "name": "Chamba Glamping Yurts",
+        "location": "Nubra Valley",
+        "tier": "Luxury Heated Glamping",
+        "image": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80",
+        "description": "Heated luxury yurt chalets nestled in an organic apricot orchard."
+      }
+    ]
   },
   {
-    id: 'tour-4',
-    slug: 'royal-bengal-tiger-safari',
-    destination_id: 'dest-5',
-    destination_name: 'Ranthambore & Royal Wilds',
-    title: 'The Sovereign Wild: Royal Bengal Tiger Safari & Jungle Lodges',
-    subtitle: 'Exclusive private game drives in Ranthambore & Bandhavgarh with India’s foremost naturalists.',
-    duration_days: 7,
-    duration_nights: 6,
-    price_usd: 3600,
-    price_inr: 298000,
-    activity_level: 'Moderate',
-    travel_style: 'Wildlife Safari',
-    group_type: 'Private Safari Expedition',
-    is_featured: true,
-    hero_image: 'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1562183667-a159d28118ec?auto=format&fit=crop&w=1920&q=80',
+    "id": "tour-4",
+    "slug": "ranthambore-tiger-safari-expedition",
+    "destination_id": "dest-4",
+    "destination_name": "Central India & Wildlife",
+    "title": "The Royal Tiger Sanctuary & Wilderness Expedition",
+    "subtitle": "Track wild Royal Bengal tigers in Ranthambore with veteran naturalists and stay in opulent jungle palace tents.",
+    "duration_days": 7,
+    "duration_nights": 6,
+    "price_usd": 3650,
+    "price_inr": 305000,
+    "activity_level": "Moderate",
+    "travel_style": "Wildlife Safari",
+    "group_type": "100% Private Custom",
+    "is_featured": true,
+    "hero_image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1588693951525-6b9ebd799a4c?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=1920&q=80"
     ],
-    overview:
-      'Track the elusive Royal Bengal Tiger through the ancient ruins, watering holes, and deciduous jungles of India’s premier national parks. Travel in private open-top 4x4 safari jeeps accompanied by master trackers. Relax in the opulent grandeur of Aman-i-Khás and The Oberoi Vanyavilas.',
-    highlights: [
-      '6 private exclusive jeep safaris in premier core zones (Zones 1-5)',
-      'Stay at Aman-i-Khás luxury tented camp with private butler (batman)',
-      'Sunset bush dinners under the canopy with natural history lectures',
-      'Visit the 10th-century Ranthambore Fort perched above tiger territory',
+    "overview": "An intimate wilderness journey tracking the majestic Royal Bengal tiger in Ranthambore National Park. Embark on 4 private open-top 4x4 Gypsy safaris across prime core zones with a dedicated senior naturalist, stay in the opulent tented luxury of The Oberoi Vanyavilas, and conclude with royal palace relaxation in Jaipur.",
+    "highlights": [
+      "4 private exclusive open-top 4x4 Gypsy game drives in Ranthambore Core Zones 1–5",
+      "Senior wildlife naturalist tracking tigers, leopards, sloth bears, and marsh crocodiles",
+      "3 nights at The Oberoi Vanyavilas in triple-canopied luxury air-conditioned tents",
+      "Private excursion to the 10th-century UNESCO Ranthambore Hill Fort",
+      "Grand palace finale at The Oberoi Rajvilas, Jaipur"
     ],
-    itinerary: [
+    "itinerary": [
       {
-        day: 1,
-        title: 'Delhi to Ranthambore – Arrival in the Kingdom of the Tiger',
-        location: 'Delhi to Ranthambore',
-        description:
-          'Transfer via private executive train or luxury chauffeur car from Delhi to Sawai Madhopur. Arrive at The Oberoi Vanyavilas. Unwind in your royal tented villa with private garden.',
-        stay: 'The Oberoi Vanyavilas / Aman-i-Khás',
-        meals: 'Dinner Included',
-        highlights: ['Private Executive Transfer', 'Royal Safari Tent Arrival'],
+        "day": 1,
+        "title": "Arrival in Delhi – Lutyens Luxury Retreat",
+        "location": "Delhi",
+        "description": "Arrive at New Delhi IGI Airport and transfer in a private luxury chauffeur sedan to The Oberoi, New Delhi. Unwind overlooking the serene Delhi Golf Club.",
+        "stay": "The Oberoi, New Delhi",
+        "meals": "Dinner Included",
+        "highlights": [
+          "VIP Airport Transfer",
+          "The Oberoi Luxury Suite"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 2,
-        title: 'Dawn & Afternoon Core Zone Tiger Safaris',
-        location: 'Ranthambore National Park',
-        description:
-          'Embark on your first private dawn safari into the core tiger zones. Track pugmarks and listen to deer alarm calls. Return for a gourmet poolside lunch, followed by an afternoon game drive.',
-        stay: 'The Oberoi Vanyavilas',
-        meals: 'All Meals Included',
-        highlights: ['Dawn & Dusk Game Drives', 'Bengal Tiger Tracking'],
+        "day": 2,
+        "title": "To Ranthambore – Jungle Palace Arrival",
+        "location": "Ranthambore",
+        "description": "Executive express train / private drive to Sawai Madhopur. Check into The Oberoi Vanyavilas luxury jungle tents with private walled gardens. Evening briefing with senior naturalist.",
+        "stay": "The Oberoi Vanyavilas (Luxury Tented Suite)",
+        "meals": "Breakfast & Jungle Dinner",
+        "highlights": [
+          "Oberoi Vanyavilas Check-in",
+          "Senior Naturalist Wilderness Briefing"
+        ],
+        "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1920&q=80",
+        "transit": {
+          "type": "train",
+          "duration": "3.5 hrs",
+          "route_notes": "First Class Kota Jan Shatabdi"
+        }
       },
       {
-        day: 3,
-        title: 'Ranthambore Fort & Medieval Jungle Lakes',
-        location: 'Ranthambore',
-        description:
-          'Morning safari along the picturesque Padam Talao and Rajbagh lake ruins. In the afternoon, ascend the massive 10th-century UNESCO Ranthambore Fort overlooking the jungle.',
-        stay: 'The Oberoi Vanyavilas',
-        meals: 'All Meals Included',
-        highlights: ['Jungle Lakes Safari', 'UNESCO Ranthambore Fort Walk'],
+        "day": 3,
+        "title": "Ranthambore – Dawn & Dusk Tiger Safaris",
+        "location": "Ranthambore",
+        "description": "Two private 4x4 Gypsy safaris (Sunrise & Sunset) across Core Zones 1–5. Track tiger pugmarks, alarm calls of spotted deer, and discover ancient ruins reclaimed by the jungle.",
+        "stay": "The Oberoi Vanyavilas",
+        "meals": "All Meals Included",
+        "highlights": [
+          "2 Private Core Zone Safaris",
+          "Tiger & Leopard Tracking"
+        ],
+        "transit": {
+          "type": "safari",
+          "duration": "Private Game Drives"
+        }
       },
       {
-        day: 4,
-        title: 'Deep Forest Tracking & Birdlife Sanctuaries',
-        location: 'Ranthambore',
-        description:
-          'Explore different ecological habitats seeking leopards, sloth bears, marsh crocodiles, and rare birds of prey with your senior naturalist.',
-        stay: 'The Oberoi Vanyavilas',
-        meals: 'All Meals Included',
-        highlights: ['Leopard & Sloth Bear Tracking', 'Private Wildlife Lecture'],
+        "day": 4,
+        "title": "Ranthambore – Fort Excursion & Spa Leisure",
+        "location": "Ranthambore",
+        "description": "Morning private safari in rocky cliff ravines. Afternoon guided walk through the 10th-century Ranthambore Fort. Evening poolside campfire dining.",
+        "stay": "The Oberoi Vanyavilas",
+        "meals": "All Meals Included",
+        "highlights": [
+          "UNESCO Ranthambore Fort",
+          "Oberoi Campfire Dining"
+        ],
+        "transit": {
+          "type": "safari",
+          "duration": "Morning Safari"
+        }
       },
       {
-        day: 5,
-        title: 'Village Craft Walk & Evening Stargazing Bush Dinner',
-        location: 'Ranthambore',
-        description:
-          'Visit a local women’s embroidery artisan cooperative supporting wildlife conservation. Conclude with an enchanting bush dinner illuminated by bonfire and hurricane lanterns.',
-        stay: 'The Oberoi Vanyavilas',
-        meals: 'All Meals Included',
-        highlights: ['Conservation Artisan Visit', 'Lantern Bush Dinner'],
+        "day": 5,
+        "title": "To Jaipur – The Oberoi Rajvilas Oasis",
+        "location": "Jaipur",
+        "description": "Scenic chauffeured drive to Jaipur (3 hrs). Check into The Oberoi Rajvilas, set within 32 acres of peacocks, fountains, and traditional Rajasthani architecture.",
+        "stay": "The Oberoi Rajvilas, Jaipur",
+        "meals": "Breakfast & Royal Dinner",
+        "highlights": [
+          "Chauffeured Countryside Drive",
+          "The Oberoi Rajvilas Estate"
+        ],
+        "transit": {
+          "type": "drive",
+          "duration": "3.0 hrs",
+          "route_notes": "Chauffeured Countryside Drive"
+        }
       },
       {
-        day: 6,
-        title: 'Final Morning Safari & Leisurely Afternoon',
-        location: 'Ranthambore',
-        description:
-          'Final morning game drive through the forest canopy. Spend the afternoon indulging in signature Ayurvedic spa therapies and private high-tea on the observation tower.',
-        stay: 'The Oberoi Vanyavilas',
-        meals: 'All Meals Included',
-        highlights: ['Final Morning Safari', 'Observation Tower High-Tea'],
+        "day": 6,
+        "title": "Jaipur – Amber Fort & Royal Textile Masterclass",
+        "location": "Jaipur",
+        "description": "Private morning tour of Amber Fort and the Jantar Mantar observatory. Afternoon private block-printing textile masterclass with a master craftsman.",
+        "stay": "The Oberoi Rajvilas, Jaipur",
+        "meals": "Breakfast & High-Tea Dinner",
+        "highlights": [
+          "Amber Fort VIP Access",
+          "Artisan Textile Masterclass"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 7,
-        title: 'Return to Delhi & International Departure',
-        location: 'Ranthambore to Delhi',
-        description:
-          'Morning private transfer back to Delhi International Airport for your connecting flight home.',
-        stay: 'Departure',
-        meals: 'Breakfast',
-        highlights: ['Private Chauffeur Return Transfer'],
-      },
+        "day": 7,
+        "title": "Return to Delhi – Departure",
+        "location": "Delhi",
+        "description": "Private chauffeur drive / flight back to New Delhi IGI Airport for your onward international flight.",
+        "stay": "Departure",
+        "meals": "Breakfast Included",
+        "highlights": [
+          "VIP Airport Chauffeur Transfer"
+        ],
+        "transit": {
+          "type": "drive",
+          "duration": "4.0 hrs",
+          "route_notes": "Chauffeured Return to Delhi"
+        }
+      }
     ],
-    inclusions: [
-      '6 nights in premier 5-star luxury tented villas (Oberoi Vanyavilas / Aman-i-Khás)',
-      '6 private exclusive 4x4 safari game drives with expert senior naturalists',
-      'All meals, soft beverages, and curated bush dining experiences',
-      'All national park conservation permits and VIP guide allocations',
-      'Private transfers to and from Delhi',
+    "inclusions": [
+      "6 nights in premier 5-star luxury hotels (The Oberoi Vanyavilas & The Oberoi Rajvilas)",
+      "4 exclusive private 4x4 open-top Gypsy safaris with dedicated veteran naturalist guide",
+      "All government tiger reserve zone permits, forest conservation taxes, and tracker fees",
+      "All gourmet dining at The Oberoi Vanyavilas & daily breakfasts throughout",
+      "Private chauffeur luxury transport between Delhi, Ranthambore, and Jaipur"
     ],
-    exclusions: ['International airfare', 'Gratuities for naturalists and trackers', 'Personal insurance'],
-    accommodations: [
+    "exclusions": [
+      "International flights",
+      "Alcoholic beverages and personal laundry",
+      "Discretionary naturalist and driver gratuities"
+    ],
+    "accommodations": [
       {
-        name: 'The Oberoi Vanyavilas',
-        location: 'Ranthambore',
-        tier: '5-Star Luxury Jungle Resort',
-        image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80',
-        description: 'Triple-canopied luxury tents with teakwood floors, clawfoot baths, and private walled gardens.',
+        "name": "The Oberoi Vanyavilas",
+        "location": "Ranthambore",
+        "tier": "Ultra Luxury Jungle Resort",
+        "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80",
+        "description": "Triple-canopied luxury air-conditioned tents with teak floors and private gardens."
       },
-    ],
+      {
+        "name": "The Oberoi Rajvilas",
+        "location": "Jaipur",
+        "tier": "Royal Luxury 5-Star",
+        "image": "https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=800&q=80",
+        "description": "32-acre fort-style luxury palace estate surrounded by landscaped gardens."
+      }
+    ]
   },
   {
-    id: 'tour-5',
-    slug: 'spiritual-ganges-varanasi-odyssey',
-    destination_id: 'dest-4',
-    destination_name: 'Varanasi & Sacred Ganges',
-    title: 'Ganges Illumination: Varanasi, Sarnath & The Golden Temple',
-    subtitle: 'A transformative spiritual and cultural pilgrimage through India’s oldest sacred cities.',
-    duration_days: 6,
-    duration_nights: 5,
-    price_usd: 2450,
-    price_inr: 205000,
-    activity_level: 'Leisurely',
-    travel_style: 'Spiritual & Wellness',
-    group_type: 'Private Cultural Tour',
-    is_featured: false,
-    hero_image: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1571536802807-30451e3955d8?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1612865547334-09cb8cb455da?auto=format&fit=crop&w=1920&q=80',
+    "id": "tour-5",
+    "slug": "varanasi-sacred-ganges-spiritual",
+    "destination_id": "dest-5",
+    "destination_name": "North India & Ganges",
+    "title": "Sacred Ganges & Timeless Varanasi: A Spiritual Monograph",
+    "subtitle": "An intimate, authentic encounter with the world’s oldest living city, dawn Ganges rituals, and Sarnath.",
+    "duration_days": 6,
+    "duration_nights": 5,
+    "price_usd": 2850,
+    "price_inr": 238000,
+    "activity_level": "Leisurely",
+    "travel_style": "Spiritual & Wellness",
+    "group_type": "100% Private Custom",
+    "is_featured": true,
+    "hero_image": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1920&q=80"
     ],
-    overview:
-      'Immerse yourself in 3,000 years of living spirituality along the sacred River Ganges. From dawn prayers on silent wooden boats to the vibrant evening Aarti flame ceremony and the tranquil deer parks of Sarnath.',
-    highlights: [
-      'Private dawn and twilight wooden boat cruises on the sacred River Ganges',
-      'VIP front-row seating for the Ganga Aarti ceremony at Dashashwamedh Ghat',
-      'Guided meditation session with a Buddhist monk in Sarnath',
-      'Stay at BrijRama Palace — an 18th-century stone palace directly on the ghats',
+    "overview": "Varanasi is the timeless beating heart of spiritual India. Arrive by private boat directly to BrijRama Palace floating above Darbhanga Ghat, drift along the sacred river at dawn with classical flute music during Subah-e-Banaras, witness the electrifying evening Ganga Aarti ceremony from a private royal boat, and visit Sarnath where Lord Buddha gave his first sermon.",
+    "highlights": [
+      "Stay at BrijRama Palace (18th-century palace situated directly on Darbhanga Ghat)",
+      "Subah-e-Banaras private dawn wooden rowboat with resident classical musician",
+      "Front-row private boat for the evening Ganga Aarti fire ceremony at Dashashwamedh Ghat",
+      "Private scholar excursion to Sarnath deer park & 5th-century Dhamek Stupa",
+      "Guided walking exploration of the ancient silk-weaving haveli alleys of Varanasi"
     ],
-    itinerary: [
+    "itinerary": [
       {
-        day: 1,
-        title: 'Arrival in Varanasi & Heritage Palace Check-in',
-        location: 'Varanasi',
-        description:
-          'Arrive at Lal Bahadur Shastri Airport. Board a private vintage boat to approach BrijRama Palace from the river. Witness the timeless skyline of minarets and temple spires.',
-        stay: 'BrijRama Palace (Ghat View Suite)',
-        meals: 'Dinner Included',
-        highlights: ['Riverboat Palace Arrival'],
+        "day": 1,
+        "title": "Arrival in Delhi – The Imperial Retreat",
+        "location": "Delhi",
+        "description": "Arrive at New Delhi IGI Airport, private transfer to The Imperial. Welcome cocktail and orientation dinner.",
+        "stay": "The Imperial, New Delhi",
+        "meals": "Dinner Included",
+        "highlights": [
+          "VIP Airport Fast-Track",
+          "The Imperial Heritage Stay"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 2,
-        title: 'Dawn Rowing & Historic Ghats Walking Tour',
-        location: 'Varanasi',
-        description:
-          'Glide across the Ganges at sunrise as pilgrims perform ancient prayers. Walk through the ancient galis (alleys) visiting centuries-old sweet shops and silk looms.',
-        stay: 'BrijRama Palace',
-        meals: 'Breakfast & Lunch',
-        highlights: ['Dawn Ganges Rowing', 'Historic Old Town Alley Exploration'],
+        "day": 2,
+        "title": "Flight to Varanasi – Royal Boat Arrival",
+        "location": "Varanasi",
+        "description": "Domestic flight to Varanasi (1h 15m). Board a private wooden boat to arrive directly at BrijRama Palace floating above Darbhanga Ghat. Evening private front-row boat for the Ganga Aarti ceremony.",
+        "stay": "BrijRama Palace, Varanasi (Darbhanga Room)",
+        "meals": "Breakfast & Palace Dinner",
+        "highlights": [
+          "Private Boat Arrival at Darbhanga Ghat",
+          "Front-Row Ganga Aarti Boat"
+        ],
+        "image": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1920&q=80",
+        "transit": {
+          "type": "flight",
+          "duration": "1h 15m",
+          "route_notes": "Direct Flight & Royal Boat Transfer"
+        }
       },
       {
-        day: 3,
-        title: 'Sarnath – Where Buddhism Was Born',
-        location: 'Sarnath',
-        description:
-          'Visit the peaceful deer park and Dhamek Stupa in Sarnath, where Buddha delivered his first sermon. Meet with a Buddhist master for private meditation.',
-        stay: 'BrijRama Palace',
-        meals: 'Breakfast & High-Tea',
-        highlights: ['Sarnath Dhamek Stupa', 'Monk Meditation Session'],
+        "day": 3,
+        "title": "Subah-e-Banaras & Old City Silk Haveli Trail",
+        "location": "Varanasi",
+        "description": "Private dawn rowboat along the ghats as the city wakes with sacred hymns and classical flute. Guided walking exploration through the ancient silk-weaving alleys of Varanasi.",
+        "stay": "BrijRama Palace, Varanasi",
+        "meals": "Breakfast & Traditional Lunch",
+        "highlights": [
+          "Subah-e-Banaras Dawn Boat",
+          "Ancient Silk Weaving Alleys"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 4,
-        title: 'Sacred Temples & Evening Ganga Aarti Spectacle',
-        location: 'Varanasi',
-        description:
-          'Visit the Kashi Vishwanath Temple corridor. In the evening, take a private boat to Dashashwamedh Ghat for the world-famous Ganga Aarti ritual of chanting and fire offerings.',
-        stay: 'BrijRama Palace',
-        meals: 'Breakfast & Gala Dinner',
-        highlights: ['Kashi Vishwanath Corridor', 'VIP Ganga Aarti Boat View'],
+        "day": 4,
+        "title": "Sarnath – In the Footsteps of the Buddha",
+        "location": "Varanasi",
+        "description": "Private excursion to Sarnath where Buddha gave his first sermon 2,500 years ago. Visit the Dhamek Stupa, the Ashoka Pillar, and the renowned archaeological museum.",
+        "stay": "BrijRama Palace, Varanasi",
+        "meals": "Breakfast & Palace Dinner",
+        "highlights": [
+          "Sarnath Buddhist Sanctuary",
+          "Ashoka Pillar Archaeological Museum"
+        ],
+        "transit": {
+          "type": "none"
+        }
       },
       {
-        day: 5,
-        title: 'Artisan Weavers & Culinary Traditions',
-        location: 'Varanasi',
-        description:
-          'Explore traditional master silk-weaving ateliers creating regal Benarasi brocades with real gold and silver threads. Enjoy an afternoon royal thali feast.',
-        stay: 'BrijRama Palace',
-        meals: 'Breakfast & Royal Thali',
-        highlights: ['Benarasi Silk Weaving Masterclass'],
+        "day": 5,
+        "title": "Varanasi to Delhi – Farewell Evening",
+        "location": "Delhi",
+        "description": "Morning private boat ride. Transfer to airport for flight back to Delhi. Farewell tasting dinner at The Imperial.",
+        "stay": "The Imperial, New Delhi",
+        "meals": "Breakfast & Farewell Dinner",
+        "highlights": [
+          "Flight to Delhi",
+          "Farewell Royal Feast"
+        ],
+        "transit": {
+          "type": "flight",
+          "duration": "1h 15m",
+          "route_notes": "Return Flight to Delhi"
+        }
       },
       {
-        day: 6,
-        title: 'Final Blessing & Departure',
-        location: 'Varanasi Airport',
-        description:
-          'Farewell morning boat ride and transfer to the airport for your onward domestic flight.',
-        stay: 'Departure',
-        meals: 'Breakfast',
-        highlights: ['Airport Transfer'],
-      },
+        "day": 6,
+        "title": "Delhi – Departure",
+        "location": "Delhi",
+        "description": "Private chauffeur transfer to New Delhi IGI Airport for your onward international flight.",
+        "stay": "Departure",
+        "meals": "Breakfast Included",
+        "highlights": [
+          "VIP Airport Chauffeur Transfer"
+        ],
+        "transit": {
+          "type": "none"
+        }
+      }
     ],
-    inclusions: [
-      '5 nights at BrijRama Palace (Ghat View Heritage Suite)',
-      'All private boat excursions with expert historian guides',
-      'Daily breakfast and curated culinary experiences',
-      'VIP temple and Aarti arrangements',
-      'Private airport transfers',
+    "inclusions": [
+      "5 nights in premier 5-star heritage hotels (BrijRama Palace & The Imperial)",
+      "All internal flights in premium class (Delhi to Varanasi roundtrip)",
+      "Private boat transfers on the Ganges for arrival, dawn tours, and evening Aarti ceremonies",
+      "All meals, private scholar guide fees, and Sarnath monument entrance tickets",
+      "24/7 dedicated concierge assistance with direct WhatsApp channel"
     ],
-    exclusions: ['International & domestic airfare', 'Discretionary tips and personal expenses'],
-    accommodations: [
-      {
-        name: 'BrijRama Palace',
-        location: 'Darbhanga Ghat, Varanasi',
-        tier: '5-Star Heritage Palace on the Ghats',
-        image: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1920&q=80',
-        description: 'One of the oldest stone palaces in Varanasi, perched right over the sacred Ganges.',
-      },
+    "exclusions": [
+      "International flights",
+      "Travel insurance and Indian visa",
+      "Discretionary guide gratuities"
     ],
-  },
-  {
-    id: 'tour-6',
-    slug: 'coastal-goa-portuguese-villas',
-    destination_id: 'dest-6',
-    destination_name: 'Goa & The Portuguese Heritage Coast',
-    title: 'Goan Grandeur: Private Catamarans, Latin Quarters & Heritage Stays',
-    subtitle: 'Experience the refined aristocratic side of Goa with private yachts, boutique villas, and haute cuisine.',
-    duration_days: 6,
-    duration_nights: 5,
-    price_usd: 2850,
-    price_inr: 235000,
-    activity_level: 'Leisurely',
-    travel_style: 'Coastal & Luxury Stays',
-    group_type: 'Private Coastal Getaway',
-    is_featured: false,
-    hero_image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1920&q=80',
-      'https://images.unsplash.com/photo-1587922546307-776227941871?auto=format&fit=crop&w=1920&q=80',
-    ],
-    overview:
-      'Discover Goa beyond the ordinary. Stay in restored 18th-century Portuguese estates, sail private catamarans along secluded estuaries, savor private tasting menus from award-winning chefs, and stroll through UNESCO-listed Old Goa churches.',
-    highlights: [
-      'Private sunset catamaran charter with champagne along the Arabian coastline',
-      'Exclusive architectural walk in Fontainhas Latin Quarter with a heritage conservationist',
-      '5-course Indo-Portuguese seafood tasting menu paired with artisanal spirits',
-      'Stay in secluded 5-star private beach villas at Ahilya by the Sea',
-    ],
-    itinerary: [
+    "accommodations": [
       {
-        day: 1,
-        title: 'Arrival in Goa – The Coastal Welcome',
-        location: 'Goa',
-        description:
-          'Chauffeur transfer from Goa International Airport to Ahilya by the Sea. Relax by the oceanfront infinity pool overlooking Dolphin Bay.',
-        stay: 'Ahilya by the Sea / The Leela Goa',
-        meals: 'Dinner Included',
-        highlights: ['Private Airport Transfer', 'Oceanfront Welcome Dinner'],
+        "name": "BrijRama Palace",
+        "location": "Varanasi (Darbhanga Ghat)",
+        "tier": "Heritage Palace 5-Star",
+        "image": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80",
+        "description": "18th-century royal palace situated directly on the sacred Darbhanga Ghat."
       },
       {
-        day: 2,
-        title: 'Latin Quarter Heritage & Portuguese Mansions',
-        location: 'Panaji & Fontainhas',
-        description:
-          'Stroll the pastel-colored alleys of Fontainhas. Visit the 400-year-old Casa Araujo Alvares mansion and enjoy lunch with a Goan noble family.',
-        stay: 'Ahilya by the Sea',
-        meals: 'Breakfast & Heritage Lunch',
-        highlights: ['Fontainhas Architecture', 'Private Mansion High-Tea'],
-      },
-      {
-        day: 3,
-        title: 'Private Catamaran Charter on the Arabian Sea',
-        location: 'Arabian Sea',
-        description:
-          'Board your private luxury 45-foot catamaran. Sail past historic Aguada Fort, anchor in a secluded bay for swimming and paddleboarding, followed by sunset champagne.',
-        stay: 'Ahilya by the Sea',
-        meals: 'Breakfast & Seafood Barbecue on Boat',
-        highlights: ['Private Catamaran Sail', 'Secluded Cove Swimming'],
-      },
-      {
-        day: 4,
-        title: 'Churches of Old Goa & Spice Plantation Feast',
-        location: 'Old Goa',
-        description:
-          'Tour the Basilica of Bom Jesus and Se Cathedral. Visit an organic spice plantation for a traditional feast served on banana leaves.',
-        stay: 'Ahilya by the Sea',
-        meals: 'Breakfast & Spice Farm Feast',
-        highlights: ['UNESCO Basilica of Bom Jesus', 'Organic Spice Farm'],
-      },
-      {
-        day: 5,
-        title: 'Private Wellness & Farewell Seaside Dinner',
-        location: 'Goa',
-        description:
-          'Day at leisure for spa treatments, private yoga, or beach relaxation. Conclude with a romantic 5-course beachfront dinner under the stars.',
-        stay: 'Ahilya by the Sea',
-        meals: 'Breakfast & 5-Course Farewell Gala',
-        highlights: ['Beachfront Farewell Dinner'],
-      },
-      {
-        day: 6,
-        title: 'Departure from Goa',
-        location: 'Goa Airport',
-        description:
-          'Leisurely breakfast before your private chauffeur transfer to the airport for your onward journey.',
-        stay: 'Departure',
-        meals: 'Breakfast',
-        highlights: ['Airport Concierge Transfer'],
-      },
-    ],
-    inclusions: [
-      '5 nights luxury seaside villa accommodation',
-      'Private catamaran sunset charter with champagne and chef on board',
-      'Private air-conditioned car and chauffeur throughout',
-      'All curated heritage tours and culinary experiences',
-    ],
-    exclusions: ['Airfare', 'Personal purchases and spa therapies'],
-    accommodations: [
-      {
-        name: 'Ahilya by the Sea',
-        location: 'Nerul, Goa',
-        tier: '5-Star Boutique Seaside Estate',
-        image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1920&q=80',
-        description: 'Tucked away in a quiet corner of Dolphin Bay, offering refined elegance and sea-facing pools.',
-      },
-    ],
-  },
+        "name": "The Imperial",
+        "location": "New Delhi",
+        "tier": "Heritage Legend 5-Star",
+        "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "description": "1930s Art Deco masterpiece set in 8 acres of lush gardens in Lutyens’ Delhi."
+      }
+    ]
+  }
 ];

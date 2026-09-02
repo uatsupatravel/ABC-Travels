@@ -3,8 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTourBySlug, getTours } from '@/lib/data-service';
-import ItineraryAccordion from '@/components/tours/ItineraryAccordion';
-import InquiryForm from '@/components/inquiry/InquiryForm';
+import TourDetailExperience from '@/components/tours/TourDetailExperience';
+import HeroStoryTrigger from '@/components/tours/HeroStoryTrigger';
+import TourConciergeCard from '@/components/inquiry/TourConciergeCard';
 import TourCard from '@/components/tours/TourCard';
 import { formatUSD, formatINR } from '@/lib/utils';
 import { Badge } from '@/components/ui/Badge';
@@ -13,7 +14,6 @@ import { Separator } from '@/components/ui/Separator';
 import {
   Clock,
   MapPin,
-  Sparkles,
   ShieldCheck,
   CheckCircle2,
   XCircle,
@@ -52,43 +52,26 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
         </div>
 
         {/* Title Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-6">
-          <div className="space-y-2 max-w-3xl">
-            <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="default" className="text-xs">
-                {tour.travel_style}
-              </Badge>
-              <Badge variant="secondary" className="text-xs">
-                {tour.group_type}
-              </Badge>
-            </div>
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
-              {tour.title}
-            </h1>
-            <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
-              {tour.subtitle}
-            </p>
+        <div className="mb-6 max-w-4xl space-y-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge variant="default" className="text-xs">
+              {tour.travel_style}
+            </Badge>
+            <Badge variant="secondary" className="text-xs">
+              {tour.group_type}
+            </Badge>
           </div>
-
-          <Card className="p-5 shrink-0 text-left lg:text-right">
-            <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
-              Private Departure From
-            </span>
-            <div className="flex items-baseline gap-1.5 lg:justify-end">
-              <span className="font-serif text-2xl sm:text-3xl font-bold text-foreground">
-                {formatUSD(tour.price_usd)}
-              </span>
-              <span className="text-xs text-muted-foreground">/ person</span>
-            </div>
-            <span className="text-[11px] text-muted-foreground block">
-              approx. {formatINR(tour.price_inr)}
-            </span>
-          </Card>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
+            {tour.title}
+          </h1>
+          <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
+            {tour.subtitle}
+          </p>
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-96 sm:h-[480px] rounded-lg overflow-hidden border border-border">
-          <div className="md:col-span-2 relative h-full bg-muted">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-72 sm:h-96 md:h-[480px] rounded-lg overflow-hidden border border-border">
+          <div className="md:col-span-2 relative h-full bg-muted group">
             <Image
               src={tour.hero_image}
               alt={tour.title}
@@ -96,6 +79,8 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
               priority
               className="object-cover hover:scale-105 transition-transform duration-500"
             />
+            {/* Option 1: Frosted-Glass Hero Story Button */}
+            <HeroStoryTrigger tour={tour} />
           </div>
 
           <div className="hidden md:grid grid-rows-2 gap-4 h-full">
@@ -112,37 +97,37 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
           </div>
         </div>
 
-        {/* Quick Specs Bar */}
-        <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-lg border border-border bg-card text-center text-xs">
-          <div className="border-r border-border last:border-none">
+        {/* Quick Specs Bar (Responsive Grid & Clean Dividers) */}
+        <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 p-4 rounded-lg border border-border bg-card text-center text-xs divide-y sm:divide-y-0 sm:divide-x divide-border/60">
+          <div className="pb-2 sm:pb-0">
             <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
               Duration
             </span>
-            <span className="font-semibold text-foreground text-sm">
+            <span className="font-semibold text-foreground text-xs sm:text-sm">
               {tour.duration_days} Days / {tour.duration_nights} Nights
             </span>
           </div>
-          <div className="border-r border-border last:border-none">
+          <div className="pb-2 sm:pb-0">
             <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
               Region
             </span>
-            <span className="font-semibold text-foreground text-sm">
+            <span className="font-semibold text-foreground text-xs sm:text-sm">
               {tour.destination_name || 'India'}
             </span>
           </div>
-          <div className="border-r border-border last:border-none">
+          <div className="pt-2 sm:pt-0">
             <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
               Activity Level
             </span>
-            <span className="font-semibold text-foreground text-sm">
+            <span className="font-semibold text-foreground text-xs sm:text-sm">
               {tour.activity_level}
             </span>
           </div>
-          <div>
+          <div className="pt-2 sm:pt-0">
             <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
               Group Type
             </span>
-            <span className="font-semibold text-foreground text-sm">
+            <span className="font-semibold text-foreground text-xs sm:text-sm">
               100% Private Custom
             </span>
           </div>
@@ -154,8 +139,14 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column */}
           <div className="lg:col-span-2 space-y-10">
-            {/* Overview */}
+            {/* 1. Curated Chapter Journey Timeline & Persistent Route Drawer */}
+            <TourDetailExperience tour={tour} />
+
+            {/* 2. Executive Journey Overview & Signature Highlights */}
             <Card className="p-6 space-y-4">
+              <span className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground block mb-0.5">
+                Executive Monograph
+              </span>
               <h2 className="font-serif text-xl font-bold text-foreground">
                 Journey Overview
               </h2>
@@ -163,7 +154,7 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
                 {tour.overview}
               </p>
 
-              {/* Highlights */}
+              {/* Signature Highlights */}
               <div className="pt-4 border-t border-border space-y-2.5">
                 <h3 className="font-serif text-base font-bold text-foreground">
                   Signature Highlights
@@ -171,29 +162,12 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
                 <div className="grid grid-cols-1 gap-2">
                   {tour.highlights.map((h, i) => (
                     <div key={i} className="flex items-start gap-2.5 bg-muted/40 p-2.5 rounded-md">
-                      <Sparkles className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
-                      <span className="text-xs text-foreground font-medium">{h}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0 mt-1.5" />
+                      <span className="text-xs text-foreground font-medium leading-relaxed">{h}</span>
                     </div>
                   ))}
                 </div>
               </div>
-            </Card>
-
-            {/* Day by Day Itinerary */}
-            <Card className="p-6 space-y-5">
-              <div>
-                <span className="text-xs uppercase tracking-widest font-semibold text-muted-foreground block mb-1">
-                  Schedule
-                </span>
-                <h2 className="font-serif text-xl font-bold text-foreground">
-                  Day-by-Day Curated Itinerary
-                </h2>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Every day is fully customizable based on your preferences.
-                </p>
-              </div>
-
-              <ItineraryAccordion itinerary={tour.itinerary} />
             </Card>
 
             {/* Accommodations Showcase */}
@@ -287,37 +261,9 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
             </Card>
           </div>
 
-          {/* Right Column: Sticky Booking / Inquiry Card */}
+          {/* Right Column: Sticky Bespoke Concierge Card */}
           <div className="lg:col-span-1">
-            <Card className="sticky top-24 p-6 space-y-5">
-              <div className="flex items-center justify-between pb-3 border-b border-border">
-                <div className="flex items-center gap-2">
-                  <Crown className="w-4 h-4 text-primary" />
-                  <span className="font-serif text-base font-bold text-foreground">
-                    Inquire for this Journey
-                  </span>
-                </div>
-              </div>
-
-              <div className="space-y-0.5">
-                <div className="flex items-baseline gap-1">
-                  <span className="font-serif text-2xl font-bold text-foreground">
-                    {formatUSD(tour.price_usd)}
-                  </span>
-                  <span className="text-xs text-muted-foreground">/ person</span>
-                </div>
-                <span className="text-[11px] text-muted-foreground block">
-                  100% Private Custom Itinerary
-                </span>
-              </div>
-
-              <InquiryForm
-                tourId={tour.id}
-                tourTitle={tour.title}
-                defaultDuration={tour.duration_days}
-                isCompact={true}
-              />
-            </Card>
+            <TourConciergeCard tour={tour} />
           </div>
         </div>
       </section>

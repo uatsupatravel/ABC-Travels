@@ -84,6 +84,75 @@
     background-color: var(--secondary-container);
     color: var(--ink-black);
   }
+
+  /* ==========================================================================
+     Bespoke Luxury Scrollbar System (Chrome, Edge, Safari, Firefox)
+     ========================================================================== */
+  
+  /* Standard CSS specification (Firefox 64+) */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(184, 144, 71, 0.4) transparent;
+  }
+
+  /* WebKit & Blink browsers (Chrome, Edge, Safari, Opera, Brave) */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(184, 144, 71, 0.35);
+    border-radius: 9999px;
+    transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.75);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: #aa7c11;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar while maintaining scrollability */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Luxury Dark Scrollbar for dark drawers & modals */
+  .dark-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212, 175, 55, 0.3) transparent;
+  }
+  .dark-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .dark-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .dark-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.3);
+    border-radius: 9999px;
+  }
+  .dark-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(243, 229, 171, 0.7);
+  }
 }
 
 @layer components {

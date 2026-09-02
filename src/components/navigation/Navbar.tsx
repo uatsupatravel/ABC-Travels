@@ -26,7 +26,6 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Curated Journeys', href: '/tours' },
     { name: 'Destinations', href: '/destinations' },
-    { name: 'Plan Your Trip', href: '/plan-your-trip' },
     { name: 'Our Heritage', href: '/about' },
     { name: 'Concierge', href: '/contact' },
   ];

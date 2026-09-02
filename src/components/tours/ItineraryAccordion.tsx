@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { ItineraryDay } from '@/types';
-import { ChevronDown, MapPin, BedDouble, Utensils, Sparkles } from 'lucide-react';
+import { ChevronDown, MapPin, BedDouble, Utensils } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 
@@ -115,8 +115,7 @@ export default function ItineraryAccordion({ itinerary }: ItineraryAccordionProp
                   {item.highlights && item.highlights.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 pt-1">
                       {item.highlights.map((h, hIdx) => (
-                        <Badge key={hIdx} variant="secondary" className="text-[11px] gap-1 font-normal">
-                          <Sparkles className="w-3 h-3 opacity-70" />
+                        <Badge key={hIdx} variant="secondary" className="text-[11px] font-normal">
                           <span>{h}</span>
                         </Badge>
                       ))}

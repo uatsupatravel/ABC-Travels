@@ -21,13 +21,12 @@ function AdminLoginForm() {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm<AdminLoginFormValues>({
     resolver: zodResolver(adminLoginSchema),
     defaultValues: {
-      email: 'admin@abctravels.com',
-      password: 'LuxuryIndia2026!',
+      email: '',
+      password: '',
     },
   });
 
@@ -54,11 +53,6 @@ function AdminLoginForm() {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const fillDemoCredentials = () => {
-    setValue('email', 'admin@abctravels.com');
-    setValue('password', 'LuxuryIndia2026!');
   };
 
   return (
@@ -142,19 +136,6 @@ function AdminLoginForm() {
           )}
         </Button>
       </form>
-
-      {/* Demo Credentials Quick Fill */}
-      <div className="pt-4 border-t border-border text-center space-y-2">
-        <span className="text-[11px] text-muted-foreground block">Demo Admin Credentials:</span>
-        <div
-          onClick={fillDemoCredentials}
-          className="cursor-pointer bg-muted/60 hover:bg-muted border border-border rounded-md p-2 text-[11px] font-mono flex items-center justify-between text-muted-foreground hover:text-foreground transition-colors"
-          title="Click to autofill credentials"
-        >
-          <span>admin@abctravels.com</span>
-          <span>• LuxuryIndia2026!</span>
-        </div>
-      </div>
     </Card>
   );
 }

@@ -7,7 +7,7 @@ import TourCard from '@/components/tours/TourCard';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import { Calendar, Sun, Clock, Sparkles } from 'lucide-react';
+import { Calendar, Sun, Clock } from 'lucide-react';
 
 interface DestinationDetailPageProps {
   params: Promise<{
@@ -83,8 +83,8 @@ export default async function DestinationDetailPage({ params }: DestinationDetai
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                 {destination.highlights.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-2.5 bg-muted/40 p-3 rounded-md">
-                    <Sparkles className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-xs text-foreground font-medium">{item}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0 mt-1.5" />
+                    <span className="text-xs text-foreground font-medium leading-relaxed">{item}</span>
                   </div>
                 ))}
               </div>

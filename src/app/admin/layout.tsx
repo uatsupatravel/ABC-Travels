@@ -52,9 +52,9 @@ export default function AdminLayout({
   ];
 
   return (
-    <div className="min-h-screen bg-muted/30 text-foreground flex flex-col lg:flex-row">
-      {/* Sidebar Desktop */}
-      <aside className="hidden lg:flex lg:flex-col lg:w-64 bg-card border-r border-border p-6 justify-between shrink-0 min-h-screen">
+    <div className="h-screen w-full overflow-hidden bg-muted/30 text-foreground flex flex-col lg:flex-row">
+      {/* Sidebar Desktop (Permanently Fixed h-screen) */}
+      <aside className="hidden lg:flex lg:flex-col lg:w-64 bg-card border-r border-border p-6 justify-between shrink-0 h-screen sticky top-0 overflow-y-auto">
         <div className="space-y-8">
           {/* Logo */}
           <div className="flex items-center gap-3">

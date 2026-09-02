@@ -13,7 +13,7 @@ import {
   CheckCircle2,
   FileText,
   ArrowRight,
-  Sparkles,
+  TrendingUp,
   Palmtree,
   MapPin,
 } from 'lucide-react';
@@ -97,7 +97,7 @@ export default function AdminOverviewPage() {
             <span className="text-[11px] uppercase tracking-wider font-semibold">
               New Leads
             </span>
-            <Sparkles className="w-4 h-4" />
+            <TrendingUp className="w-4 h-4" />
           </div>
           <div className="font-serif text-2xl font-bold text-foreground">
             {stats?.newLeads ?? 0}
@@ -195,17 +195,32 @@ export default function AdminOverviewPage() {
                   <td className="py-3.5">{getStatusBadge(inq.status)}</td>
 
                   <td className="py-3.5 text-right">
-                    <select
-                      value={inq.status}
-                      onChange={(e) => handleStatusChange(inq.id, e.target.value as InquiryStatus)}
-                      className="h-8 rounded-md border border-input bg-background px-2 text-[11px] text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer"
-                    >
-                      <option value="NEW">New</option>
-                      <option value="CONTACTED">Contacted</option>
-                      <option value="PROPOSAL_SENT">Proposal Sent</option>
-                      <option value="CONFIRMED">Confirmed</option>
-                      <option value="ARCHIVED">Archived</option>
-                    </select>
+                    <div className="flex items-center justify-end gap-1.5">
+                      {inq.phone && (
+                        <a
+                          href={`https://wa.me/${inq.phone.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(inq.traveler_name)}%2C%20thank%20you%20for%20contacting%20ABC%20Travels.`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-1.5 rounded border border-border hover:bg-muted text-[#25D366] transition-colors"
+                          title="Chat on WhatsApp"
+                        >
+                          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 2.023.821 3.109.821 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.767-5.768-5.767zm3.391 8.232c-.144.405-.837.774-1.17.824-.312.045-.694.06-2.194-.562-1.879-.778-3.085-2.704-3.178-2.827-.093-.125-.764-.997-.764-1.921 0-.924.475-1.378.644-1.564.169-.187.369-.234.492-.234.124 0 .246.002.354.007.113.005.263-.043.412.316.154.37.524 1.28.57 1.374.046.094.077.203.015.328-.062.125-.093.203-.185.312-.093.11-.195.244-.278.328-.093.093-.19.195-.082.38.108.185.48 1.002 1.028 1.49.708.63 1.306.825 1.49.918.185.093.293.077.401-.047.108-.125.462-.538.585-.723.123-.185.246-.154.415-.093.17.062 1.077.508 1.262.6.185.093.308.139.354.216.046.077.046.447-.098.852z" />
+                          </svg>
+                        </a>
+                      )}
+                      <select
+                        value={inq.status}
+                        onChange={(e) => handleStatusChange(inq.id, e.target.value as InquiryStatus)}
+                        className="h-8 rounded-md border border-input bg-background px-2 text-[11px] text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer"
+                      >
+                        <option value="NEW">New</option>
+                        <option value="CONTACTED">Contacted</option>
+                        <option value="PROPOSAL_SENT">Proposal Sent</option>
+                        <option value="CONFIRMED">Confirmed</option>
+                        <option value="ARCHIVED">Archived</option>
+                      </select>
+                    </div>
                   </td>
                 </tr>
               ))}

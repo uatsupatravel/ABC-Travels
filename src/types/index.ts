@@ -17,6 +17,16 @@ export type TravelStyle =
 
 export type InquiryStatus = 'NEW' | 'CONTACTED' | 'PROPOSAL_SENT' | 'CONFIRMED' | 'ARCHIVED';
 
+export type TransitType = 'none' | 'drive' | 'flight' | 'train' | 'boat' | 'safari';
+
+export interface ItineraryTransit {
+  type: TransitType;
+  from_city?: string;
+  to_city?: string;
+  duration?: string;
+  route_notes?: string;
+}
+
 export interface ItineraryDay {
   day: number;
   title: string;
@@ -26,6 +36,7 @@ export interface ItineraryDay {
   meals?: string;
   highlights?: string[];
   image?: string;
+  transit?: ItineraryTransit;
 }
 
 export interface Accommodation {

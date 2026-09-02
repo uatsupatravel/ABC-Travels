@@ -138,7 +138,7 @@ export default function Footer() {
         {/* Bottom copyright */}
         <div className="flex flex-col md:flex-row items-center justify-between font-label-caps text-[10px] tracking-widest uppercase text-on-primary-container gap-4">
           <span>© {new Date().getFullYear()} ABC Travels India. All rights reserved.</span>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6">
             <Link href="/about" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
               Our Story
             </Link>
@@ -147,6 +147,9 @@ export default function Footer() {
             </Link>
             <Link href="/plan-your-trip" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
               Custom Itinerary Builder
+            </Link>
+            <Link href="/privacy-policy" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
+              Privacy Policy
             </Link>
           </div>
         </div>

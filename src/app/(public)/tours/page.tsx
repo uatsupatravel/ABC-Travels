@@ -1,17 +1,16 @@
 'use client';
 
-import React, { useState, useMemo, Suspense } from 'react';
+import React, { useState, useMemo, Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import TourCard from '@/components/tours/TourCard';
-import TourInquiryDrawer from '@/components/inquiry/TourInquiryDrawer';
-import { mockTours } from '@/lib/mock-data/tours';
-import { mockDestinations } from '@/lib/mock-data/destinations';
-import { Tour, TravelStyle, ActivityLevel, Region } from '@/types';
+import ContactSpecialistDialog from '@/components/inquiry/ContactSpecialistDialog';
+import { getTours, getDestinations } from '@/lib/data-service';
+import { Tour, TravelStyle, ActivityLevel, Region, Destination } from '@/types';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Filter, RotateCcw, Search, Compass, SlidersHorizontal } from 'lucide-react';
+import { Filter, RotateCcw, Search, Compass, SlidersHorizontal, Loader2 } from 'lucide-react';
 
 function ToursContent() {
   const searchParams = useSearchParams();
@@ -19,6 +18,10 @@ function ToursContent() {
   const initialRegion = searchParams.get('region') || 'all';
   const initialStyle = searchParams.get('style') || 'all';
   const initialDuration = searchParams.get('duration') || 'all';
+
+  const [tours, setTours] = useState<Tour[]>([]);
+  const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [isLoadingData, setIsLoadingData] = useState(true);
 
   const [regionFilter, setRegionFilter] = useState(initialRegion);
   const [styleFilter, setStyleFilter] = useState(initialStyle);
@@ -31,7 +34,25 @@ function ToursContent() {
   const [selectedTourForInquiry, setSelectedTourForInquiry] = useState<Tour | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleQuickInquire = (tour: Tour) => {
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const [fetchedTours, fetchedDestinations] = await Promise.all([
+          getTours(),
+          getDestinations()
+        ]);
+        setTours(fetchedTours);
+        setDestinations(fetchedDestinations);
+      } catch (err) {
+        console.error('Error fetching catalog data:', err);
+      } finally {
+        setIsLoadingData(false);
+      }
+    }
+    loadData();
+  }, []);
+
+  const handleContactSpecialist = (tour: Tour) => {
     setSelectedTourForInquiry(tour);
     setIsDrawerOpen(true);
   };
@@ -46,9 +67,9 @@ function ToursContent() {
   };
 
   const filteredTours = useMemo(() => {
-    let result = mockTours.filter((tour) => {
+    let result = tours.filter((tour) => {
       if (regionFilter !== 'all') {
-        const dest = mockDestinations.find((d) => d.id === tour.destination_id || d.name === tour.destination_name);
+        const dest = destinations.find((d) => d.id === tour.destination_id || d.name === tour.destination_name);
         if (!dest || dest.region !== regionFilter) return false;
       }
       if (styleFilter !== 'all' && tour.travel_style !== styleFilter) return false;
@@ -75,7 +96,7 @@ function ToursContent() {
     else if (sortBy === 'duration-desc') result.sort((a, b) => b.duration_days - a.duration_days);
 
     return result;
-  }, [regionFilter, styleFilter, durationFilter, activityFilter, searchQuery, sortBy]);
+  }, [regionFilter, styleFilter, durationFilter, activityFilter, searchQuery, sortBy, tours, destinations]);
 
   const travelStyles: TravelStyle[] = [
     'Heritage & Palaces',
@@ -92,6 +113,17 @@ function ToursContent() {
     'Central India',
     'Western India',
   ];
+
+  if (isLoadingData) {
+    return (
+      <div className="pt-32 pb-20 min-h-[60vh] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4 text-slate-taupe">
+          <Loader2 className="w-8 h-8 animate-spin" />
+          <p className="font-label-caps tracking-widest text-xs uppercase">Loading Portfolios...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,7 +154,7 @@ function ToursContent() {
             <span>{isMobileFilterOpen ? 'Hide Filters' : 'Filter Itineraries'}</span>
           </Button>
           <span className="text-xs text-muted-foreground font-medium">
-            Showing {filteredTours.length} of {mockTours.length} Journeys
+            Showing {filteredTours.length} of {tours.length} Journeys
           </span>
         </div>
 
@@ -302,7 +334,7 @@ function ToursContent() {
                 <TourCard
                   key={tour.id}
                   tour={tour}
-                  onQuickInquire={handleQuickInquire}
+                  onContactSpecialist={handleContactSpecialist}
                 />
               ))}
             </div>
@@ -312,8 +344,8 @@ function ToursContent() {
               <h3 className="font-serif text-xl font-bold text-foreground">
                 No matching itineraries found
               </h3>
-              <p className="text-muted-foreground text-xs max-w-md mx-auto leading-relaxed">
-                We couldn&apos;t find an existing package with those exact parameters. However, our travel designers specialize in 100% custom journeys.
+              <p className="text-sm text-muted-foreground max-w-md mx-auto">
+                We couldn't find any tours matching your exact filters, but our Concierge can craft this exact route for you.
               </p>
               <div className="pt-2 flex items-center justify-center gap-3">
                 <Button onClick={resetFilters} variant="outline" size="sm" className="text-xs">
@@ -330,8 +362,7 @@ function ToursContent() {
         </main>
       </div>
 
-      {/* Quick Inquiry Modal Drawer */}
-      <TourInquiryDrawer
+      <ContactSpecialistDialog
         tour={selectedTourForInquiry}
         isOpen={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}

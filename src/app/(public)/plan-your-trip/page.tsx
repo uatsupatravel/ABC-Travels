@@ -9,6 +9,8 @@ import { createInquiry } from '@/lib/data-service';
 import { Button } from '@/components/ui/Button';
 import { Input, Textarea } from '@/components/ui/Input';
 import { Card } from '@/components/ui/Card';
+import CountryPhoneInput from '@/components/ui/CountryPhoneInput';
+import CountrySelect from '@/components/ui/CountrySelect';
 import { COUNTRIES, CountryOption } from '@/lib/constants/countries';
 
 const POPULAR_DESTINATIONS = [
@@ -764,53 +766,18 @@ export default function PlanYourTripPage() {
 
                     {/* Country of Residence Autocomplete & Integrated Dial-Code Phone Input */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {/* Country of Residence Autocomplete Selector */}
-                      <div className="space-y-2 relative">
+                      {/* Country of Residence Selector */}
+                      <div className="space-y-2">
                         <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                           Country of Residence *
                         </label>
-                        <div className="relative">
-                          <button
-                            type="button"
-                            onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
-                            className="flex h-12 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                          >
-                            <span className="flex items-center gap-2">
-                              <span>{selectedCountryObj.flag}</span>
-                              <span>{selectedCountryObj.name}</span>
-                            </span>
-                            <span className="text-xs text-muted-foreground">▾</span>
-                          </button>
-
-                          {/* Searchable Country Dropdown Menu */}
-                          {isCountryDropdownOpen && (
-                            <div className="absolute top-14 left-0 w-full bg-card border border-border rounded-lg shadow-xl z-50 p-2 space-y-2 max-h-64 overflow-y-auto">
-                              <Input
-                                type="text"
-                                placeholder="Search country or code..."
-                                value={countrySearch}
-                                onChange={(e) => setCountrySearch(e.target.value)}
-                                className="h-9 text-xs"
-                                autoFocus
-                              />
-                              <div className="space-y-1">
-                                {filteredCountries.map((c) => (
-                                  <div
-                                    key={c.code}
-                                    onClick={() => handleSelectCountry(c)}
-                                    className="flex items-center justify-between p-2 rounded-md hover:bg-muted text-xs cursor-pointer"
-                                  >
-                                    <div className="flex items-center gap-2">
-                                      <span>{c.flag}</span>
-                                      <span className="font-medium text-foreground">{c.name}</span>
-                                    </div>
-                                    <span className="text-muted-foreground font-mono">{c.dialCode}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </div>
+                        <CountrySelect
+                          value={selectedCountryObj.name}
+                          onChange={(country) => {
+                            setSelectedCountryObj(country);
+                            setSelectedDialCode(country.dialCode);
+                          }}
+                        />
                       </div>
 
                       {/* Phone / WhatsApp Field with Integrated Country-Code Flag Selector */}
@@ -818,31 +785,23 @@ export default function PlanYourTripPage() {
                         <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                           Phone / WhatsApp Number *
                         </label>
-                        <div className="flex items-center rounded-md border border-input bg-background focus-within:ring-2 focus-within:ring-ring focus-within:border-ring transition-colors">
-                          {/* Dial Code Selector */}
-                          <select
-                            value={selectedDialCode}
-                            onChange={(e) => setSelectedDialCode(e.target.value)}
-                            className="h-12 bg-muted/40 border-r border-input rounded-l-md px-2.5 text-xs font-semibold text-foreground focus:outline-none cursor-pointer"
-                          >
-                            {COUNTRIES.map((c) => (
-                              <option key={`${c.code}-${c.dialCode}`} value={c.dialCode}>
-                                {c.flag} {c.dialCode} ({c.code})
-                              </option>
-                            ))}
-                          </select>
-
-                          {/* Direct Phone Number Input */}
-                          <input
-                            type="tel"
-                            placeholder="7700 900123"
-                            {...register('phone')}
-                            className="flex-1 h-12 bg-transparent px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
-                          />
-                        </div>
-                        {errors.phone && (
-                          <p className="text-destructive text-xs mt-1">{errors.phone.message}</p>
-                        )}
+                        <CountryPhoneInput
+                          value={watch('phone') || ''}
+                          onChange={(val) => {
+                            setValue('phone', val, { shouldValidate: true });
+                          }}
+                          selectedDialCode={selectedDialCode}
+                          selectedCountryCode={selectedCountryObj.code}
+                          onCountryChange={(country) => {
+                            setSelectedCountryObj(country);
+                            setSelectedDialCode(country.dialCode);
+                          }}
+                          onDialCodeChange={(dialCode) => {
+                            setSelectedDialCode(dialCode);
+                          }}
+                          placeholder="7700 900123"
+                          error={errors.phone?.message}
+                        />
                       </div>
                     </div>
 
@@ -899,13 +858,9 @@ export default function PlanYourTripPage() {
                         </Button>
                       </div>
 
-                      {/* Trust & Privacy Reassurance Badge */}
-                      <div className="flex items-center justify-center gap-2 pt-2 text-[11px] text-muted-foreground">
-                        <svg className="w-3.5 h-3.5 text-muted-foreground shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
-                          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                        </svg>
-                        <span>100% Confidential • Zero Spam Guarantee • Direct Concierge Care • GDPR Compliant</span>
+                      {/* Reassurance Badge */}
+                      <div className="flex items-center justify-center gap-2 pt-2 text-[11px] text-muted-foreground text-center">
+                        <span>Tailored to your dates & pace • Dedicated India specialist response within 24 hours</span>
                       </div>
                     </div>
                   </motion.div>
