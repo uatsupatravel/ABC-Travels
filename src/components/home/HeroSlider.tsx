@@ -6,10 +6,12 @@ import { motion, AnimatePresence, MotionValue } from 'framer-motion';
 
 const HERO_IMAGES = [
   '/images/heroImages/pic-kaca-gcc6B3p2FzE-unsplash.jpg',
-  '/images/heroImages/pulak-bhagawati-GdlEMsUsOy0-unsplash.jpg',
   '/images/heroImages/rishi-sreekar-eDCDtWFnR4s-unsplash.jpg',
-  '/images/heroImages/ryan-cheng-EnvfrlmAxfg-unsplash.jpg',
-  '/images/heroImages/sathi-kumar-d89LCFFGIxA-unsplash.jpg',
+  '/images/hero/taj-dawn-mist.jpg',
+  '/images/hero/kashmir-shikara-floating.jpg',
+  '/images/hero/lake-palace-udaipur.jpg',
+  '/images/hero/ladakh-monastery-clouds.jpg',
+  
 ];
 
 interface HeroSliderProps {

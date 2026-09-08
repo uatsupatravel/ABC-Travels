@@ -136,9 +136,9 @@ export default function Footer() {
         <div className="h-px w-full bg-outline-variant/30 mb-8" />
 
         {/* Bottom copyright */}
-        <div className="flex flex-col md:flex-row items-center justify-between font-label-caps text-[10px] tracking-widest uppercase text-on-primary-container gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-between font-label-caps text-[10px] tracking-widest uppercase text-on-primary-container gap-4 text-center md:text-left">
           <span>© {new Date().getFullYear()} ABC Travels India. All rights reserved.</span>
-          <div className="flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-6 gap-y-2">
             <Link href="/about" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
               Our Story
             </Link>
@@ -146,7 +146,7 @@ export default function Footer() {
               Contact Concierge
             </Link>
             <Link href="/plan-your-trip" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
-              Custom Itinerary Builder
+              Itinerary Builder
             </Link>
             <Link href="/privacy-policy" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
               Privacy Policy

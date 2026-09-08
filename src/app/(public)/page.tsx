@@ -7,6 +7,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import TourCard from '@/components/tours/TourCard';
 import ContactSpecialistDialog from '@/components/inquiry/ContactSpecialistDialog';
 import HeroSlider from '@/components/home/HeroSlider';
+import EditorialLookbookPillars from '@/components/home/EditorialLookbookPillars';
+import GuestReflectionsSlider from '@/components/home/GuestReflectionsSlider';
 import { getTours, getDestinations, getReviews } from '@/lib/data-service';
 import { Tour, Destination, Review } from '@/types';
 import { Button } from '@/components/ui/Button';
@@ -38,6 +40,17 @@ export default function HomePage() {
     target: heroRef,
     offset: ['start start', 'end start'],
   });
+
+  // Section 2: Dual-Axis Asymmetric Parallax Transforms
+  const welcomeRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: welcomeScrollY } = useScroll({
+    target: welcomeRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const leftPhotoY = useTransform(welcomeScrollY, [0, 1], ['25px', '-35px']);
+  const rightPhotoY = useTransform(welcomeScrollY, [0, 1], ['-25px', '45px']);
+  const badgeScale = useTransform(welcomeScrollY, [0, 0.5, 1], [0.95, 1.05, 0.95]);
 
   useEffect(() => {
     async function loadInitialData() {
@@ -158,35 +171,72 @@ export default function HomePage() {
         </section>
 
         {/* ========================================================================= */}
-        {/* 2. SENSORY WELCOME: "AN INVITATION TO INDIA"                               */}
+        {/* 2. SENSORY WELCOME: "AN INVITATION TO INDIA" (OPTION B: ASYMMETRIC PARALLAX) */}
         {/* ========================================================================= */}
-        <section id="welcome-section" className="w-full py-24 px-margin-mobile md:px-margin-desktop bg-alabaster-cream border-b border-silk-border">
+        <section
+          id="welcome-section"
+          ref={welcomeRef}
+          className="w-full py-24 px-margin-mobile md:px-margin-desktop bg-alabaster-cream border-b border-silk-border overflow-hidden"
+        >
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              {/* Text Editorial */}
+              {/* Text Editorial with Staggered Upward Reveals */}
               <div className="lg:col-span-7 space-y-6">
-                <div className="flex items-center gap-2.5">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: '-100px' }}
+                  transition={{ duration: 0.8 }}
+                  className="flex items-center gap-2.5"
+                >
                   <div className="w-6 h-px bg-bronze-hover" />
                   <span className="font-label-caps text-xs tracking-[0.3em] uppercase text-bronze-hover">
                     An Invitation to the Subcontinent
                   </span>
+                </motion.div>
+
+                {/* Staggered Line Masked Reveal */}
+                <div className="overflow-hidden">
+                  <motion.h2
+                    initial={{ y: '100%' }}
+                    whileInView={{ y: '0%' }}
+                    viewport={{ once: true, margin: '-100px' }}
+                    transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                    className="font-serif text-3xl sm:text-4xl md:text-5xl text-ink-black font-normal leading-[1.15] text-balance"
+                  >
+                    Where Ancient Heritage Meets <span className="italic font-light">Serene Splendor</span>
+                  </motion.h2>
                 </div>
 
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-ink-black font-normal leading-[1.15] text-balance">
-                  Where Ancient Heritage Meets <span className="italic font-light">Serene Splendor</span>
-                </h2>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-100px' }}
+                  transition={{ duration: 0.8, delay: 0.15 }}
+                  className="font-body-base text-slate-taupe text-base sm:text-lg leading-relaxed"
+                >
+                  India is not merely a destination—it is a tapestry of royal lineages, sacred river ghats, mist-cloaked mountain monasteries, and secluded palm sanctuaries.
+                </motion.p>
 
-                <p className="font-body-base text-slate-taupe text-base sm:text-lg leading-relaxed">
-                  India is not merely a destination—it is a tapestry of royal lineages, sacred river ghats, mist-cloaked mountain monasteries, and secluded palm sanctuaries. 
-                </p>
-
-                <p className="font-body-base text-slate-taupe text-sm sm:text-base leading-relaxed">
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-100px' }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="font-body-base text-slate-taupe text-sm sm:text-base leading-relaxed"
+                >
                   At ABC Travels, we invite you to experience the subcontinent unhurried and elevated. Far from crowded tour buses, we orchestrate intimate encounters: dining under lantern-lit palace ramparts, tracing Bengal tigers through dawn mist with veteran naturalists, and sleeping in original royal chambers where maharajas once hosted world royalty.
-                </p>
+                </motion.p>
 
-                <div className="pt-2 flex items-center gap-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6"
+                >
                   <Link href="/about">
-                    <Button variant="outline" className="border-ink-black/20 text-ink-black hover:bg-ink-black/5 gap-2">
+                    <Button variant="outline" className="border-ink-black/20 text-ink-black hover:bg-ink-black/5 gap-2 shadow-xs">
                       <span>Our Heritage & Philosophy</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Button>
@@ -194,101 +244,105 @@ export default function HomePage() {
                   <a href="#realms" className="text-xs font-label-caps uppercase tracking-widest text-slate-taupe hover:text-ink-black transition-colors">
                     Explore Landscapes ↓
                   </a>
-                </div>
+                </motion.div>
               </div>
 
-              {/* Magazine Style Visual Pairing */}
-              <div className="lg:col-span-5 grid grid-cols-2 gap-4 relative">
-                <div className="space-y-4">
-                  <div className="relative h-64 sm:h-72 rounded-lg overflow-hidden border border-silk-border shadow-sm">
+              {/* Cinematic Warm Light Sweep & Film Shimmer Image Pairing */}
+              <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4 relative py-4 sm:py-6">
+                {/* Left Column: Taj Balcony */}
+                <motion.div
+                  style={{ y: leftPhotoY }}
+                  initial={{ opacity: 0, y: 35 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                  className="space-y-3 sm:space-y-4"
+                >
+                  <div className="relative h-56 sm:h-72 rounded-lg overflow-hidden border border-silk-border shadow-sm group bg-surface-dim">
                     <Image
-                      src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1000&auto=format&fit=crop"
+                      src="/images/welcome/taj-balcony-sunrise.jpg"
                       alt="Taj Mahal Balcony View"
                       fill
-                      className="object-cover hover:scale-105 transition-transform duration-700"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+
+                    {/* Cinematic Golden Sun Flare Light Sweep */}
+                    <motion.div
+                      initial={{ x: '-160%', opacity: 0.9 }}
+                      whileInView={{ x: '160%', opacity: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.4, ease: 'easeOut', delay: 0.2 }}
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/40 to-transparent skew-x-12 pointer-events-none z-10"
                     />
                   </div>
-                  <div className="p-4 bg-cream-container border border-silk-border rounded-lg text-center">
-                    <span className="font-serif text-2xl text-ink-black font-bold block">100%</span>
-                    <span className="font-label-caps text-[10px] text-slate-taupe tracking-wider uppercase">Private Custom Journeys</span>
-                  </div>
-                </div>
 
-                <div className="space-y-4 pt-8">
-                  <div className="p-4 bg-ink-black text-alabaster-cream border border-silk-border rounded-lg text-center">
-                    <span className="font-serif text-2xl text-secondary-container font-bold block">24/7</span>
-                    <span className="font-label-caps text-[10px] text-white/70 tracking-wider uppercase">On-Ground Concierge</span>
-                  </div>
-                  <div className="relative h-64 sm:h-72 rounded-lg overflow-hidden border border-silk-border shadow-sm">
+                  {/* Accompanying Stat Badge */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.35 }}
+                    style={{ scale: badgeScale }}
+                    className="p-3 sm:p-4 bg-cream-container border border-silk-border rounded-lg text-center shadow-xs"
+                  >
+                    <span className="font-serif text-xl sm:text-2xl text-ink-black font-bold block">100%</span>
+                    <span className="font-label-caps text-[9px] sm:text-[10px] text-slate-taupe tracking-wider uppercase">
+                      Private Custom Journeys
+                    </span>
+                  </motion.div>
+                </motion.div>
+
+                {/* Right Column: Kerala Backwaters */}
+                <motion.div
+                  style={{ y: rightPhotoY }}
+                  initial={{ opacity: 0, y: 35 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="space-y-3 sm:space-y-4 pt-6 sm:pt-8"
+                >
+                  {/* Accompanying Dark Stat Badge */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.45 }}
+                    style={{ scale: badgeScale }}
+                    className="p-3 sm:p-4 bg-ink-black text-alabaster-cream border border-silk-border rounded-lg text-center shadow-md"
+                  >
+                    <span className="font-serif text-xl sm:text-2xl text-secondary-container font-bold block">24/7</span>
+                    <span className="font-label-caps text-[9px] sm:text-[10px] text-white/70 tracking-wider uppercase">
+                      On-Ground Concierge
+                    </span>
+                  </motion.div>
+
+                  <div className="relative h-56 sm:h-72 rounded-lg overflow-hidden border border-silk-border shadow-sm group bg-surface-dim">
                     <Image
-                      src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1000&auto=format&fit=crop"
+                      src="/images/welcome/backwaters-twilight.jpg"
                       alt="Kerala Backwaters Palm Trees"
                       fill
-                      className="object-cover hover:scale-105 transition-transform duration-700"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+
+                    {/* Cinematic Golden Sun Flare Light Sweep */}
+                    <motion.div
+                      initial={{ x: '-160%', opacity: 0.9 }}
+                      whileInView={{ x: '160%', opacity: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.4, ease: 'easeOut', delay: 0.4 }}
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/40 to-transparent skew-x-12 pointer-events-none z-10"
                     />
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
         </section>
 
         {/* ========================================================================= */}
-        {/* 3. THE ABC TRAVELS DISTINCTION (CLEAN EDITORIAL PILLARS)                   */}
+        {/* 3. THE ABC TRAVELS DISTINCTION (EXPANDING EDITORIAL LOOKBOOK)             */}
         {/* ========================================================================= */}
-        <section className="w-full py-20 px-margin-mobile md:px-margin-desktop bg-cream-container border-b border-silk-border">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-              <span className="font-label-caps text-xs tracking-[0.3em] uppercase text-slate-taupe">
-                The ABC Travels Standard
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-ink-black">
-                How We Host You in India
-              </h2>
-              <p className="font-body-base text-slate-taupe text-sm leading-relaxed">
-                We remove the complexities of international travel across the subcontinent, ensuring seamless comfort from your arrival gate to your return departure.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-alabaster-cream border border-silk-border p-8 rounded-lg space-y-4 shadow-sm hover:shadow-md transition-shadow">
-                <span className="font-label-caps text-xs tracking-widest text-bronze-hover block pb-2 border-b border-silk-border">
-                  01 / Bespoke Pace
-                </span>
-                <h3 className="font-serif text-xl font-semibold text-ink-black">
-                  Unhurried, Private Departures
-                </h3>
-                <p className="text-sm text-slate-taupe leading-relaxed">
-                  No rigid group schedules or rushing. Every morning departure, museum visit, and afternoon tea is tailored completely around your personal rhythm and comfort.
-                </p>
-              </div>
-
-              <div className="bg-alabaster-cream border border-silk-border p-8 rounded-lg space-y-4 shadow-sm hover:shadow-md transition-shadow">
-                <span className="font-label-caps text-xs tracking-widest text-bronze-hover block pb-2 border-b border-silk-border">
-                  02 / Palace & Heritage Stays
-                </span>
-                <h3 className="font-serif text-xl font-semibold text-ink-black">
-                  Authentic Royal Residencies
-                </h3>
-                <p className="text-sm text-slate-taupe leading-relaxed">
-                  We hand-select iconic heritage palace hotels, Oberoi sanctuaries, and boutique tea estates that reflect true architectural elegance and refined hospitality.
-                </p>
-              </div>
-
-              <div className="bg-alabaster-cream border border-silk-border p-8 rounded-lg space-y-4 shadow-sm hover:shadow-md transition-shadow">
-                <span className="font-label-caps text-xs tracking-widest text-bronze-hover block pb-2 border-b border-silk-border">
-                  03 / Dedicated Concierge Host
-                </span>
-                <h3 className="font-serif text-xl font-semibold text-ink-black">
-                  Executive Chauffeurs & 24/7 Care
-                </h3>
-                <p className="text-sm text-slate-taupe leading-relaxed">
-                  Travel in private luxury vehicles with vetted English-speaking chauffeurs, accompanied by licensed academic guides and a 24/7 dedicated senior concierge on call.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <EditorialLookbookPillars />
 
         {/* ========================================================================= */}
         {/* 4. THE FOUR REALMS OF THE SUBCONTINENT (VISUAL CHAPTERS)                   */}
@@ -323,7 +377,7 @@ export default function HomePage() {
                 className="group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1200&auto=format&fit=crop"
+                  src="/images/realms/rajasthan-amber-fort.jpg"
                   alt="Rajasthan Fortresses"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -352,7 +406,7 @@ export default function HomePage() {
                 className="group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=1200&auto=format&fit=crop"
+                  src="/images/realms/ladakh-himalayas-pass.jpg"
                   alt="Ladakh Himalayas"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -381,7 +435,7 @@ export default function HomePage() {
                 className="group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1200&auto=format&fit=crop"
+                  src="/images/realms/kerala-tea-backwaters.jpg"
                   alt="Kerala Backwaters"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -410,7 +464,7 @@ export default function HomePage() {
                 className="group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?q=80&w=1200&auto=format&fit=crop"
+                  src="/images/realms/ranthambore-tiger-wild.jpg"
                   alt="Royal Bengal Tiger Safari"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -515,66 +569,9 @@ export default function HomePage() {
         </section>
 
         {/* ========================================================================= */}
-        {/* 7. VERIFIED TRAVELER REFLECTIONS                                          */}
+        {/* 7. VERIFIED TRAVELER REFLECTIONS (SINGLE ROW EDITORIAL AUTO-SLIDER)        */}
         {/* ========================================================================= */}
-        <section className="w-full py-24 px-margin-mobile md:px-margin-desktop bg-cream-container border-b border-silk-border">
-          <div className="max-w-7xl mx-auto">
-            <div className="max-w-xl mb-14 space-y-3">
-              <span className="font-label-caps text-xs tracking-[0.3em] uppercase text-bronze-hover block">
-                Guest Reflections
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-ink-black">
-                Words from Discerning Travelers
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {reviews.map((review) => (
-                <div
-                  key={review.id}
-                  className="border border-silk-border bg-alabaster-cream p-8 sm:p-10 rounded-lg space-y-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="space-y-4">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <div className="flex items-center gap-1 text-bronze-hover">
-                        {[...Array(review.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-current" />
-                        ))}
-                      </div>
-                      {review.tour_title && (
-                        <Badge variant="secondary" className="text-[10px] bg-secondary-container/50 text-ink-black border-0 font-label-caps tracking-wider">
-                          {review.tour_title}
-                        </Badge>
-                      )}
-                    </div>
-
-                    <h3 className="font-serif text-xl sm:text-2xl text-ink-black font-medium leading-snug">
-                      &ldquo;{review.title}&rdquo;
-                    </h3>
-                    <p className="font-body-base text-slate-taupe text-sm sm:text-base leading-relaxed italic">
-                      &ldquo;{review.comment}&rdquo;
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-silk-border flex items-center justify-between">
-                    <div>
-                      <span className="font-serif font-semibold text-ink-black text-sm sm:text-base block">
-                        {review.traveler_name}
-                      </span>
-                      <span className="text-xs text-slate-taupe flex items-center gap-1.5 pt-0.5">
-                        <MapPin className="w-3 h-3 text-bronze-hover opacity-80" />
-                        {review.traveler_country}
-                      </span>
-                    </div>
-                    <span className="font-label-caps text-[11px] text-slate-taupe tracking-wider uppercase">
-                      {review.trip_date}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <GuestReflectionsSlider reviews={reviews} />
 
         {/* ========================================================================= */}
         {/* 8. QUIET CLOSING CALL TO ACTION                                           */}

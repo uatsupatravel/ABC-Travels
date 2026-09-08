@@ -7,7 +7,7 @@ export const mockReviews: Review[] = [
     tour_title: 'The Royal Odyssey: Golden Triangle & Palaces of Udaipur',
     traveler_name: 'Sir Alexander & Lady Montgomery',
     traveler_country: 'United Kingdom',
-    traveler_avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+    traveler_avatar: '/images/reviews/avatars/montgomery.jpg',
     rating: 5,
     title: 'An unforgettable royal journey of a lifetime',
     comment:
@@ -21,7 +21,7 @@ export const mockReviews: Review[] = [
     tour_title: 'Kerala Sanctuary: Private Houseboats, Spice Hills & Ayurvedic Bliss',
     traveler_name: 'Elena & Marcus Vance',
     traveler_country: 'Switzerland',
-    traveler_avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    traveler_avatar: '/images/reviews/avatars/vance.jpg',
     rating: 5,
     title: 'Pure serenity and transformative wellness',
     comment:
@@ -35,7 +35,7 @@ export const mockReviews: Review[] = [
     tour_title: 'The Sovereign Wild: Royal Bengal Tiger Safari & Jungle Lodges',
     traveler_name: 'David Sterling',
     traveler_country: 'United States',
-    traveler_avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+    traveler_avatar: '/images/reviews/avatars/sterling.jpg',
     rating: 5,
     title: 'Four tiger sightings in three days!',
     comment:
@@ -49,7 +49,7 @@ export const mockReviews: Review[] = [
     tour_title: 'Himalayan High Passes: Glacial Valleys, Monasteries & Luxury Glamping',
     traveler_name: 'Charlotte & Antoine Dubois',
     traveler_country: 'France',
-    traveler_avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+    traveler_avatar: '/images/reviews/avatars/dubois.jpg',
     rating: 5,
     title: 'Mesmerizing high-altitude luxury',
     comment:

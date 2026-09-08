@@ -23,14 +23,14 @@ export default function TourConciergeCard({ tour }: TourConciergeCardProps) {
         {/* Header */}
         <div className="pb-3 border-b border-border">
           <span className="text-[10px] uppercase tracking-widest font-semibold text-accent block mb-1">
-            Private Bespoke Journey
+            Private Tailored Journey
           </span>
           <h3 className="font-serif text-lg font-bold text-foreground">
             Crafted Exclusively For You
           </h3>
         </div>
 
-        {/* 3 Luxury Bespoke Pillars */}
+        {/* 3 Luxury Journey Pillars */}
         <div className="space-y-3 text-xs">
           <div className="flex items-start gap-2.5">
             <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center text-accent shrink-0 mt-0.5">

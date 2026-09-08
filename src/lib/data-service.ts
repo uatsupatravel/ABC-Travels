@@ -14,7 +14,15 @@ export async function getDestinations(): Promise<Destination[]> {
     if (error || !data || data.length === 0) {
       return mockDestinations;
     }
-    return data as Destination[];
+    return (data as Destination[]).map((d) => {
+      const mock = mockDestinations.find((m) => m.slug === d.slug || m.id === d.id);
+      return {
+        ...d,
+        hero_image: mock?.hero_image || (d.hero_image?.includes('unsplash.com') ? mock?.hero_image : d.hero_image) || d.hero_image,
+        gallery: mock?.gallery || d.gallery,
+        highlights: mock?.highlights || d.highlights,
+      };
+    });
   } catch (error) {
     console.error('Error in getDestinations:', error);
     return mockDestinations;
@@ -38,17 +46,18 @@ export async function getTours(filters?: Partial<FilterState>): Promise<Tour[]> 
     if (error || !data || data.length === 0) {
       tours = mockTours;
     } else {
-      // Hydrate with detailed mock itinerary if database record has empty itinerary
+      // Hydrate with curated local asset suites and detailed mock itinerary
       tours = (data as Tour[]).map((t) => {
         const mock = mockTours.find((m) => m.slug === t.slug || m.id === t.id);
         return {
           ...t,
-          gallery: t.gallery?.length ? t.gallery : (mock?.gallery || [t.hero_image]),
-          itinerary: t.itinerary?.length ? t.itinerary : (mock?.itinerary || []),
-          accommodations: t.accommodations?.length ? t.accommodations : (mock?.accommodations || []),
-          highlights: t.highlights?.length ? t.highlights : (mock?.highlights || []),
-          inclusions: t.inclusions?.length ? t.inclusions : (mock?.inclusions || []),
-          exclusions: t.exclusions?.length ? t.exclusions : (mock?.exclusions || []),
+          hero_image: mock?.hero_image || (t.hero_image?.includes('unsplash.com') ? mock?.hero_image : t.hero_image) || t.hero_image,
+          gallery: mock?.gallery || (t.gallery?.length ? t.gallery : (mock?.gallery || [t.hero_image])),
+          itinerary: mock?.itinerary?.length ? mock.itinerary : (t.itinerary || []),
+          accommodations: mock?.accommodations?.length ? mock.accommodations : (t.accommodations || []),
+          highlights: mock?.highlights?.length ? mock.highlights : (t.highlights || []),
+          inclusions: mock?.inclusions?.length ? mock.inclusions : (t.inclusions || []),
+          exclusions: mock?.exclusions?.length ? mock.exclusions : (t.exclusions || []),
         };
       });
     }

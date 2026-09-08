@@ -66,9 +66,9 @@ export default function AdminToursPage() {
       travel_style: 'Heritage & Palaces',
       group_type: '100% Private Custom',
       is_featured: false,
-      hero_image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80',
+      hero_image: '/images/tours/royal-odyssey/hero.jpg',
       gallery: [
-        'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80',
+        '/images/tours/royal-odyssey/hero.jpg',
       ],
       overview: 'Bespoke private luxury expedition crafted with white-glove logistics, legend palace hotels, and private scholar access.',
       highlights: [

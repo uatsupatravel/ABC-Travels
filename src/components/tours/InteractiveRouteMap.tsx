@@ -252,7 +252,7 @@ export default function InteractiveRouteMap({ tour }: InteractiveRouteMapProps) 
   const oneLineTeaser = getOneLineTeaser(activeDay.description);
   const isLastDay = selectedDayIdx === itinerary.length - 1;
 
-  const displayImage = activeDay.image || tour.hero_image || 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=80';
+  const displayImage = activeDay.image || tour.hero_image || '/images/destinations/rajasthan/hero.jpg';
 
   return (
     <div className="p-0 overflow-hidden border border-border/80 rounded-xl shadow-sm bg-card">

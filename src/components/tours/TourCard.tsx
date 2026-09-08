@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Tour } from '@/types';
 import { Clock, MapPin, ArrowRight, Shield } from 'lucide-react';
-import { formatUSD, formatINR } from '@/lib/utils';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 
@@ -54,27 +53,27 @@ export default function TourCard({ tour, onContactSpecialist }: TourCardProps) {
       </div>
 
       {/* Content Section */}
-      <div className="p-8 flex flex-col flex-grow justify-between gap-4">
+      <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between gap-4">
         <div className="space-y-3">
           <div className="flex items-center gap-2 font-label-caps text-[10px] tracking-widest text-slate-taupe uppercase">
             <Shield className="w-3 h-3" />
             <span>{tour.group_type} • {tour.activity_level}</span>
           </div>
 
-          <h3 className="font-headline-lg text-headline-lg text-ink-black leading-snug group-hover:text-bronze-hover transition-colors duration-300 line-clamp-2">
+          <h3 className="font-serif text-xl sm:text-2xl text-ink-black font-semibold leading-snug group-hover:text-bronze-hover transition-colors duration-300 line-clamp-2 min-h-[3.5rem]">
             <Link href={`/tours/${tour.slug}`}>
               {tour.title}
             </Link>
           </h3>
 
-          <p className="font-body-base text-body-base text-slate-taupe line-clamp-3">
+          <p className="font-body-base text-body-base text-slate-taupe line-clamp-2 sm:line-clamp-3 leading-relaxed">
             {tour.subtitle}
           </p>
 
           {/* Highlights Preview */}
           <div className="space-y-1.5 pt-1">
             {tour.highlights.slice(0, 2).map((highlight, idx) => (
-              <div key={idx} className="flex items-start gap-2 font-body-base text-sm text-on-surface-variant">
+              <div key={idx} className="flex items-start gap-2 font-body-base text-xs sm:text-sm text-on-surface-variant">
                 <span className="w-1.5 h-1.5 rounded-full bg-bronze-hover mt-1.5 shrink-0" />
                 <span className="line-clamp-1">{highlight}</span>
               </div>
@@ -82,36 +81,29 @@ export default function TourCard({ tour, onContactSpecialist }: TourCardProps) {
           </div>
         </div>
 
-        {/* Pricing & CTA Footer */}
-        <div className="pt-6 border-t border-silk-border flex items-center justify-between mt-auto">
-          <div>
-            <span className="block font-label-caps text-[10px] tracking-widest text-slate-taupe uppercase">
-              From
-            </span>
-            <div className="flex items-baseline gap-1">
-              <span className="font-body-base font-medium text-ink-black">
-                {formatUSD(tour.price_usd)}
-              </span>
-              <span className="text-sm text-slate-taupe">/ person</span>
-            </div>
-            <span className="text-[10px] text-slate-taupe block">
-              approx. {formatINR(tour.price_inr)}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-3">
+        {/* CTA Footer (Bespoke Private Journeys) */}
+        <div className="pt-4 border-t border-silk-border mt-auto">
+          <div className="grid grid-cols-2 gap-2.5">
             {onContactSpecialist && (
               <Button
                 size="sm"
                 variant="outline"
                 onClick={() => onContactSpecialist(tour)}
+                className="w-full text-xs h-10 border-silk-border hover:bg-cream-container font-medium"
               >
-                Speak to a Specialist
+                Inquire
               </Button>
             )}
-            <Link href={`/tours/${tour.slug}`}>
-              <Button size="sm" variant="default" className="gap-1.5">
-                <span>Details</span>
+            <Link
+              href={`/tours/${tour.slug}`}
+              className={onContactSpecialist ? 'w-full' : 'col-span-2 w-full'}
+            >
+              <Button
+                size="sm"
+                variant="default"
+                className="w-full gap-1.5 text-xs h-10 shadow-xs font-medium"
+              >
+                <span>View Journey</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Button>
             </Link>

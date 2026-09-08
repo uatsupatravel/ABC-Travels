@@ -16,6 +16,7 @@ import {
   TrendingUp,
   Palmtree,
   MapPin,
+  Layers,
 } from 'lucide-react';
 
 export default function AdminOverviewPage() {
@@ -230,7 +231,7 @@ export default function AdminOverviewPage() {
       </Card>
 
       {/* Quick Navigation Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Link href="/admin/tours">
           <Card className="p-5 space-y-2 hover:border-foreground/30 transition-colors">
             <div className="flex items-center justify-between">
@@ -253,6 +254,19 @@ export default function AdminOverviewPage() {
             <h3 className="font-serif text-base font-bold text-foreground">Destinations CMS</h3>
             <p className="text-xs text-muted-foreground leading-relaxed">
               View destination guide pages (Rajasthan, Kerala, Ladakh, Varanasi, Goa, Ranthambore).
+            </p>
+          </Card>
+        </Link>
+
+        <Link href="/admin/notes">
+          <Card className="p-5 space-y-2 hover:border-foreground/30 transition-colors">
+            <div className="flex items-center justify-between">
+              <Layers className="w-5 h-5 text-muted-foreground" />
+              <ArrowRight className="w-4 h-4 text-muted-foreground" />
+            </div>
+            <h3 className="font-serif text-base font-bold text-foreground">Site Audit & Notes</h3>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Track AI image assets, external dependency blockers, reminders, and page quality audits.
             </p>
           </Card>
         </Link>

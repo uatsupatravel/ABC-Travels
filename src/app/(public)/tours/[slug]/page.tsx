@@ -7,7 +7,6 @@ import TourDetailExperience from '@/components/tours/TourDetailExperience';
 import HeroStoryTrigger from '@/components/tours/HeroStoryTrigger';
 import TourConciergeCard from '@/components/inquiry/TourConciergeCard';
 import TourCard from '@/components/tours/TourCard';
-import { formatUSD, formatINR } from '@/lib/utils';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Separator } from '@/components/ui/Separator';
@@ -70,37 +69,48 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-72 sm:h-96 md:h-[480px] rounded-lg overflow-hidden border border-border">
-          <div className="md:col-span-2 relative h-full bg-muted group">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 h-72 sm:h-96 md:h-[460px] lg:h-[500px]">
+          {/* Main Hero Featured Frame */}
+          <div className="md:col-span-2 relative h-full rounded-xl overflow-hidden border border-border/80 bg-muted group cursor-pointer shadow-xs">
             <Image
               src={tour.hero_image}
               alt={tour.title}
               fill
               priority
-              className="object-cover hover:scale-105 transition-transform duration-500"
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 67vw, 900px"
+              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
-            {/* Option 1: Frosted-Glass Hero Story Button */}
+            {/* Subtle Gradient Overlay for depth & button legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+            
+            {/* Frosted-Glass Hero Story Button */}
             <HeroStoryTrigger tour={tour} />
           </div>
 
-          <div className="hidden md:grid grid-rows-2 gap-4 h-full">
+          {/* Right Side Stacked Frames */}
+          <div className="hidden md:grid grid-rows-2 gap-3.5 sm:gap-4 h-full">
             {tour.gallery.slice(1, 3).map((img, idx) => (
-              <div key={idx} className="relative h-full overflow-hidden rounded-md bg-muted">
+              <div
+                key={idx}
+                className="relative h-full rounded-xl overflow-hidden border border-border/80 bg-muted group cursor-pointer shadow-xs"
+              >
                 <Image
                   src={img}
                   alt={`${tour.title} gallery ${idx + 1}`}
                   fill
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 1280px) 33vw, 450px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
               </div>
             ))}
           </div>
         </div>
 
         {/* Quick Specs Bar (Responsive Grid & Clean Dividers) */}
-        <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 p-4 rounded-lg border border-border bg-card text-center text-xs divide-y sm:divide-y-0 sm:divide-x divide-border/60">
+        <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl border border-border/80 bg-card text-center text-xs divide-y sm:divide-y-0 sm:divide-x divide-border/60 shadow-xs">
           <div className="pb-2 sm:pb-0">
-            <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
+            <span className="text-[10px] uppercase tracking-widest text-muted-foreground block font-semibold">
               Duration
             </span>
             <span className="font-semibold text-foreground text-xs sm:text-sm">
@@ -108,7 +118,7 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
             </span>
           </div>
           <div className="pb-2 sm:pb-0">
-            <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
+            <span className="text-[10px] uppercase tracking-widest text-muted-foreground block font-semibold">
               Region
             </span>
             <span className="font-semibold text-foreground text-xs sm:text-sm">
@@ -116,7 +126,7 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
             </span>
           </div>
           <div className="pt-2 sm:pt-0">
-            <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
+            <span className="text-[10px] uppercase tracking-widest text-muted-foreground block font-semibold">
               Activity Level
             </span>
             <span className="font-semibold text-foreground text-xs sm:text-sm">
@@ -124,7 +134,7 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
             </span>
           </div>
           <div className="pt-2 sm:pt-0">
-            <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-semibold">
+            <span className="text-[10px] uppercase tracking-widest text-muted-foreground block font-semibold">
               Group Type
             </span>
             <span className="font-semibold text-foreground text-xs sm:text-sm">
@@ -261,7 +271,7 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
             </Card>
           </div>
 
-          {/* Right Column: Sticky Bespoke Concierge Card */}
+          {/* Right Column: Sticky Concierge Card */}
           <div className="lg:col-span-1">
             <TourConciergeCard tour={tour} />
           </div>

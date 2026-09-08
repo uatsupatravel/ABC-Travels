@@ -44,8 +44,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bodoniModa.variable} ${hankenGrotesk.variable}`}>
-      <body className="antialiased min-h-screen flex flex-col bg-alabaster-cream text-ink-black font-body-base">
+    <html lang="en" suppressHydrationWarning className={`${bodoniModa.variable} ${hankenGrotesk.variable}`}>
+      <body
+        suppressHydrationWarning
+        className="antialiased min-h-screen flex flex-col bg-alabaster-cream text-ink-black font-body-base"
+      >
         {children}
       </body>
     </html>

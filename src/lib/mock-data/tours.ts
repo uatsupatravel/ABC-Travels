@@ -16,12 +16,18 @@ export const mockTours: Tour[] = [
     "travel_style": "Heritage & Palaces",
     "group_type": "100% Private Custom",
     "is_featured": true,
-    "hero_image": "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80",
+    "hero_image": "/images/tours/royal-odyssey/hero.jpg",
     "gallery": [
-      "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80",
-      "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1920&q=80",
-      "https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=1920&q=80",
-      "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1920&q=80"
+      "/images/tours/royal-odyssey/hero.jpg",
+      "/images/tours/royal-odyssey/day1-delhi-imperial.jpg",
+      "/images/tours/royal-odyssey/day2-delhi-monuments.jpg",
+      "/images/tours/royal-odyssey/day2-agra-amarvilas.jpg",
+      "/images/tours/royal-odyssey/day4-taj-sunrise.jpg",
+      "/images/tours/royal-odyssey/day3-jaipur-rambagh.jpg",
+      "/images/tours/royal-odyssey/day6-lake-palace-arrival.jpg",
+      "/images/tours/royal-odyssey/day4-udaipur-pichola.jpg",
+      "/images/tours/royal-odyssey/day8-ranakpur-temple.jpg",
+      "/images/tours/royal-odyssey/day9-royal-dining.jpg"
     ],
     "overview": "Step into the timeless grandeur of royal India. From the majestic Mughal domes of Delhi and the ethereal ivory marble of the Taj Mahal at sunrise to the rose-pink courtyards of Jaipur and the fairytale floating palaces of Lake Pichola. Enjoy private chauffeur-driven luxury sedans, premier heritage palace suites, skip-the-line VIP entrances, and dinners hosted in private royal quarters.",
     "highlights": [
@@ -43,7 +49,7 @@ export const mockTours: Tour[] = [
           "VIP Airport Fast-Track",
           "Welcome Champagne"
         ],
-        "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1920&q=80",
+        "image": "/images/tours/royal-odyssey/day1-delhi-imperial.jpg",
         "transit": {
           "type": "none"
         }
@@ -59,6 +65,7 @@ export const mockTours: Tour[] = [
           "Private Rickshaw Spice Market Safari",
           "UNESCO Heritage Monuments"
         ],
+        "image": "/images/tours/royal-odyssey/day2-delhi-monuments.jpg",
         "transit": {
           "type": "none"
         }
@@ -74,7 +81,7 @@ export const mockTours: Tour[] = [
           "Uninterrupted Taj Mahal views from private balcony",
           "Sunset riverbank viewpoint"
         ],
-        "image": "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1920&q=80",
+        "image": "/images/tours/royal-odyssey/day2-agra-amarvilas.jpg",
         "transit": {
           "type": "drive",
           "duration": "3.5 hrs",
@@ -92,6 +99,7 @@ export const mockTours: Tour[] = [
           "Sunrise Taj Mahal Experience",
           "Fatehpur Sikri & Abhaneri Stepwell"
         ],
+        "image": "/images/tours/royal-odyssey/day4-taj-sunrise.jpg",
         "transit": {
           "type": "drive",
           "duration": "4.5 hrs",
@@ -109,7 +117,7 @@ export const mockTours: Tour[] = [
           "Amber Fort VIP Access",
           "Private Royal Family Quarters High-Tea"
         ],
-        "image": "https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=1920&q=80",
+        "image": "/images/tours/royal-odyssey/day3-jaipur-rambagh.jpg",
         "transit": {
           "type": "none"
         }
@@ -125,6 +133,7 @@ export const mockTours: Tour[] = [
           "Royal Boat Transfer",
           "Iconic Floating Palace Experience"
         ],
+        "image": "/images/tours/royal-odyssey/day6-lake-palace-arrival.jpg",
         "transit": {
           "type": "flight",
           "duration": "1h 15m",
@@ -142,7 +151,7 @@ export const mockTours: Tour[] = [
           "Udaipur City Palace",
           "Private Royal Barge Sunset Cruise"
         ],
-        "image": "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80",
+        "image": "/images/tours/royal-odyssey/day4-udaipur-pichola.jpg",
         "transit": {
           "type": "none"
         }
@@ -158,6 +167,7 @@ export const mockTours: Tour[] = [
           "Ranakpur 1,444 Marble Pillars",
           "Lakeside Gala Dinner with Live Sufi Music"
         ],
+        "image": "/images/tours/royal-odyssey/day8-ranakpur-temple.jpg",
         "transit": {
           "type": "none"
         }
@@ -173,6 +183,7 @@ export const mockTours: Tour[] = [
           "Palace Morning Leisure",
           "Farewell Royal Feast"
         ],
+        "image": "/images/tours/royal-odyssey/day9-royal-dining.jpg",
         "transit": {
           "type": "flight",
           "duration": "1h 20m",
@@ -189,6 +200,7 @@ export const mockTours: Tour[] = [
         "highlights": [
           "VIP Airport Chauffeur & Departure Assistance"
         ],
+        "image": "/images/tours/royal-odyssey/day1-delhi-imperial.jpg",
         "transit": {
           "type": "none"
         }
@@ -214,28 +226,28 @@ export const mockTours: Tour[] = [
         "name": "The Imperial",
         "location": "New Delhi",
         "tier": "Heritage Legend 5-Star",
-        "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/tours/royal-odyssey/day1-delhi-imperial.jpg",
         "description": "1930s Art Deco masterpiece set in 8 acres of lush gardens in Lutyens’ Delhi."
       },
       {
         "name": "The Oberoi Amarvilas",
         "location": "Agra",
         "tier": "Ultra Luxury 5-Star",
-        "image": "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/tours/royal-odyssey/day2-agra-amarvilas.jpg",
         "description": "Every room enjoys uninterrupted direct views of the Taj Mahal just 600m away."
       },
       {
         "name": "Rambagh Palace",
         "location": "Jaipur",
         "tier": "Royal Palace 5-Star",
-        "image": "https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/tours/royal-odyssey/day3-jaipur-rambagh.jpg",
         "description": "Former official residence of the Maharaja of Jaipur with 47 acres of manicured gardens."
       },
       {
         "name": "Taj Lake Palace",
         "location": "Udaipur",
         "tier": "Floating Palace 5-Star",
-        "image": "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/tours/royal-odyssey/day4-udaipur-pichola.jpg",
         "description": "18th-century white marble palace floating in the serene waters of Lake Pichola."
       }
     ]
@@ -255,12 +267,12 @@ export const mockTours: Tour[] = [
     "travel_style": "Spiritual & Wellness",
     "group_type": "100% Private Custom",
     "is_featured": true,
-    "hero_image": "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1920&q=80",
+    "hero_image": "/images/tours/kerala-sanctuary/hero.jpg",
     "gallery": [
-      "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1920&q=80",
-      "https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=1920&q=80",
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1920&q=80",
-      "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1920&q=80"
+      "/images/tours/kerala-sanctuary/hero.jpg",
+      "/images/tours/kerala-sanctuary/day1-kochi-heritage.jpg",
+      "/images/tours/kerala-sanctuary/day2-munnar-plantations.jpg",
+      "/images/tours/kerala-sanctuary/day3-alleppey-kettuvallam.jpg"
     ],
     "overview": "Discover the serene rhythm of Southern India. Stroll colonial Fort Kochi, ascend misty Munnar tea hills, walk through organic spice forests, and cruise aboard a private, air-conditioned luxury Kettuvallam houseboat through palm-fringed canals. Conclude with doctor-curated Ayurvedic rejuvenation overlooking Lake Vembanad.",
     "highlights": [
@@ -282,7 +294,7 @@ export const mockTours: Tour[] = [
           "Harbor View Check-in",
           "Private Kathakali Performance"
         ],
-        "image": "https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=1920&q=80",
+        "image": "/images/tours/kerala-sanctuary/day1-kochi-heritage.jpg",
         "transit": {
           "type": "none"
         }
@@ -362,7 +374,7 @@ export const mockTours: Tour[] = [
           "24-Hour Private Houseboat Charter",
           "Sunset Backwater Gliding"
         ],
-        "image": "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1920&q=80",
+        "image": "/images/tours/kerala-sanctuary/day3-alleppey-kettuvallam.jpg",
         "transit": {
           "type": "boat",
           "duration": "24-hr Cruise",
@@ -416,28 +428,28 @@ export const mockTours: Tour[] = [
         "name": "Brunton Boatyard",
         "location": "Fort Kochi",
         "tier": "Heritage 5-Star",
-        "image": "https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/tours/kerala-sanctuary/day1-kochi-heritage.jpg",
         "description": "Restored Victorian shipyard hotel overlooking Fort Kochi harbor."
       },
       {
         "name": "Windermere Estate",
         "location": "Munnar",
         "tier": "Boutique Plantation Luxury",
-        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/tours/kerala-sanctuary/day2-munnar-plantations.jpg",
         "description": "Intimate colonial retreat set inside a working tea and cardamom estate."
       },
       {
         "name": "Private Luxury Houseboat",
         "location": "Alleppey Backwaters",
         "tier": "Exclusive Charter",
-        "image": "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/tours/kerala-sanctuary/day3-alleppey-kettuvallam.jpg",
         "description": "Handcrafted air-conditioned wooden barge with private crew and master chef."
       },
       {
         "name": "Kumarakom Lake Resort",
         "location": "Kumarakom",
         "tier": "Luxury Ayurvedic Resort",
-        "image": "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/destinations/kerala/hero.jpg",
         "description": "Award-winning lakeside sanctuary with heritage villas and Ayurvedic center."
       }
     ]
@@ -457,11 +469,12 @@ export const mockTours: Tour[] = [
     "travel_style": "Himalayan Exploration",
     "group_type": "100% Private Custom",
     "is_featured": true,
-    "hero_image": "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1920&q=80",
+    "hero_image": "/images/tours/himalayan-expedition/hero.jpg",
     "gallery": [
-      "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1920&q=80",
-      "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=1920&q=80",
-      "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80"
+      "/images/tours/himalayan-expedition/hero.jpg",
+      "/images/tours/himalayan-expedition/day1-leh-palace.jpg",
+      "/images/tours/himalayan-expedition/day2-nubra-valley.jpg",
+      "/images/destinations/ladakh/pangong-lake-azure.jpg"
     ],
     "overview": "An exhilarating high-comfort expedition across the Trans-Himalayan mountain desert. Discover 1,000-year-old cliffside Buddhist monasteries, cross the legendary Khardung La pass (17,582 ft) in private 4x4 SUVs, sleep under heated luxury yurt domes in Nubra Valley, and gaze into the sapphire infinity of Pangong Lake.",
     "highlights": [
@@ -483,7 +496,7 @@ export const mockTours: Tour[] = [
           "Spectacular Himalayan Mountain Flight",
           "Gentle High-Altitude Acclimatization"
         ],
-        "image": "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1920&q=80",
+        "image": "/images/tours/himalayan-expedition/day1-leh-palace.jpg",
         "transit": {
           "type": "none"
         }
@@ -561,7 +574,7 @@ export const mockTours: Tour[] = [
           "Sapphire Pangong Lake Sunset",
           "Heated Shoreline Domes"
         ],
-        "image": "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=1920&q=80",
+        "image": "/images/destinations/ladakh/pangong-lake-azure.jpg",
         "transit": {
           "type": "drive",
           "duration": "4.0 hrs",
@@ -632,14 +645,14 @@ export const mockTours: Tour[] = [
         "name": "The Grand Dragon Ladakh",
         "location": "Leh",
         "tier": "Luxury 5-Star Hotel",
-        "image": "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/tours/himalayan-expedition/day1-leh-palace.jpg",
         "description": "Premier eco-luxury hotel with oxygen-enriched suites and solar underfloor heating."
       },
       {
         "name": "Chamba Glamping Yurts",
         "location": "Nubra Valley",
         "tier": "Luxury Heated Glamping",
-        "image": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/tours/himalayan-expedition/day2-nubra-valley.jpg",
         "description": "Heated luxury yurt chalets nestled in an organic apricot orchard."
       }
     ]
@@ -659,11 +672,12 @@ export const mockTours: Tour[] = [
     "travel_style": "Wildlife Safari",
     "group_type": "100% Private Custom",
     "is_featured": true,
-    "hero_image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1920&q=80",
+    "hero_image": "/images/tours/sovereign-wild/hero.jpg",
     "gallery": [
-      "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1920&q=80",
-      "https://images.unsplash.com/photo-1588693951525-6b9ebd799a4c?auto=format&fit=crop&w=1920&q=80",
-      "https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=1920&q=80"
+      "/images/tours/sovereign-wild/hero.jpg",
+      "/images/tours/sovereign-wild/day1-delhi-safari-transit.jpg",
+      "/images/tours/sovereign-wild/day2-ranthambore-morning-drive.jpg",
+      "/images/destinations/ranthambore/tiger-stalking-banyan.jpg"
     ],
     "overview": "An intimate wilderness journey tracking the majestic Royal Bengal tiger in Ranthambore National Park. Embark on 4 private open-top 4x4 Gypsy safaris across prime core zones with a dedicated senior naturalist, stay in the opulent tented luxury of The Oberoi Vanyavilas, and conclude with royal palace relaxation in Jaipur.",
     "highlights": [
@@ -700,7 +714,7 @@ export const mockTours: Tour[] = [
           "Oberoi Vanyavilas Check-in",
           "Senior Naturalist Wilderness Briefing"
         ],
-        "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1920&q=80",
+        "image": "/images/tours/sovereign-wild/day2-ranthambore-morning-drive.jpg",
         "transit": {
           "type": "train",
           "duration": "3.5 hrs",
@@ -805,14 +819,14 @@ export const mockTours: Tour[] = [
         "name": "The Oberoi Vanyavilas",
         "location": "Ranthambore",
         "tier": "Ultra Luxury Jungle Resort",
-        "image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/tours/sovereign-wild/hero.jpg",
         "description": "Triple-canopied luxury air-conditioned tents with teak floors and private gardens."
       },
       {
         "name": "The Oberoi Rajvilas",
         "location": "Jaipur",
         "tier": "Royal Luxury 5-Star",
-        "image": "https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/tours/royal-odyssey/day3-jaipur-rambagh.jpg",
         "description": "32-acre fort-style luxury palace estate surrounded by landscaped gardens."
       }
     ]
@@ -832,10 +846,11 @@ export const mockTours: Tour[] = [
     "travel_style": "Spiritual & Wellness",
     "group_type": "100% Private Custom",
     "is_featured": true,
-    "hero_image": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1920&q=80",
+    "hero_image": "/images/destinations/varanasi/hero.jpg",
     "gallery": [
-      "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1920&q=80",
-      "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1920&q=80"
+      "/images/destinations/varanasi/hero.jpg",
+      "/images/destinations/varanasi/sunrise-boat-ghats.jpg",
+      "/images/destinations/varanasi/evening-ganga-aarti.jpg"
     ],
     "overview": "Varanasi is the timeless beating heart of spiritual India. Arrive by private boat directly to BrijRama Palace floating above Darbhanga Ghat, drift along the sacred river at dawn with classical flute music during Subah-e-Banaras, witness the electrifying evening Ganga Aarti ceremony from a private royal boat, and visit Sarnath where Lord Buddha gave his first sermon.",
     "highlights": [
@@ -872,7 +887,7 @@ export const mockTours: Tour[] = [
           "Private Boat Arrival at Darbhanga Ghat",
           "Front-Row Ganga Aarti Boat"
         ],
-        "image": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1920&q=80",
+        "image": "/images/destinations/varanasi/evening-ganga-aarti.jpg",
         "transit": {
           "type": "flight",
           "duration": "1h 15m",
@@ -958,14 +973,14 @@ export const mockTours: Tour[] = [
         "name": "BrijRama Palace",
         "location": "Varanasi (Darbhanga Ghat)",
         "tier": "Heritage Palace 5-Star",
-        "image": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/destinations/varanasi/hero.jpg",
         "description": "18th-century royal palace situated directly on the sacred Darbhanga Ghat."
       },
       {
         "name": "The Imperial",
         "location": "New Delhi",
         "tier": "Heritage Legend 5-Star",
-        "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "image": "/images/tours/royal-odyssey/day1-delhi-imperial.jpg",
         "description": "1930s Art Deco masterpiece set in 8 acres of lush gardens in Lutyens’ Delhi."
       }
     ]

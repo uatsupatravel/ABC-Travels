@@ -14,6 +14,7 @@ import {
   Menu,
   X,
   ShieldCheck,
+  Layers,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
@@ -49,6 +50,7 @@ export default function AdminLayout({
     { name: 'Inquiries CRM', href: '/admin/inquiries', icon: Inbox },
     { name: 'Tour Catalog CMS', href: '/admin/tours', icon: Palmtree },
     { name: 'Destinations CMS', href: '/admin/destinations', icon: MapPin },
+    { name: 'Site Audit & Notes', href: '/admin/notes', icon: Layers },
   ];
 
   return (
