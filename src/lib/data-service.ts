@@ -34,6 +34,49 @@ export async function getDestinationBySlug(slug: string): Promise<Destination | 
   return destinations.find((d) => d.slug === slug) || null;
 }
 
+function matchMockTour(t: Partial<Tour>): Tour | undefined {
+  if (!t) return undefined;
+  // 1. Direct slug or id match
+  const found = mockTours.find((m) => m.slug === t.slug || m.id === t.id);
+  if (found) return found;
+
+  const slug = (t.slug || '').toLowerCase();
+  const title = (t.title || '').toLowerCase();
+  const dest = (t.destination_name || '').toLowerCase();
+
+  // 2. Goa / Portuguese match
+  if (slug.includes('goa') || slug.includes('portuguese') || slug.includes('konkan') || title.includes('goa') || dest.includes('goa')) {
+    return mockTours.find((m) => m.id === 'tour-6' || m.slug.includes('goa'));
+  }
+
+  // 3. Varanasi / Ganges match
+  if (slug.includes('varanasi') || slug.includes('ganges') || title.includes('ganges') || title.includes('varanasi') || dest.includes('varanasi') || dest.includes('ganges')) {
+    return mockTours.find((m) => m.id === 'tour-5' || m.slug.includes('varanasi'));
+  }
+
+  // 3. Ranthambore / Tiger match
+  if (slug.includes('tiger') || slug.includes('ranthambore') || title.includes('tiger') || dest.includes('ranthambore') || dest.includes('wild')) {
+    return mockTours.find((m) => m.id === 'tour-4' || m.slug.includes('ranthambore'));
+  }
+
+  // 4. Ladakh match
+  if (slug.includes('ladakh') || slug.includes('himalaya') || title.includes('himalaya') || dest.includes('ladakh')) {
+    return mockTours.find((m) => m.id === 'tour-3' || m.slug.includes('ladakh'));
+  }
+
+  // 5. Kerala match
+  if (slug.includes('kerala') || slug.includes('backwater') || title.includes('kerala') || dest.includes('kerala')) {
+    return mockTours.find((m) => m.id === 'tour-2' || m.slug.includes('kerala'));
+  }
+
+  // 6. Golden Triangle / Rajasthan match
+  if (slug.includes('golden-triangle') || slug.includes('palaces') || title.includes('golden triangle') || dest.includes('rajasthan')) {
+    return mockTours.find((m) => m.id === 'tour-1' || m.slug.includes('golden-triangle'));
+  }
+
+  return undefined;
+}
+
 export async function getTours(filters?: Partial<FilterState>): Promise<Tour[]> {
   let tours: Tour[] = [];
   try {
@@ -48,18 +91,37 @@ export async function getTours(filters?: Partial<FilterState>): Promise<Tour[]> 
     } else {
       // Hydrate with curated local asset suites and detailed mock itinerary
       tours = (data as Tour[]).map((t) => {
-        const mock = mockTours.find((m) => m.slug === t.slug || m.id === t.id);
+        const mock = matchMockTour(t);
+        if (!mock) return t;
         return {
+          ...mock,
           ...t,
-          hero_image: mock?.hero_image || (t.hero_image?.includes('unsplash.com') ? mock?.hero_image : t.hero_image) || t.hero_image,
-          gallery: mock?.gallery || (t.gallery?.length ? t.gallery : (mock?.gallery || [t.hero_image])),
-          itinerary: mock?.itinerary?.length ? mock.itinerary : (t.itinerary || []),
-          accommodations: mock?.accommodations?.length ? mock.accommodations : (t.accommodations || []),
-          highlights: mock?.highlights?.length ? mock.highlights : (t.highlights || []),
-          inclusions: mock?.inclusions?.length ? mock.inclusions : (t.inclusions || []),
-          exclusions: mock?.exclusions?.length ? mock.exclusions : (t.exclusions || []),
+          slug: mock.slug, // Ensure canonical slug matches curated routes and image directories
+          title: mock.title || t.title,
+          subtitle: mock.subtitle || t.subtitle,
+          overview: mock.overview || t.overview,
+          hero_image: mock.hero_image,
+          gallery: mock.gallery?.length ? mock.gallery : t.gallery,
+          itinerary: mock.itinerary?.length ? mock.itinerary : t.itinerary,
+          accommodations: mock.accommodations?.length ? mock.accommodations : t.accommodations,
+          highlights: mock.highlights?.length ? mock.highlights : t.highlights,
+          inclusions: mock.inclusions?.length ? mock.inclusions : t.inclusions,
+          exclusions: mock.exclusions?.length ? mock.exclusions : t.exclusions,
+          travel_style: mock.travel_style || t.travel_style,
+          group_type: mock.group_type || t.group_type,
+          duration_days: mock.duration_days || t.duration_days,
+          duration_nights: mock.duration_nights || t.duration_nights,
+          price_usd: mock.price_usd || t.price_usd,
+          price_inr: mock.price_inr || t.price_inr,
         };
       });
+
+      // Ensure all curated mock tours are present in the final list even if not seeded in Supabase
+      for (const m of mockTours) {
+        if (!tours.some((t) => t.slug === m.slug || t.id === m.id)) {
+          tours.push(m);
+        }
+      }
     }
   } catch (error) {
     console.error('Error in getTours:', error);
@@ -122,7 +184,32 @@ export async function getTours(filters?: Partial<FilterState>): Promise<Tour[]> 
 
 export async function getTourBySlug(slug: string): Promise<Tour | null> {
   const tours = await getTours();
-  return tours.find((t) => t.slug === slug) || null;
+  // 1. Direct canonical slug match
+  const direct = tours.find((t) => t.slug === slug);
+  if (direct) return direct;
+
+  // 2. Legacy / Supabase slug aliases and keyword-based fallback
+  const slugLower = (slug || '').toLowerCase();
+  if (slugLower.includes('goa') || slugLower.includes('portuguese') || slugLower.includes('konkan')) {
+    return tours.find((t) => t.slug.includes('goa') || t.id === 'tour-6') || null;
+  }
+  if (slugLower.includes('varanasi') || slugLower.includes('ganges')) {
+    return tours.find((t) => t.slug.includes('varanasi') || t.id === 'tour-5') || null;
+  }
+  if (slugLower.includes('tiger') || slugLower.includes('ranthambore')) {
+    return tours.find((t) => t.slug.includes('ranthambore') || t.slug.includes('tiger') || t.id === 'tour-4') || null;
+  }
+  if (slugLower.includes('ladakh') || slugLower.includes('himalaya')) {
+    return tours.find((t) => t.slug.includes('ladakh') || t.id === 'tour-3') || null;
+  }
+  if (slugLower.includes('kerala') || slugLower.includes('backwater')) {
+    return tours.find((t) => t.slug.includes('kerala') || t.id === 'tour-2') || null;
+  }
+  if (slugLower.includes('golden-triangle') || slugLower.includes('royal-palaces')) {
+    return tours.find((t) => t.slug.includes('golden-triangle') || t.id === 'tour-1') || null;
+  }
+
+  return null;
 }
 
 export async function getFeaturedTours(): Promise<Tour[]> {
@@ -149,7 +236,7 @@ const DEFAULT_REVIEWS: Review[] = [
     tour_title: 'Royal Bengal Tiger Safari & Sanctuaries',
     rating: 5,
     title: 'Unrivaled wildlife access and master naturalists',
-    comment: 'Tracking tigers in Ranthambore with ABC Travels’ veteran naturalist was an unforgettable privilege. The private open-top 4x4, sunrise park entries, and luxury tented camp were handled with immense precision. Even more impressive was the dining: every meal across our 10-day journey was exquisitely curated, sanitized, and authentic. Truly the benchmark for bespoke travel in India.',
+    comment: 'Tracking tigers in Ranthambore with ABC Travels’ veteran naturalist was an unforgettable privilege. The private open-top 4x4, sunrise park entries, and luxury tented camp were handled with immense precision. Even more impressive was the dining: every meal across our 10-day journey was exquisitely curated, sanitized, and authentic. Truly the benchmark for luxury private travel in India.',
     trip_date: 'Winter Departure',
     is_approved: true,
   },
@@ -171,7 +258,7 @@ const DEFAULT_REVIEWS: Review[] = [
     tour_title: 'Ladakh & High Himalayas Expedition',
     rating: 5,
     title: 'Exceptional safety, private comfort, and deep heritage',
-    comment: 'Exploring high-altitude monasteries in Leh and the Nubra Valley requires serious logistical rigor. ABC Travels delivered beyond expectations—our luxury 4x4 was pristine, our mountain guide was an accredited scholar of Buddhist art, and our accommodations were stunning. You can trust them with your eyes closed.',
+    comment: 'Exploring high-altitude monasteries in Leh and the Nubra Valley requires serious logistical rigor. ABC Travels delivered beyond expectations: our luxury 4x4 was pristine, our mountain guide was an accredited scholar of Buddhist art, and our accommodations were stunning. You can trust them with your eyes closed.',
     trip_date: 'Summer Expedition',
     is_approved: true,
   },

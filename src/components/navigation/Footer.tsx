@@ -60,13 +60,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/tours/royal-bengal-tiger-safari" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
+                <Link href="/tours/ranthambore-tiger-safari-expedition" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   Royal Bengal Tiger Safari
                 </Link>
               </li>
               <li>
-                <Link href="/tours/spiritual-ganges-varanasi-odyssey" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
-                  Varanasi Spiritual Odyssey
+                <Link href="/tours/varanasi-sacred-ganges-spiritual" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
+                  Varanasi Sacred Ganges
+                </Link>
+              </li>
+              <li>
+                <Link href="/tours/goa-portuguese-heritage-coastal-sanctuary" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
+                  Goa & Portuguese Coast
                 </Link>
               </li>
             </ul>
@@ -96,6 +101,11 @@ export default function Footer() {
               <li>
                 <Link href="/destinations/ranthambore" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
                   Ranthambore Wildlife
+                </Link>
+              </li>
+              <li>
+                <Link href="/destinations/varanasi" className="hover:text-primary-fixed transition-opacity duration-300 opacity-80 hover:opacity-100">
+                  Varanasi & Sacred Ganges
                 </Link>
               </li>
               <li>

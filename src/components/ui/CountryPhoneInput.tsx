@@ -147,8 +147,8 @@ export default function CountryPhoneInput({
           placeholder={placeholder}
           className={
             isUnderline
-              ? 'flex-1 h-full bg-transparent px-2.5 text-sm text-[#2A2421] placeholder:text-[#A8A096] placeholder:font-light focus:outline-none'
-              : 'flex-1 h-11 sm:h-12 bg-transparent px-3 text-sm text-[#1C1C1E] placeholder:text-[#686461]/60 focus:outline-none'
+              ? 'flex-1 h-full bg-transparent px-2.5 text-base sm:text-sm text-[#2A2421] placeholder:text-[#A8A096] placeholder:font-light focus:outline-none'
+              : 'flex-1 h-11 sm:h-12 bg-transparent px-3 text-base sm:text-sm text-[#1C1C1E] placeholder:text-[#686461]/60 focus:outline-none'
           }
         />
       </div>
@@ -167,7 +167,7 @@ export default function CountryPhoneInput({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search country or code..."
-              className="w-full bg-transparent text-xs text-[#1C1C1E] placeholder:text-[#686461]/60 focus:outline-none"
+              className="w-full bg-transparent text-base sm:text-xs text-[#1C1C1E] placeholder:text-[#686461]/60 focus:outline-none"
             />
           </div>
 

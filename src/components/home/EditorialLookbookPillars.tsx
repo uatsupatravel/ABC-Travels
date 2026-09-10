@@ -164,7 +164,7 @@ export default function EditorialLookbookPillars() {
                     src={pillar.image}
                     alt={pillar.title}
                     fill
-                    priority
+                    sizes="(max-width: 1024px) 100vw, 33vw"
                     className={`object-cover transition-all duration-700 ease-out ${
                       isSelected
                         ? 'opacity-100 scale-105 filter-none'
@@ -183,10 +183,6 @@ export default function EditorialLookbookPillars() {
 
                 {/* Pillar Content */}
                 <div className="relative z-10 space-y-3">
-                  <span className="font-label-caps text-[10px] tracking-widest uppercase text-alabaster-cream/80 block">
-                    {pillar.num} / {pillar.tag}
-                  </span>
-
                   <h3 className="font-headline-lg text-2xl sm:text-3xl text-alabaster-cream font-normal leading-tight drop-shadow-sm">
                     {pillar.title}
                   </h3>
@@ -251,6 +247,7 @@ export default function EditorialLookbookPillars() {
                   src={selectedPillarForModal.image}
                   alt={selectedPillarForModal.title}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 80vw"
                   priority
                   className="object-cover object-center"
                 />
@@ -267,9 +264,6 @@ export default function EditorialLookbookPillars() {
 
                 {/* Headline Overlay */}
                 <div className="absolute bottom-5 left-6 right-6 sm:bottom-6 sm:left-8 sm:right-8 text-white space-y-1.5">
-                  <span className="font-label-caps text-[10px] sm:text-xs tracking-[0.3em] uppercase text-secondary-container block">
-                    {selectedPillarForModal.num} / {selectedPillarForModal.tag}
-                  </span>
                   <h3 className="font-display-2xl text-2xl sm:text-3xl md:text-4xl text-alabaster-cream font-medium leading-tight drop-shadow-sm">
                     {selectedPillarForModal.title}
                   </h3>

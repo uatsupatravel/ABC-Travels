@@ -54,7 +54,7 @@ export default function AboutPage() {
             </h2>
 
             <p className="font-body-base text-slate-taupe text-sm sm:text-base leading-relaxed">
-              India is one of the most culturally profound and emotionally evocative lands on Earth. Yet for international travelers visiting from across the globe, planning a trip across the subcontinent often comes with unnecessary friction—impersonal mass-market bus tours, confusing logistics, and rigid commercial itineraries.
+              India is one of the most culturally profound and emotionally evocative lands on Earth. Yet for international travelers, planning a journey across the subcontinent can involve logistical friction, including rigid mass-market itineraries, indirect transit routing, and inconsistent service standards.
             </p>
 
             <p className="font-body-base text-slate-taupe text-sm sm:text-base leading-relaxed">
@@ -139,7 +139,7 @@ export default function AboutPage() {
                 Hand-Vetted Sanctuaries
               </h3>
               <p className="text-xs sm:text-sm text-slate-taupe leading-relaxed">
-                We personally inspect every hotel partner—from historic Taj & Oberoi palace suites to private spice plantation villas and boutique Himalayan glamping camps.
+                We personally inspect every partner property, from historic Taj and Oberoi palace suites to private spice plantation estates and high-altitude Himalayan camps.
               </p>
             </div>
 
@@ -282,10 +282,10 @@ export default function AboutPage() {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-ink-black font-semibold text-sm">
                 <CheckCircle2 className="w-4 h-4 text-bronze-hover" />
-                <span>Transparent Luxury Pricing</span>
+                <span>Transparent Direct Rates</span>
               </div>
               <p className="text-xs text-slate-taupe leading-relaxed">
-                Benefiting from India&apos;s purchasing power parity (PPP), we provide true 5-star palace luxury and executive transport at transparent, fair international rates.
+                Direct on-ground partnerships with royal heritage palaces, licensed naturalist teams, and private transport fleets ensure transparent pricing without hidden intermediary fees.
               </p>
             </div>
 

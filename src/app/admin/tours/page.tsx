@@ -56,7 +56,7 @@ export default function AdminToursPage() {
       id: 'tour-' + Date.now(),
       slug: 'new-luxury-journey-' + Date.now().toString().slice(-4),
       title: 'New Luxury Curated Journey',
-      subtitle: 'A bespoke private expedition through iconic heritage palaces and sanctuaries.',
+      subtitle: 'A curated private expedition through iconic heritage palaces and sanctuaries.',
       destination_name: 'Rajasthan',
       duration_days: 8,
       duration_nights: 7,
@@ -70,7 +70,7 @@ export default function AdminToursPage() {
       gallery: [
         '/images/tours/royal-odyssey/hero.jpg',
       ],
-      overview: 'Bespoke private luxury expedition crafted with white-glove logistics, legend palace hotels, and private scholar access.',
+      overview: 'Tailormade private luxury expedition crafted with white-glove logistics, legend palace hotels, and private scholar access.',
       highlights: [
         'VIP private sunrise monument access with senior historian',
         'Stay in premier 5-star legend palace suites',
@@ -129,7 +129,7 @@ export default function AdminToursPage() {
       day: nextDayNum,
       title: 'Day ' + nextDayNum + ' Exploration',
       location: prevLocation,
-      description: 'Private guided cultural excursions, bespoke culinary tastings, and unhurried palace relaxation.',
+      description: 'Private guided cultural excursions, curated culinary tastings, and unhurried palace relaxation.',
       stay: currentDays[currentDays.length - 1]?.stay || 'Legend Palace Suite',
       meals: 'Breakfast Included',
       highlights: ['Private Sightseeing'],
@@ -189,7 +189,7 @@ export default function AdminToursPage() {
             Tour Packages Catalog CMS & Price Editor
           </h1>
           <p className="text-muted-foreground text-xs mt-1">
-            Edit live pricing (USD/INR), adjust seasonal duration, add bespoke stops, and refine intercity transit legs.
+            Edit live pricing (USD/INR), adjust seasonal duration, add custom stops, and refine intercity transit legs.
           </p>
         </div>
 
@@ -530,7 +530,7 @@ export default function AdminToursPage() {
                         onClick={() =>
                           setEditingTour({
                             ...editingTour,
-                            highlights: [...(editingTour.highlights || []), 'New bespoke signature highlight'],
+                            highlights: [...(editingTour.highlights || []), 'New custom signature highlight'],
                           })
                         }
                         className="text-xs h-7 gap-1"

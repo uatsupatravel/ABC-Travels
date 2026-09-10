@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import {
@@ -227,7 +227,7 @@ export default function NoteModal({
                 <option value="warning">Compliance & Legal</option>
                 <option value="editorial">Editorial & Fact-Check</option>
                 <option value="bug">Design & Polish</option>
-                <option value="feature_idea">Bespoke Concept</option>
+                <option value="feature_idea">Custom Concept</option>
               </select>
             </div>
 

@@ -168,7 +168,7 @@ export default function AdminNotesPage() {
       case 'bug':
         return 'Design Fidelity';
       case 'feature_idea':
-        return 'Bespoke Concept';
+        return 'Custom Concept';
     }
   };
 
@@ -222,7 +222,7 @@ export default function AdminNotesPage() {
             Site Ledger & Asset Registry
           </h1>
           <p className="font-body-base text-slate-taupe text-xs sm:text-sm leading-relaxed max-w-2xl">
-            A private operational ledger to track visual assets, verify licensing and commissioned photography, coordinate third-party prerequisites, and uphold bespoke aesthetic fidelity across the platform.
+            A private operational ledger to track visual assets, verify licensing and commissioned photography, coordinate third-party prerequisites, and uphold signature aesthetic fidelity across the platform.
           </p>
         </div>
 

@@ -70,6 +70,7 @@ const AUTOPLAY_INTERVAL = 7500; // 7.5 seconds
 export default function GuestReflectionsSlider({ reviews }: { reviews?: any }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
+  const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const total = REVIEWS_DATA.length;
@@ -89,13 +90,14 @@ export default function GuestReflectionsSlider({ reviews }: { reviews?: any }) {
     setCurrentIndex(idx);
   };
 
-  // Effortless, silent autoplay
+  // Effortless, silent autoplay with pause on hover
   useEffect(() => {
+    if (isPaused) return;
     timerRef.current = setInterval(handleNext, AUTOPLAY_INTERVAL);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [currentIndex]);
+  }, [currentIndex, isPaused]);
 
   const current = REVIEWS_DATA[currentIndex];
 
@@ -115,8 +117,12 @@ export default function GuestReflectionsSlider({ reviews }: { reviews?: any }) {
           </p>
         </div>
 
-        {/* 2-Column Editorial Magazine Spread */}
-        <div className="bg-cream-container border border-silk-border rounded-2xl overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-12 min-h-[500px]">
+        {/* 2-Column Editorial Magazine Spread (Pauses autoplay while reading on hover) */}
+        <div
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          className="bg-cream-container border border-silk-border rounded-2xl overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-12 min-h-[500px]"
+        >
           {/* Left Column: Visual Proof / Atmosphere Photo */}
           <div className="lg:col-span-5 relative h-72 lg:h-auto min-h-[300px] overflow-hidden bg-ink-black">
             <AnimatePresence mode="wait">

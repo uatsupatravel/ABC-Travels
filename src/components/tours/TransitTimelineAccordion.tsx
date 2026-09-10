@@ -249,16 +249,16 @@ export default function TransitTimelineAccordion({ tour }: TransitTimelineAccord
 
                       {day.highlights && day.highlights.length > 0 && (
                         <div className="space-y-1.5 pt-1">
-                          <span className="text-[10px] uppercase font-bold text-muted-foreground block">
+                          <span className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground/90 block font-label-caps">
                             Day Highlights
                           </span>
                           <div className="flex flex-wrap gap-1.5">
                             {day.highlights.map((h, i) => (
                               <span
                                 key={i}
-                                className="text-[11px] bg-secondary px-2.5 py-1 rounded text-secondary-foreground font-medium flex items-center gap-1.5"
+                                className="text-[11px] font-medium bg-muted/70 hover:bg-muted text-foreground border border-border/80 px-2.5 py-1 rounded-md flex items-center gap-1.5 transition-colors shadow-2xs"
                               >
-                                <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
+                                <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                                 <span>{h}</span>
                               </span>
                             ))}

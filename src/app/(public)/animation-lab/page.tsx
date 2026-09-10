@@ -302,7 +302,7 @@ function MockInvitationSection({
         </h2>
 
         <p className="font-body-base text-slate-taupe text-sm sm:text-base leading-relaxed">
-          India is not merely a destination—it is a tapestry of royal lineages, sacred river ghats, mist-cloaked mountain monasteries, and secluded palm sanctuaries.
+          The Indian subcontinent encompasses an extraordinary breadth of geography and living history, where centuries-old palace lineages, dawn river rituals along sacred ghats, and high Himalayan valleys exist in parallel rhythms.
         </p>
 
         <p className="font-body-base text-slate-taupe text-xs sm:text-sm leading-relaxed">

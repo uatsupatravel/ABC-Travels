@@ -35,7 +35,7 @@ export async function sendInquiryNotificationEmail(inquiry: Inquiry): Promise<bo
 
   if (!transporter) {
     console.log(
-      `[SMTP Notice]: Inquiry #${inquiry.id} received for "${inquiry.traveler_name}". (SMTP credentials not yet configured in .env.local — skipping automatic email).`
+      `[SMTP Notice]: Inquiry #${inquiry.id} received for "${inquiry.traveler_name}". (SMTP credentials not yet configured in .env.local; skipping automatic email).`
     );
     return false;
   }
@@ -75,7 +75,7 @@ export async function sendInquiryNotificationEmail(inquiry: Inquiry): Promise<bo
       <body>
         <div class="container">
           <div class="header">
-            <h1>ABC Travels — Concierge Desk</h1>
+            <h1>ABC Travels: Concierge Desk</h1>
             <p>New Inbound Custom Lead Captured</p>
           </div>
           <div class="content">
@@ -153,7 +153,7 @@ export async function sendInquiryNotificationEmail(inquiry: Inquiry): Promise<bo
     await transporter.sendMail({
       from: `"ABC Travels Concierge" <${process.env.SMTP_USER}>`,
       to: recipient,
-      subject: `🚨 New Luxury Travel Inquiry: ${inquiry.traveler_name} (${inquiry.country}) — ${inquiry.tour_title || 'Custom Route'}`,
+      subject: `🚨 New Luxury Travel Inquiry: ${inquiry.traveler_name} (${inquiry.country}) | ${inquiry.tour_title || 'Custom Route'}`,
       html: htmlContent,
     });
     console.log(`[SMTP Success]: Notification email sent to ${recipient} for inquiry #${inquiry.id}`);

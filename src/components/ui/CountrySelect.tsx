@@ -108,7 +108,7 @@ export default function CountrySelect({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search country..."
-              className="w-full bg-transparent text-xs text-[#1C1C1E] placeholder:text-[#686461]/60 focus:outline-none"
+              className="w-full bg-transparent text-base sm:text-xs text-[#1C1C1E] placeholder:text-[#686461]/60 focus:outline-none"
             />
           </div>
 

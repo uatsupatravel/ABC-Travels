@@ -8,7 +8,7 @@ import CountryPhoneInput from '@/components/ui/CountryPhoneInput';
 import { COUNTRIES } from '@/lib/constants/countries';
 import { X, Check, Loader2 } from 'lucide-react';
 
-interface BespokeCallbackModalProps {
+interface ConciergeCallbackModalProps {
   tour: Tour | null;
   isOpen: boolean;
   onClose: () => void;
@@ -28,7 +28,7 @@ const TIME_WINDOWS = [
   { id: 'evening', label: 'Evening', subtext: '5pm – 9pm' },
 ];
 
-export default function BespokeCallbackModal({ tour, isOpen, onClose }: BespokeCallbackModalProps) {
+export default function ConciergeCallbackModal({ tour, isOpen, onClose }: ConciergeCallbackModalProps) {
   const [mounted, setMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);

@@ -26,6 +26,29 @@ interface TourDetailPageProps {
   }>;
 }
 
+export async function generateMetadata({ params }: TourDetailPageProps) {
+  const { slug } = await params;
+  const tour = await getTourBySlug(slug);
+  if (!tour) return { title: 'Tour Not Found | ABC Travels' };
+
+  return {
+    title: `${tour.title} | ABC Travels Luxury India`,
+    description: tour.subtitle || tour.overview?.slice(0, 160),
+    openGraph: {
+      title: tour.title,
+      description: tour.subtitle,
+      images: [{ url: tour.hero_image, width: 1200, height: 630, alt: tour.title }],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: tour.title,
+      description: tour.subtitle,
+      images: [tour.hero_image],
+    },
+  };
+}
+
 export default async function TourDetailPage({ params }: TourDetailPageProps) {
   const { slug } = await params;
   const tour = await getTourBySlug(slug);
@@ -37,8 +60,36 @@ export default async function TourDetailPage({ params }: TourDetailPageProps) {
   const allTours = await getTours();
   const relatedTours = allTours.filter((t) => t.id !== tour.id).slice(0, 2);
 
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TouristTrip',
+    name: tour.title,
+    description: tour.subtitle,
+    touristType: ['Luxury Travelers', 'Private Expeditions'],
+    offers: {
+      '@type': 'Offer',
+      price: tour.price_usd,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
+    itinerary: {
+      '@type': 'ItemList',
+      numberOfItems: tour.itinerary.length,
+      itemListElement: tour.itinerary.map((day, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        name: day.title,
+        description: day.description,
+      })),
+    },
+  };
+
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-24 pb-28 lg:pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }}
+      />
       {/* 1. HERO GALLERY SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
         {/* Breadcrumbs */}

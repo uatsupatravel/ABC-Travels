@@ -1,10 +1,10 @@
-﻿import { SiteNote, PagePreset } from '@/types/site-notes';
+import { SiteNote, PagePreset } from '@/types/site-notes';
 
 export const PAGE_PRESETS: PagePreset[] = [
   // Core Public Portals
   { path: '/', label: 'Homepage', group: 'Core Portals' },
   { path: '/about', label: 'Our Story & Philosophy', group: 'Core Portals' },
-  { path: '/plan-your-trip', label: 'Bespoke Itinerary Planning Wizard', group: 'Core Portals' },
+  { path: '/plan-your-trip', label: 'Custom Itinerary Planning Wizard', group: 'Core Portals' },
   { path: '/contact', label: 'Concierge Direct Channel', group: 'Core Portals' },
   { path: '/destinations', label: 'Subcontinent Destinations Directory', group: 'Core Portals' },
   { path: '/tours', label: 'Curated Portfolios Directory', group: 'Core Portals' },

@@ -205,7 +205,7 @@ Dear ${selectedInquiry.traveler_name},
 
 Thank you for contacting our New Delhi Concierge Desk. It is our absolute pleasure to present your curated private proposal for:
 
-🏛️ *Journey:* ${selectedInquiry.tour_title || 'Bespoke India Custom Tour'}
+🏛️ *Journey:* ${selectedInquiry.tour_title || 'Tailormade Private India Tour'}
 ⏳ *Duration:* ${selectedInquiry.duration_days || 10} Days / ${(selectedInquiry.duration_days || 10) - 1} Nights
 👥 *Party:* ${guests} Travelers (${selectedInquiry.country})
 📅 *Proposed Departure:* ${selectedInquiry.departure_date ? formatDate(selectedInquiry.departure_date) : 'Flexible Dates / Season of Choice'}
@@ -245,10 +245,10 @@ Email: concierge@abctravels.com`;
 
 Greetings from ABC Travels New Delhi.
 
-Following your recent travel inquiry, our Senior Concierge has crafted a personalized bespoke proposal for your upcoming journey across India.
+Following your recent travel inquiry, our Senior Concierge has crafted a personalized custom proposal for your upcoming journey across India.
 
 ==================================================
-JOURNEY OVERVIEW: ${selectedInquiry.tour_title || 'Bespoke Tailormade Journey'}
+JOURNEY OVERVIEW: ${selectedInquiry.tour_title || 'Tailormade Private Journey'}
 ==================================================
 • Duration: ${selectedInquiry.duration_days || 10} Days
 • Guests: ${guests} Travelers
@@ -625,7 +625,7 @@ Email: concierge@abctravels.com`;
                 </div>
               )}
 
-              {/* TAB 2: 1-CLICK BESPOKE PROPOSAL GENERATOR */}
+              {/* TAB 2: 1-CLICK TAILORMADE PROPOSAL GENERATOR */}
               {modalTab === 'proposal' && (
                 <div className="space-y-5 text-xs">
                   {/* Proposal Controls */}

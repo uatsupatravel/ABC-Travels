@@ -17,6 +17,11 @@ export async function POST(req: NextRequest) {
         ? payload.special_requests.trim()
         : null;
 
+    const isUuid =
+      typeof payload.tour_id === 'string' &&
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(payload.tour_id);
+    const dbTourId = isUuid ? payload.tour_id : null;
+
     // Use the Service Role Key to bypass RLS, because this is an unauthenticated public submission
     const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -27,7 +32,7 @@ export async function POST(req: NextRequest) {
       .from('inquiries')
       .insert([
         {
-          tour_id: payload.tour_id || null,
+          tour_id: dbTourId,
           tour_title: payload.tour_title || 'Custom India Tailormade Journey',
           traveler_name: payload.traveler_name,
           email: payload.email,
@@ -40,6 +45,7 @@ export async function POST(req: NextRequest) {
           travel_styles: payload.travel_styles || [],
           special_requests: cleanSpecialRequests,
           status: 'NEW',
+          admin_notes: !isUuid && payload.tour_id ? `Catalog Tour: ${payload.tour_id}` : null,
         },
       ])
       .select();
@@ -47,7 +53,7 @@ export async function POST(req: NextRequest) {
     if (error || !data || data.length === 0) {
       console.error('[Supabase Insert Error]:', error);
       return NextResponse.json(
-        { success: false, message: 'Database insertion failed' },
+        { success: false, message: 'Database insertion failed', details: error },
         { status: 500 }
       );
     }

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Tour } from '@/types';
 import { Card } from '@/components/ui/Card';
 import { CheckCircle2, MessageCircle, PhoneCall } from 'lucide-react';
-import BespokeCallbackModal from './BespokeCallbackModal';
+import ConciergeCallbackModal from './ConciergeCallbackModal';
 
 interface TourConciergeCardProps {
   tour: Tour;
@@ -105,8 +105,8 @@ export default function TourConciergeCard({ tour }: TourConciergeCardProps) {
         </div>
       </Card>
 
-      {/* Bespoke Callback Modal */}
-      <BespokeCallbackModal
+      {/* Concierge Callback Modal */}
+      <ConciergeCallbackModal
         tour={tour}
         isOpen={isCallbackOpen}
         onClose={() => setIsCallbackOpen(false)}

@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
               ABC Travels (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) is an inbound luxury Destination Management Company (DMC) headquartered in New Delhi, India. We warmly welcome and serve discerning travelers from every continent and nation across the globe.
             </p>
             <p>
-              To ensure the highest standard of international transparency and security, our data governance practices are built to align with leading global privacy benchmarks—including the General Data Protection Regulation (EU/UK GDPR), the California Consumer Privacy Act (CCPA), and India&apos;s Digital Personal Data Protection Act (DPDP Act 2023). We extend these comprehensive privacy protections universally to all our guests, regardless of where in the world you reside.
+              To ensure the highest standard of international transparency and security, our data governance practices are built to align with leading global privacy benchmarks, including the General Data Protection Regulation (EU/UK GDPR), the California Consumer Privacy Act (CCPA), and India&apos;s Digital Personal Data Protection Act (DPDP Act 2023). We extend these comprehensive privacy protections universally to all our guests, regardless of where in the world you reside.
             </p>
           </section>
 

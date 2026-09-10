@@ -26,11 +26,11 @@ interface InteractiveRouteMapProps {
   tour: Tour;
 }
 
-// REGIONAL PRESETS — Strictly Non-Collinear Geometry with Generous Canvas Breathing Room
+// REGIONAL PRESETS: Strictly Non-Collinear Geometry with Generous Canvas Breathing Room
 interface RegionConfig {
   name: string;
   viewBox: string;
-  terrainType: 'rajasthan' | 'kerala' | 'ladakh' | 'central' | 'ganges';
+  terrainType: 'rajasthan' | 'kerala' | 'ladakh' | 'central' | 'ganges' | 'goa';
   cities: Record<string, { x: number; y: number; labelPos: 'top' | 'bottom' | 'left' | 'right' }>;
 }
 
@@ -90,6 +90,18 @@ const REGION_CONFIGS: Record<string, RegionConfig> = {
       Sarnath: { x: 82, y: 48, labelPos: 'top' },
     },
   },
+  goa: {
+    name: 'Goa & Portuguese Coastal Estuaries',
+    viewBox: '-12 -10 124 120',
+    terrainType: 'goa',
+    cities: {
+      Nerul: { x: 34, y: 24, labelPos: 'left' },
+      Panaji: { x: 48, y: 38, labelPos: 'right' },
+      'Old Goa': { x: 74, y: 34, labelPos: 'right' },
+      Benaulim: { x: 38, y: 80, labelPos: 'left' },
+      'Goa Airport': { x: 54, y: 58, labelPos: 'right' },
+    },
+  },
 };
 
 export default function InteractiveRouteMap({ tour }: InteractiveRouteMapProps) {
@@ -105,6 +117,7 @@ export default function InteractiveRouteMap({ tour }: InteractiveRouteMapProps) 
     if (slug.includes('ladakh') || slug.includes('himalaya') || slug.includes('leh') || slug.includes('nubra')) return 'ladakh';
     if (slug.includes('ranthambore') || slug.includes('tiger') || slug.includes('wildlife')) return 'central';
     if (slug.includes('varanasi') || slug.includes('ganges')) return 'ganges';
+    if (slug.includes('goa') || slug.includes('portuguese') || slug.includes('konkan')) return 'goa';
     return 'rajasthan';
   }, [tour.slug, tour.destination_name]);
 
@@ -118,6 +131,12 @@ export default function InteractiveRouteMap({ tour }: InteractiveRouteMapProps) 
   };
 
   const matchCity = (locationStr: string): string | null => {
+    const destTarget = getCleanCity(locationStr).toLowerCase();
+    for (const city of Object.keys(regionConfig.cities)) {
+      if (destTarget.includes(city.toLowerCase())) {
+        return city;
+      }
+    }
     for (const city of Object.keys(regionConfig.cities)) {
       if (locationStr.toLowerCase().includes(city.toLowerCase())) {
         return city;
@@ -323,7 +342,7 @@ export default function InteractiveRouteMap({ tour }: InteractiveRouteMapProps) 
 
       {/* STRICT FIXED-HEIGHT 2-COLUMN BODY (ZERO VERTICAL JUMPING BETWEEN SLIDES) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:h-[460px]">
-        {/* BESPOKE REGIONAL EDITORIAL VECTOR CANVAS */}
+        {/* CURATED REGIONAL EDITORIAL VECTOR CANVAS */}
         <div className="lg:col-span-7 relative h-[360px] lg:h-full bg-[#0c121e] p-6 sm:p-8 flex items-center justify-center overflow-hidden select-none">
           {/* Subtle Grid Pattern */}
           <div
@@ -384,6 +403,18 @@ export default function InteractiveRouteMap({ tour }: InteractiveRouteMapProps) 
               </g>
             )}
 
+            {regionConfig.terrainType === 'goa' && (
+              <g opacity="0.22" stroke="rgba(147, 197, 253, 0.55)" fill="none" strokeWidth="0.9">
+                {/* Coastal Arabian Sea Curvature */}
+                <path d="M 28 6 Q 24 36 30 64 T 35 110" stroke="rgba(147, 197, 253, 0.7)" strokeWidth="1.6" />
+                {/* Mandovi & Zuari River Estuaries */}
+                <path d="M 31 34 Q 52 36 78 32" stroke="rgba(147, 197, 253, 0.6)" strokeWidth="1.3" strokeDasharray="3 2" />
+                <path d="M 34 54 Q 54 58 84 62" stroke="rgba(147, 197, 253, 0.5)" strokeWidth="1.1" strokeDasharray="2 3" />
+                {/* Western Ghats foothills contour */}
+                <path d="M 78 12 Q 88 50 82 98" strokeDasharray="3 3" opacity="0.15" stroke="rgba(255,255,255,0.4)" />
+              </g>
+            )}
+
             {/* ROUTE LEGS: ONLY ILLUMINATED WHEN ACTUALLY TRAVELED UP TO THIS DAY */}
             {routeLegs.map((leg, i) => {
               const fromPos = regionConfig.cities[leg.from] || { x: 50, y: 50 };
@@ -404,6 +435,14 @@ export default function InteractiveRouteMap({ tour }: InteractiveRouteMapProps) 
                 controlX = 28; controlY = 60;
               } else if (leg.from === 'Udaipur' && leg.to === 'Delhi') {
                 controlX = 4; controlY = 40;
+              } else if (leg.from === 'Nerul' && leg.to === 'Panaji') {
+                controlX = 38; controlY = 28;
+              } else if (leg.from === 'Panaji' && leg.to === 'Old Goa') {
+                controlX = 62; controlY = 32;
+              } else if (leg.from === 'Old Goa' && leg.to === 'Benaulim') {
+                controlX = 62; controlY = 62;
+              } else if (leg.from === 'Benaulim' && leg.to === 'Goa Airport') {
+                controlX = 42; controlY = 70;
               } else {
                 controlX = (fromPos.x + toPos.x) / 2 + (leg.isFlight ? -16 : (i % 2 === 0 ? 6 : -6));
                 controlY = (fromPos.y + toPos.y) / 2 + (leg.isFlight ? -8 : -4);
@@ -428,7 +467,7 @@ export default function InteractiveRouteMap({ tour }: InteractiveRouteMapProps) 
                     strokeWidth="1.2"
                   />
 
-                  {/* Golden Glowing Vector — ONLY WHEN TRAVELED ON OR BEFORE THIS DAY */}
+                  {/* Golden Glowing Vector: ONLY WHEN TRAVELED ON OR BEFORE THIS DAY */}
                   {isTraveled && (
                     <path
                       d={pathD}
@@ -440,7 +479,7 @@ export default function InteractiveRouteMap({ tour }: InteractiveRouteMapProps) 
                     />
                   )}
 
-                  {/* Airplane Glyph — ONLY APPEARS ONCE THE FLIGHT LEG HAS ACTUALLY OCCURRED */}
+                  {/* Airplane Glyph: ONLY APPEARS ONCE THE FLIGHT LEG HAS ACTUALLY OCCURRED */}
                   {leg.isFlight && isTraveled && (
                     <g transform={`translate(${glyphX}, ${glyphY})`}>
                       <circle r="3.2" fill="#0c121e" stroke="#d4af37" strokeWidth="0.8" />
@@ -459,7 +498,7 @@ export default function InteractiveRouteMap({ tour }: InteractiveRouteMapProps) 
               );
             })}
 
-            {/* DESTINATION PINS — Clean dots + city names */}
+            {/* DESTINATION PINS: Clean dots + city names */}
             {cityPins.map((pin) => {
               const isActive = pin.city === currentCityName;
               // A pin is marked visited if its segment was reached on or before this day
@@ -575,7 +614,7 @@ export default function InteractiveRouteMap({ tour }: InteractiveRouteMapProps) 
               {activeDay.highlights.slice(0, 3).map((highlight, hIdx) => (
                 <span
                   key={hIdx}
-                  className="text-[10px] bg-secondary/80 text-secondary-foreground font-medium px-2 py-0.5 rounded flex items-center gap-1 border border-border/50"
+                  className="text-[10px] bg-muted/80 text-foreground font-medium px-2 py-0.5 rounded-md flex items-center gap-1 border border-border/80 shadow-2xs"
                 >
                   <span className="w-1 h-1 rounded-full bg-accent inline-block shrink-0" />
                   <span>{highlight}</span>

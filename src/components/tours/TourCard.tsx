@@ -81,7 +81,7 @@ export default function TourCard({ tour, onContactSpecialist }: TourCardProps) {
           </div>
         </div>
 
-        {/* CTA Footer (Bespoke Private Journeys) */}
+        {/* CTA Footer (Tailormade Private Journeys) */}
         <div className="pt-4 border-t border-silk-border mt-auto">
           <div className="grid grid-cols-2 gap-2.5">
             {onContactSpecialist && (

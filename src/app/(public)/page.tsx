@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import TourCard from '@/components/tours/TourCard';
 import ContactSpecialistDialog from '@/components/inquiry/ContactSpecialistDialog';
 import HeroSlider from '@/components/home/HeroSlider';
@@ -41,16 +41,24 @@ export default function HomePage() {
     offset: ['start start', 'end start'],
   });
 
-  // Section 2: Dual-Axis Asymmetric Parallax Transforms
+  // Section 2: Smooth Asymmetric Parallax with Spring Physics
   const welcomeRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: welcomeScrollY } = useScroll({
     target: welcomeRef,
     offset: ['start end', 'end start'],
   });
 
-  const leftPhotoY = useTransform(welcomeScrollY, [0, 1], ['25px', '-35px']);
-  const rightPhotoY = useTransform(welcomeScrollY, [0, 1], ['-25px', '45px']);
-  const badgeScale = useTransform(welcomeScrollY, [0, 0.5, 1], [0.95, 1.05, 0.95]);
+  // Spring smoothing absorbs Windows mouse-wheel stepping for 60fps/120fps fluid glide
+  const smoothWelcomeScroll = useSpring(welcomeScrollY, {
+    stiffness: 90,
+    damping: 26,
+    mass: 0.4,
+    restDelta: 0.001,
+  });
+
+  // Pure numeric transforms (hardware accelerated on GPU, no string parsing)
+  const leftPhotoY = useTransform(smoothWelcomeScroll, [0, 1], [20, -25]);
+  const rightPhotoY = useTransform(smoothWelcomeScroll, [0, 1], [-15, 30]);
 
   useEffect(() => {
     async function loadInitialData() {
@@ -215,7 +223,7 @@ export default function HomePage() {
                   transition={{ duration: 0.8, delay: 0.15 }}
                   className="font-body-base text-slate-taupe text-base sm:text-lg leading-relaxed"
                 >
-                  India is not merely a destination—it is a tapestry of royal lineages, sacred river ghats, mist-cloaked mountain monasteries, and secluded palm sanctuaries.
+                  The Indian subcontinent encompasses an extraordinary breadth of geography and living history, where centuries-old palace lineages, dawn river rituals along sacred ghats, and high Himalayan valleys exist in parallel rhythms.
                 </motion.p>
 
                 <motion.p
@@ -225,7 +233,7 @@ export default function HomePage() {
                   transition={{ duration: 0.8, delay: 0.3 }}
                   className="font-body-base text-slate-taupe text-sm sm:text-base leading-relaxed"
                 >
-                  At ABC Travels, we invite you to experience the subcontinent unhurried and elevated. Far from crowded tour buses, we orchestrate intimate encounters: dining under lantern-lit palace ramparts, tracing Bengal tigers through dawn mist with veteran naturalists, and sleeping in original royal chambers where maharajas once hosted world royalty.
+                  At ABC Travels, we curate private, unhurried journeys shaped around personal comfort and genuine cultural depth. Operating from our headquarters in New Delhi, we coordinate private suites in historic residences, wildlife safaris led by dedicated field naturalists, and privileged access to private palace collections across the country.
                 </motion.p>
 
                 <motion.div
@@ -247,92 +255,92 @@ export default function HomePage() {
                 </motion.div>
               </div>
 
-              {/* Cinematic Warm Light Sweep & Film Shimmer Image Pairing */}
+              {/* Asymmetric Magazine Image Pairing (Style 5: Cinematic Warm Light Sweep & Film Shimmer) */}
               <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4 relative py-4 sm:py-6">
-                {/* Left Column: Taj Balcony */}
+                {/* Left Column: Taj Balcony (Card Elevation + Spring-Damped Glide + Golden Dawn Light Sweep) */}
                 <motion.div
                   style={{ y: leftPhotoY }}
-                  initial={{ opacity: 0, y: 35 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                  className="space-y-3 sm:space-y-4"
+                  className="will-change-transform transform-gpu"
                 >
-                  <div className="relative h-56 sm:h-72 rounded-lg overflow-hidden border border-silk-border shadow-sm group bg-surface-dim">
-                    <Image
-                      src="/images/welcome/taj-balcony-sunrise.jpg"
-                      alt="Taj Mahal Balcony View"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-
-                    {/* Cinematic Golden Sun Flare Light Sweep */}
-                    <motion.div
-                      initial={{ x: '-160%', opacity: 0.9 }}
-                      whileInView={{ x: '160%', opacity: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.4, ease: 'easeOut', delay: 0.2 }}
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/40 to-transparent skew-x-12 pointer-events-none z-10"
-                    />
-                  </div>
-
-                  {/* Accompanying Stat Badge */}
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.35 }}
-                    style={{ scale: badgeScale }}
-                    className="p-3 sm:p-4 bg-cream-container border border-silk-border rounded-lg text-center shadow-xs"
+                    initial={{ opacity: 0, y: 32 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                    className="space-y-3 sm:space-y-4"
                   >
-                    <span className="font-serif text-xl sm:text-2xl text-ink-black font-bold block">100%</span>
-                    <span className="font-label-caps text-[9px] sm:text-[10px] text-slate-taupe tracking-wider uppercase">
-                      Private Custom Journeys
-                    </span>
+                    <div className="relative h-56 sm:h-72 rounded-lg overflow-hidden border border-silk-border shadow-sm group bg-surface-dim">
+                      <Image
+                        src="/images/welcome/taj-balcony-sunrise.jpg"
+                        alt="Taj Mahal Balcony View at Dawn"
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                      {/* Subtle Ambient Vignette */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink-black/25 via-transparent to-transparent pointer-events-none" />
+
+                      {/* Style 5: Cinematic Warm Light Sweep & Film Shimmer (Dawn Breaking Flare) */}
+                      <motion.div
+                        initial={{ x: '-160%', opacity: 0.95 }}
+                        whileInView={{ x: '160%', opacity: 0 }}
+                        viewport={{ once: true, margin: '-60px' }}
+                        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/55 via-50% via-[#FEDEB1]/65 to-transparent skew-x-12 pointer-events-none transform-gpu will-change-transform z-10"
+                      />
+                    </div>
+
+                    {/* Accompanying Stat Badge */}
+                    <div className="p-3 sm:p-4 bg-cream-container border border-silk-border rounded-lg text-center shadow-xs">
+                      <span className="font-serif text-xl sm:text-2xl text-ink-black font-bold block">100%</span>
+                      <span className="font-label-caps text-[9px] sm:text-[10px] text-slate-taupe tracking-wider uppercase">
+                        Private Custom Journeys
+                      </span>
+                    </div>
                   </motion.div>
                 </motion.div>
 
-                {/* Right Column: Kerala Backwaters */}
+                {/* Right Column: Kerala Backwaters (Card Elevation + Spring-Damped Counter-Glide + Staggered Golden Sweep) */}
                 <motion.div
                   style={{ y: rightPhotoY }}
-                  initial={{ opacity: 0, y: 35 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="space-y-3 sm:space-y-4 pt-6 sm:pt-8"
+                  className="pt-6 sm:pt-8 will-change-transform transform-gpu"
                 >
-                  {/* Accompanying Dark Stat Badge */}
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.45 }}
-                    style={{ scale: badgeScale }}
-                    className="p-3 sm:p-4 bg-ink-black text-alabaster-cream border border-silk-border rounded-lg text-center shadow-md"
+                    initial={{ opacity: 0, y: 32 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                    className="space-y-3 sm:space-y-4"
                   >
-                    <span className="font-serif text-xl sm:text-2xl text-secondary-container font-bold block">24/7</span>
-                    <span className="font-label-caps text-[9px] sm:text-[10px] text-white/70 tracking-wider uppercase">
-                      On-Ground Concierge
-                    </span>
+                    {/* Accompanying Dark Stat Badge */}
+                    <div className="p-3 sm:p-4 bg-ink-black text-alabaster-cream border border-silk-border rounded-lg text-center shadow-md">
+                      <span className="font-serif text-xl sm:text-2xl text-secondary-container font-bold block">24/7</span>
+                      <span className="font-label-caps text-[9px] sm:text-[10px] text-white/70 tracking-wider uppercase">
+                        On-Ground Concierge
+                      </span>
+                    </div>
+
+                    <div className="relative h-56 sm:h-72 rounded-lg overflow-hidden border border-silk-border shadow-sm group bg-surface-dim">
+                      <Image
+                        src="/images/welcome/backwaters-twilight.jpg"
+                        alt="Kerala Backwaters Palm Trees at Twilight"
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                      {/* Subtle Ambient Vignette */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink-black/25 via-transparent to-transparent pointer-events-none" />
+
+                      {/* Style 5: Cinematic Warm Light Sweep & Film Shimmer (Dawn Breaking Flare) */}
+                      <motion.div
+                        initial={{ x: '-160%', opacity: 0.95 }}
+                        whileInView={{ x: '160%', opacity: 0 }}
+                        viewport={{ once: true, margin: '-60px' }}
+                        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/55 via-50% via-[#FEDEB1]/65 to-transparent skew-x-12 pointer-events-none transform-gpu will-change-transform z-10"
+                      />
+                    </div>
                   </motion.div>
-
-                  <div className="relative h-56 sm:h-72 rounded-lg overflow-hidden border border-silk-border shadow-sm group bg-surface-dim">
-                    <Image
-                      src="/images/welcome/backwaters-twilight.jpg"
-                      alt="Kerala Backwaters Palm Trees"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-
-                    {/* Cinematic Golden Sun Flare Light Sweep */}
-                    <motion.div
-                      initial={{ x: '-160%', opacity: 0.9 }}
-                      whileInView={{ x: '160%', opacity: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.4, ease: 'easeOut', delay: 0.4 }}
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/40 to-transparent skew-x-12 pointer-events-none z-10"
-                    />
-                  </div>
                 </motion.div>
               </div>
             </div>
@@ -345,20 +353,20 @@ export default function HomePage() {
         <EditorialLookbookPillars />
 
         {/* ========================================================================= */}
-        {/* 4. THE FOUR REALMS OF THE SUBCONTINENT (VISUAL CHAPTERS)                   */}
+        {/* 4. THE SIX REALMS OF THE SUBCONTINENT (VISUAL CHAPTERS)                   */}
         {/* ========================================================================= */}
         <section id="realms" className="w-full py-24 px-margin-mobile md:px-margin-desktop bg-alabaster-cream border-b border-silk-border">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-6">
               <div className="max-w-2xl space-y-3">
                 <span className="font-label-caps text-xs tracking-[0.3em] uppercase text-bronze-hover block">
-                  Geographic Contrast
+                  Geographic Diversity
                 </span>
                 <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-ink-black">
-                  The Four Realms of India
+                  The Six Realms of India
                 </h2>
                 <p className="font-body-base text-slate-taupe text-sm sm:text-base">
-                  From high alpine serenity to tropical backwaters and royal desert kingdoms.
+                  From high alpine passes and tiger sanctuaries to sacred river ghats, royal palaces, and serene Portuguese coastlines.
                 </p>
               </div>
 
@@ -370,16 +378,17 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Realm 1: Rajasthan & North India */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Realm 1: Rajasthan & North India (Wide Feature) */}
               <Link
                 href="/destinations/rajasthan"
-                className="group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
+                className="lg:col-span-2 group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
               >
                 <Image
-                  src="/images/realms/rajasthan-amber-fort.jpg"
-                  alt="Rajasthan Fortresses"
+                  src="/images/realms/amber-fort-jaipur.jpg"
+                  alt="Amber Fort Jaipur Courtyard"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 60vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-black/90 via-ink-black/40 to-transparent" />
@@ -390,7 +399,7 @@ export default function HomePage() {
                   <h3 className="font-serif text-2xl sm:text-3xl text-white font-medium group-hover:text-secondary-container transition-colors">
                     Royal Rajasthan & The Golden Triangle
                   </h3>
-                  <p className="text-white/80 font-body-base text-xs sm:text-sm max-w-md line-clamp-2 leading-relaxed">
+                  <p className="text-white/80 font-body-base text-xs sm:text-sm max-w-lg line-clamp-2 leading-relaxed">
                     Centuries-old fortress walls, private lakeside palace dining, vibrant bazaars, and aristocratic heritage suites.
                   </p>
                   <div className="pt-2 flex items-center gap-2 font-label-caps text-xs uppercase tracking-widest text-secondary-container">
@@ -403,12 +412,13 @@ export default function HomePage() {
               {/* Realm 2: High Himalayas & Ladakh */}
               <Link
                 href="/destinations/ladakh"
-                className="group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
+                className="lg:col-span-1 group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
               >
                 <Image
                   src="/images/realms/ladakh-himalayas-pass.jpg"
                   alt="Ladakh Himalayas"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 30vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-black/90 via-ink-black/40 to-transparent" />
@@ -429,15 +439,76 @@ export default function HomePage() {
                 </div>
               </Link>
 
-              {/* Realm 3: Emerald South & Kerala */}
+              {/* Realm 3: Sacred Ganges & Timeless Varanasi */}
+              <Link
+                href="/destinations/varanasi"
+                className="lg:col-span-1 group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
+              >
+                <Image
+                  src="/images/destinations/varanasi/sunrise-boat-ghats.jpg"
+                  alt="Sacred Ganges Dawn Boat Glide"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 30vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-black/90 via-ink-black/40 to-transparent" />
+                <div className="relative z-10 space-y-2">
+                  <Badge variant="secondary" className="bg-white/20 backdrop-blur-md text-white border-0 text-[10px] uppercase tracking-widest font-label-caps">
+                    Spiritual & Antiquity
+                  </Badge>
+                  <h3 className="font-serif text-2xl sm:text-3xl text-white font-medium group-hover:text-secondary-container transition-colors">
+                    Sacred Ganges & Timeless Varanasi
+                  </h3>
+                  <p className="text-white/80 font-body-base text-xs sm:text-sm max-w-md line-clamp-2 leading-relaxed">
+                    Dawn wooden boat glides along the ancient 84 ghats, private riverfront evening Aarti vantage points, and 3rd-century Buddhist heritage at Sarnath.
+                  </p>
+                  <div className="pt-2 flex items-center gap-2 font-label-caps text-xs uppercase tracking-widest text-secondary-container">
+                    <span>Explore Itineraries</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+
+              {/* Realm 4: Central India & Tiger Sanctuaries */}
+              <Link
+                href="/destinations/ranthambore"
+                className="lg:col-span-1 group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
+              >
+                <Image
+                  src="/images/realms/ranthambore-tiger-wild.jpg"
+                  alt="Royal Bengal Tiger Safari"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 30vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-black/90 via-ink-black/40 to-transparent" />
+                <div className="relative z-10 space-y-2">
+                  <Badge variant="secondary" className="bg-white/20 backdrop-blur-md text-white border-0 text-[10px] uppercase tracking-widest font-label-caps">
+                    Wildlife & Safaris
+                  </Badge>
+                  <h3 className="font-serif text-2xl sm:text-3xl text-white font-medium group-hover:text-secondary-container transition-colors">
+                    Central India & Tiger Sanctuaries
+                  </h3>
+                  <p className="text-white/80 font-body-base text-xs sm:text-sm max-w-md line-clamp-2 leading-relaxed">
+                    Exclusive open-top 4x4 jungle expeditions through ancient banyan forests, led by veteran naturalists in premier national parks.
+                  </p>
+                  <div className="pt-2 flex items-center gap-2 font-label-caps text-xs uppercase tracking-widest text-secondary-container">
+                    <span>Explore Itineraries</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+
+              {/* Realm 5: Emerald South & Kerala */}
               <Link
                 href="/destinations/kerala"
-                className="group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
+                className="lg:col-span-1 group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
               >
                 <Image
                   src="/images/realms/kerala-tea-backwaters.jpg"
                   alt="Kerala Backwaters"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 30vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-black/90 via-ink-black/40 to-transparent" />
@@ -458,27 +529,28 @@ export default function HomePage() {
                 </div>
               </Link>
 
-              {/* Realm 4: Ranthambore & Tiger Sanctuaries */}
+              {/* Realm 6: The Portuguese Coast & Goa (Wide Feature) */}
               <Link
-                href="/destinations/ranthambore"
-                className="group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
+                href="/destinations/goa"
+                className="lg:col-span-2 group relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-end p-8 sm:p-10 text-white bg-surface-dim shadow-sm"
               >
                 <Image
-                  src="/images/realms/ranthambore-tiger-wild.jpg"
-                  alt="Royal Bengal Tiger Safari"
+                  src="/images/destinations/goa/hero.jpg"
+                  alt="Ahilya by the Sea Nerul Dolphin Bay"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 60vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-black/90 via-ink-black/40 to-transparent" />
                 <div className="relative z-10 space-y-2">
                   <Badge variant="secondary" className="bg-white/20 backdrop-blur-md text-white border-0 text-[10px] uppercase tracking-widest font-label-caps">
-                    Wildlife & Safaris
+                    Coastal & Heritage Mansions
                   </Badge>
                   <h3 className="font-serif text-2xl sm:text-3xl text-white font-medium group-hover:text-secondary-container transition-colors">
-                    The Royal Bengal Tiger Sanctuaries
+                    Goa & The Portuguese Heritage Coast
                   </h3>
-                  <p className="text-white/80 font-body-base text-xs sm:text-sm max-w-md line-clamp-2 leading-relaxed">
-                    Exclusive open-top 4x4 jungle expeditions through ancient banyan forests, led by veteran naturalists in premier national parks.
+                  <p className="text-white/80 font-body-base text-xs sm:text-sm max-w-lg line-clamp-2 leading-relaxed">
+                    Pastel-toned 18th-century mansions in Fontainhas, private catamaran sunset cruises on the Mandovi estuary, and secluded oceanfront villa sanctuaries.
                   </p>
                   <div className="pt-2 flex items-center gap-2 font-label-caps text-xs uppercase tracking-widest text-secondary-container">
                     <span>Explore Itineraries</span>
@@ -486,6 +558,34 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+
+              {/* Atelier Custom Trip Planner Feature Card */}
+              <div className="lg:col-span-1 relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-between p-8 sm:p-10 bg-ink-black text-alabaster-cream shadow-sm">
+                <div className="space-y-3">
+                  <Badge variant="secondary" className="bg-white/10 text-secondary-container border border-secondary-container/20 text-[10px] uppercase tracking-widest font-label-caps">
+                    Private Travel Atelier
+                  </Badge>
+                  <h3 className="font-serif text-2xl sm:text-3xl text-white font-medium">
+                    Multi-Realm Custom Routes
+                  </h3>
+                  <p className="text-alabaster-cream/70 font-body-base text-xs sm:text-sm leading-relaxed">
+                    Combine royal palaces, high-altitude mountain passes, and coastal sanctuaries into a seamless private expedition with dedicated chauffeured transit.
+                  </p>
+                </div>
+
+                <div className="space-y-4 pt-4 border-t border-white/10">
+                  <div className="flex items-center justify-between text-xs text-secondary-container font-label-caps uppercase tracking-wider">
+                    <span>100% Tailored Routes</span>
+                    <span>24/7 Concierge</span>
+                  </div>
+                  <Link href="/plan-your-trip" className="block w-full">
+                    <Button variant="accent" className="w-full justify-between group">
+                      <span>Design Your Journey</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -529,7 +629,7 @@ export default function HomePage() {
 
             <div className="mt-12 text-center">
               <p className="text-xs text-slate-taupe font-label-caps tracking-widest uppercase">
-                Looking for a custom route? Our Concierge builds 100% bespoke private itineraries.
+                Looking for a custom route? Our Concierge builds 100% tailored private itineraries.
               </p>
             </div>
           </div>

@@ -15,6 +15,29 @@ interface DestinationDetailPageProps {
   }>;
 }
 
+export async function generateMetadata({ params }: DestinationDetailPageProps) {
+  const { slug } = await params;
+  const destination = await getDestinationBySlug(slug);
+  if (!destination) return { title: 'Destination Not Found | ABC Travels' };
+
+  return {
+    title: `${destination.name} | ABC Travels Luxury India`,
+    description: destination.tagline || destination.description?.slice(0, 160),
+    openGraph: {
+      title: destination.name,
+      description: destination.tagline,
+      images: [{ url: destination.hero_image, width: 1200, height: 630, alt: destination.name }],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: destination.name,
+      description: destination.tagline,
+      images: [destination.hero_image],
+    },
+  };
+}
+
 export default async function DestinationDetailPage({ params }: DestinationDetailPageProps) {
   const { slug } = await params;
   const destination = await getDestinationBySlug(slug);
@@ -28,8 +51,21 @@ export default async function DestinationDetailPage({ params }: DestinationDetai
     (t) => t.destination_id === destination.id || t.destination_name === destination.name
   );
 
+  const schemaJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TouristDestination',
+    name: destination.name,
+    description: destination.description,
+    touristType: ['Luxury Travelers', 'Cultural Explorers'],
+    image: destination.hero_image,
+  };
+
   return (
     <div className="pt-24 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }}
+      />
       {/* 1. HERO SECTION */}
       <section className="relative h-96 sm:h-[480px] flex items-end justify-center text-white mb-12">
         <Image
@@ -37,6 +73,7 @@ export default async function DestinationDetailPage({ params }: DestinationDetai
           alt={destination.name}
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-black/40 to-transparent" />
@@ -103,6 +140,7 @@ export default async function DestinationDetailPage({ params }: DestinationDetai
                         src={img}
                         alt={`${destination.name} impression ${idx + 1}`}
                         fill
+                        sizes="(max-width: 640px) 50vw, 33vw"
                         className="object-cover hover:scale-105 transition-transform duration-300"
                       />
                     </div>

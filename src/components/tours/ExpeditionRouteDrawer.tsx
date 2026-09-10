@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Tour } from '@/types';
 import InteractiveRouteMap from './InteractiveRouteMap';
-import { Compass, X, MapPin, Navigation, ArrowLeft } from 'lucide-react';
+import ConciergeCallbackModal from '@/components/inquiry/ConciergeCallbackModal';
+import { Compass, X, MapPin, Navigation, ArrowLeft, MessageCircle, PhoneCall } from 'lucide-react';
 
 interface ExpeditionRouteDrawerProps {
   tour: Tour;
@@ -12,6 +13,7 @@ interface ExpeditionRouteDrawerProps {
 
 export default function ExpeditionRouteDrawer({ tour }: ExpeditionRouteDrawerProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isCallbackOpen, setIsCallbackOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -112,16 +114,52 @@ export default function ExpeditionRouteDrawer({ tour }: ExpeditionRouteDrawerPro
         </button>
       </aside>
 
-      {/* 2. MOBILE & TABLET FLOATING ACTION PILL (Bottom Viewport - Visible on <lg) */}
-      <aside aria-label="Mobile Expedition Route Trigger" className="lg:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-40">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="flex items-center gap-2 bg-[#0e1420]/95 hover:bg-[#0e1420] text-amber-200 border border-amber-500/40 shadow-2xl backdrop-blur-lg px-4 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all active:scale-95 cursor-pointer"
-        >
-          <Compass className="w-4 h-4 text-amber-300" />
-          <span>View Route & Map</span>
-        </button>
+      {/* 2. MOBILE & TABLET EXECUTIVE BOTTOM CONCIERGE & ROUTE BAR (Safe-Area Aware, Frictionless Access) */}
+      <aside
+        aria-label="Mobile Tour Quick Actions"
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-alabaster-cream/95 backdrop-blur-md border-t border-silk-border shadow-[0_-8px_30px_rgba(0,0,0,0.12)] px-4 py-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))]"
+      >
+        <div className="max-w-md mx-auto flex items-center gap-2">
+          {/* Map Drawer Button */}
+          <button
+            onClick={() => setIsOpen(true)}
+            className="flex-1 py-2.5 px-3 rounded-lg bg-cream-container hover:bg-surface-dim border border-silk-border text-ink-black text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+          >
+            <Compass className="w-3.5 h-3.5 text-bronze-hover shrink-0" />
+            <span className="truncate">Route & Map</span>
+          </button>
+
+          {/* WhatsApp Direct 1-Tap */}
+          <a
+            href={`https://wa.me/918700406415?text=${encodeURIComponent(
+              `Hello ABC Travels Concierge, I am inquiring about the "${tour.title}" journey.`
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="py-2.5 px-3 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs transition-colors shrink-0"
+            title="Chat on WhatsApp"
+          >
+            <MessageCircle className="w-3.5 h-3.5 fill-white" />
+            <span>WhatsApp</span>
+          </a>
+
+          {/* Inquire / Callback Trigger */}
+          <button
+            onClick={() => setIsCallbackOpen(true)}
+            className="flex-1 py-2.5 px-3 rounded-lg bg-ink-black hover:bg-ink-black/90 text-alabaster-cream text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm transition-colors cursor-pointer"
+          >
+            <PhoneCall className="w-3.5 h-3.5" />
+            <span>Inquire</span>
+          </button>
+        </div>
       </aside>
+
+      {/* Render Mobile Concierge Callback Modal */}
+      <ConciergeCallbackModal
+        tour={tour}
+        isOpen={isCallbackOpen}
+        onClose={() => setIsCallbackOpen(false)}
+      />
 
       {/* Render Portal Modal Drawer */}
       {mounted && createPortal(modalContent, document.body)}

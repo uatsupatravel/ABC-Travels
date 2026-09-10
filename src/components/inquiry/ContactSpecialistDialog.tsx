@@ -29,6 +29,27 @@ export default function ContactSpecialistDialog({ tour, isOpen, onClose }: Conta
   const { register, handleSubmit, reset } = useForm<CallRequestFormValues>();
 
   const WHATSAPP_NUMBER = '918700406415';
+
+  // Lock body scroll on mobile and desktop while dialog is open
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  // Keyboard shortcut (Escape to close)
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
   
   const handleWhatsAppClick = () => {
     const text = tour 
