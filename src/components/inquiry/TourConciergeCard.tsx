@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Tour } from '@/types';
 import { Card } from '@/components/ui/Card';
-import { CheckCircle2, MessageCircle, PhoneCall } from 'lucide-react';
+import { CheckCircle2, MessageCircle, PhoneCall, ArrowUpRight } from 'lucide-react';
 import ConciergeCallbackModal from './ConciergeCallbackModal';
 
 interface TourConciergeCardProps {
@@ -69,8 +70,17 @@ export default function TourConciergeCard({ tour }: TourConciergeCardProps) {
           </div>
         </div>
 
+        {/* Primary Action: Start Custom Itinerary */}
+        <Link
+          href={`/plan-your-trip?tour=${encodeURIComponent(tour.title)}`}
+          className="w-full py-3.5 px-4 rounded-lg bg-foreground hover:bg-accent text-background hover:text-accent-foreground font-semibold text-xs flex items-center justify-center gap-2 shadow-sm transition-all active:scale-[0.98] cursor-pointer text-center"
+        >
+          <span>Start Custom Itinerary</span>
+          <ArrowUpRight className="w-3.5 h-3.5" />
+        </Link>
+
         {/* DIRECT ACTIONS: WHATSAPP & CALLBACK SIDE-BY-SIDE */}
-        <div className="pt-2 grid grid-cols-2 gap-2.5">
+        <div className="grid grid-cols-2 gap-2.5">
           {/* 1. Direct Instant WhatsApp Button */}
           <a
             href={whatsappUrl}

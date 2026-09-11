@@ -47,6 +47,46 @@ export interface Accommodation {
   description?: string;
 }
 
+export interface DetailedHighlight {
+  title: string;
+  category: string;
+  description: string;
+  duration?: string;
+}
+
+export interface DestinationMonographChapter {
+  title: string;
+  subtitle: string;
+  content: string;
+  image?: string;
+  caption?: string;
+}
+
+export interface DestinationAccommodation {
+  name: string;
+  property_type: string;
+  location: string;
+  room_category: string;
+  description: string;
+  image: string;
+  amenities: string[];
+}
+
+export interface DestinationSeason {
+  season_name: string;
+  months: string;
+  climate_type: string;
+  temperature: string;
+  description: string;
+  highlights: string[];
+}
+
+export interface CulinarySpecialty {
+  name: string;
+  description: string;
+  origins?: string;
+}
+
 export interface Destination {
   id: string;
   slug: string;
@@ -61,7 +101,24 @@ export interface Destination {
   highlights: string[];
   gallery: string[];
   is_featured: boolean;
+  overview_extended?: string;
+  monograph_chapters?: DestinationMonographChapter[];
+  signature_experiences?: DetailedHighlight[];
+  luxury_accommodations?: DestinationAccommodation[];
+  culinary_heritage?: {
+    overview: string;
+    signature_dishes: CulinarySpecialty[];
+    private_dining_rituals?: string[];
+  };
+  seasonal_compass?: DestinationSeason[];
+  insider_logistics?: {
+    nearest_airports: string;
+    private_aviation?: string;
+    luxury_rail?: string;
+    scenic_drives?: string;
+  };
   created_at?: string;
+  updated_at?: string;
 }
 
 export interface Tour {

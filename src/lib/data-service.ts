@@ -14,15 +14,28 @@ export async function getDestinations(): Promise<Destination[]> {
     if (error || !data || data.length === 0) {
       return mockDestinations;
     }
-    return (data as Destination[]).map((d) => {
+    const dbDestinations = (data as Destination[]).map((d) => {
       const mock = mockDestinations.find((m) => m.slug === d.slug || m.id === d.id);
       return {
+        ...mock,
         ...d,
         hero_image: mock?.hero_image || (d.hero_image?.includes('unsplash.com') ? mock?.hero_image : d.hero_image) || d.hero_image,
         gallery: mock?.gallery || d.gallery,
         highlights: mock?.highlights || d.highlights,
+        overview_extended: mock?.overview_extended,
+        monograph_chapters: mock?.monograph_chapters,
+        signature_experiences: mock?.signature_experiences,
+        luxury_accommodations: mock?.luxury_accommodations,
+        culinary_heritage: mock?.culinary_heritage,
+        seasonal_compass: mock?.seasonal_compass,
+        insider_logistics: mock?.insider_logistics,
       };
     });
+
+    const missingMocks = mockDestinations.filter(
+      (m) => !dbDestinations.some((d) => d.slug === m.slug || d.id === m.id)
+    );
+    return [...dbDestinations, ...missingMocks];
   } catch (error) {
     console.error('Error in getDestinations:', error);
     return mockDestinations;
@@ -31,7 +44,7 @@ export async function getDestinations(): Promise<Destination[]> {
 
 export async function getDestinationBySlug(slug: string): Promise<Destination | null> {
   const destinations = await getDestinations();
-  return destinations.find((d) => d.slug === slug) || null;
+  return destinations.find((d) => d.slug === slug) || mockDestinations.find((m) => m.slug === slug) || null;
 }
 
 function matchMockTour(t: Partial<Tour>): Tour | undefined {

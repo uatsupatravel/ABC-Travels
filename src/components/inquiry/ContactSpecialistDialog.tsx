@@ -9,7 +9,8 @@ import { Card } from '@/components/ui/Card';
 import { Tour } from '@/types';
 
 interface ContactSpecialistDialogProps {
-  tour: Tour | null;
+  tour?: Tour | null;
+  destinationName?: string;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -21,7 +22,7 @@ interface CallRequestFormValues {
   time_to_call: string;
 }
 
-export default function ContactSpecialistDialog({ tour, isOpen, onClose }: ContactSpecialistDialogProps) {
+export default function ContactSpecialistDialog({ tour = null, destinationName, isOpen, onClose }: ContactSpecialistDialogProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [view, setView] = useState<'options' | 'form'>('options');
@@ -54,6 +55,8 @@ export default function ContactSpecialistDialog({ tour, isOpen, onClose }: Conta
   const handleWhatsAppClick = () => {
     const text = tour 
       ? `Hello ABC Travels Concierge, I am interested in the ${tour.title} journey and would love to speak to a specialist.`
+      : destinationName
+      ? `Hello ABC Travels Concierge, I am interested in exploring a custom private journey to ${destinationName} and would love to speak to a specialist.`
       : `Hello ABC Travels Concierge, I would love to speak to a specialist about planning a journey.`;
     
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
@@ -64,15 +67,16 @@ export default function ContactSpecialistDialog({ tour, isOpen, onClose }: Conta
   const onSubmit = async (data: CallRequestFormValues) => {
     setIsSubmitting(true);
     try {
+      const subjectTitle = tour?.title || (destinationName ? `Custom Realm Expedition: ${destinationName}` : null);
       const payload = {
         tour_id: tour?.id || null,
-        tour_title: tour?.title || null,
+        tour_title: subjectTitle,
         traveler_name: data.traveler_name,
         email: data.email,
         phone: data.phone,
         country: 'Not Specified (Call Request)',
         guests_count: 2,
-        special_requests: `CALL REQUEST. Preferred time: ${data.time_to_call}`,
+        special_requests: `CALL REQUEST for ${subjectTitle || 'Custom India'}. Preferred time: ${data.time_to_call}`,
       };
 
       const res = await fetch('/api/inquiries', {
@@ -121,8 +125,8 @@ export default function ContactSpecialistDialog({ tour, isOpen, onClose }: Conta
                 <h3 className="font-serif text-lg font-bold text-ink-black">
                   Speak to a Specialist
                 </h3>
-                <span className="text-[11px] uppercase tracking-wider text-slate-taupe font-semibold">
-                  ABC Travels Concierge
+                <span className="text-[11px] uppercase tracking-wider text-slate-taupe font-semibold block truncate max-w-[240px]">
+                  {tour?.title ? `Regarding: ${tour.title}` : destinationName ? `Regarding: ${destinationName}` : 'ABC Travels Concierge'}
                 </span>
               </div>
             </div>

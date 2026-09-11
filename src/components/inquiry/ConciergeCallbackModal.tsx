@@ -9,7 +9,8 @@ import { COUNTRIES } from '@/lib/constants/countries';
 import { X, Check, Loader2 } from 'lucide-react';
 
 interface ConciergeCallbackModalProps {
-  tour: Tour | null;
+  tour?: Tour | null;
+  destinationName?: string;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -23,12 +24,12 @@ interface CallbackFormValues {
 
 const TIME_WINDOWS = [
   { id: 'asap', label: 'Soonest', subtext: 'Within 2 hrs' },
-  { id: 'morning', label: 'Morning', subtext: '9am – 12pm' },
-  { id: 'afternoon', label: 'Afternoon', subtext: '12pm – 5pm' },
-  { id: 'evening', label: 'Evening', subtext: '5pm – 9pm' },
+  { id: 'morning', label: 'Morning', subtext: '9am - 12pm' },
+  { id: 'afternoon', label: 'Afternoon', subtext: '12pm - 5pm' },
+  { id: 'evening', label: 'Evening', subtext: '5pm - 9pm' },
 ];
 
-export default function ConciergeCallbackModal({ tour, isOpen, onClose }: ConciergeCallbackModalProps) {
+export default function ConciergeCallbackModal({ tour = null, destinationName, isOpen, onClose }: ConciergeCallbackModalProps) {
   const [mounted, setMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -85,15 +86,16 @@ export default function ConciergeCallbackModal({ tour, isOpen, onClose }: Concie
       const rawPhone = data.phone.trim();
       const fullPhone = rawPhone.startsWith('+') ? rawPhone : `${selectedDialCode} ${rawPhone}`;
 
+      const subjectTitle = tour?.title || (destinationName ? `Custom Realm Expedition: ${destinationName}` : null);
       const payload = {
         tour_id: tour?.id || null,
-        tour_title: tour?.title || null,
+        tour_title: subjectTitle,
         traveler_name: data.traveler_name,
         email: data.email,
         phone: fullPhone,
         country: 'Direct Callback Request',
         guests_count: 2,
-        special_requests: `PRIVATE CONSULTATION REQUEST. Preferred Window: ${chosenWindow?.label || 'Flexible'} (${chosenWindow?.subtext || ''}). Notes: ${data.notes || 'None'}`,
+        special_requests: `PRIVATE CONSULTATION REQUEST. Realm/Tour: ${subjectTitle || 'Custom India'}. Preferred Window: ${chosenWindow?.label || 'Flexible'} (${chosenWindow?.subtext || ''}). Notes: ${data.notes || 'None'}`,
       };
 
       const res = await fetch('/api/inquiries', {
@@ -150,7 +152,7 @@ export default function ConciergeCallbackModal({ tour, isOpen, onClose }: Concie
             Speak with a Specialist
           </h3>
 
-          {tour && (
+          {tour ? (
             <p className="text-xs text-[#706A65] mt-1 sm:mt-1.5 font-light tracking-wide truncate">
               Regarding:{' '}
               <span className="text-[#2A2421] font-serif italic">{tour.title}</span>
@@ -158,7 +160,12 @@ export default function ConciergeCallbackModal({ tour, isOpen, onClose }: Concie
                 ({tour.duration_days}D / {tour.duration_nights}N)
               </span>
             </p>
-          )}
+          ) : destinationName ? (
+            <p className="text-xs text-[#706A65] mt-1 sm:mt-1.5 font-light tracking-wide truncate">
+              Curating Custom Journey for:{' '}
+              <span className="text-[#2A2421] font-serif italic">{destinationName}</span>
+            </p>
+          ) : null}
         </div>
 
         {/* Form Body */}

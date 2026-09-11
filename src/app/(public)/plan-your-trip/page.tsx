@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,16 +13,22 @@ import { Card } from '@/components/ui/Card';
 import CountryPhoneInput from '@/components/ui/CountryPhoneInput';
 import CountrySelect from '@/components/ui/CountrySelect';
 import { COUNTRIES, CountryOption } from '@/lib/constants/countries';
+import { Loader2, CheckCircle2, Sparkles } from 'lucide-react';
 
 const POPULAR_DESTINATIONS = [
-  'Rajasthan (Jaipur & Udaipur)',
-  'Golden Triangle & Taj Mahal',
-  'Kerala Backwaters & Munnar',
-  'Ladakh & Himalayas',
-  'Ranthambore Tiger Safari',
-  'Varanasi & Sacred Ganges',
-  'Goa Heritage Coast',
-  'Custom Multi-City Route',
+  'Rajasthan (Jaipur, Udaipur & Jodhpur)',
+  'Kerala & The Spice Coast (Backwaters)',
+  'Ladakh & High Himalayas (Nubra & Pangong)',
+  'Kashmir & The Vale of Srinagar (Dal Lake)',
+  'Varanasi & Sacred Ganges (Ghats & Sarnath)',
+  'Ranthambore & Royal Wilds (Tiger Safaris)',
+  'Goa & Portuguese Heritage Coast',
+  'Central India & Khajuraho (Chandela Spires)',
+  'Tamil Nadu & Living Chola Temples',
+  'Hampi & Vijayanagara Imperial Ruins',
+  'The White Desert of Gujarat (Rann & Gir)',
+  'Sikkim & Darjeeling Eastern Himalayas',
+  'Custom Multi-Realm Grand Expedition',
 ];
 
 const GROUP_OPTIONS = [
@@ -43,9 +50,9 @@ const VIBE_PILLS = [
 ];
 
 const DURATION_RANGES = [
-  { id: 'short', min: 3, max: 5, defaultDays: 5, label: '3 – 5 Days', note: 'Short Escape' },
-  { id: 'week', min: 6, max: 9, defaultDays: 8, label: '6 – 9 Days', note: '1 Week Signature' },
-  { id: 'grand', min: 10, max: 13, defaultDays: 12, label: '10 – 13 Days', note: 'Grand Discovery' },
+  { id: 'short', min: 3, max: 5, defaultDays: 5, label: '3 - 5 Days', note: 'Short Escape' },
+  { id: 'week', min: 6, max: 9, defaultDays: 8, label: '6 - 9 Days', note: '1 Week Signature' },
+  { id: 'grand', min: 10, max: 13, defaultDays: 12, label: '10 - 13 Days', note: 'Grand Discovery' },
   { id: 'comprehensive', min: 14, max: 60, defaultDays: 16, label: '14+ Days', note: 'Comprehensive' },
 ];
 
@@ -56,7 +63,7 @@ const FLEXIBLE_SEASONS = [
   'January 2027 (Peak Winter & Heritage Fairs)',
   'February 2027 (Prime Tiger Safari Season)',
   'March 2027 (Spring & Colors of Holi)',
-  'April – June 2027 (High Himalayas & Ladakh)',
+  'April - June 2027 (High Himalayas & Ladakh)',
   'Summer / Autumn 2027',
 ];
 
@@ -115,7 +122,12 @@ const CONTACT_METHODS = [
   },
 ];
 
-export default function PlanYourTripPage() {
+function PlanYourTripForm() {
+  const searchParams = useSearchParams();
+  const queryDestination = searchParams.get('destination') || '';
+  const queryTour = searchParams.get('tour') || '';
+  const initialSubject = queryTour || queryDestination || '';
+
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -142,7 +154,7 @@ export default function PlanYourTripPage() {
   } = useForm<InquiryFormValues>({
     resolver: zodResolver(inquirySchema),
     defaultValues: {
-      tour_title: '',
+      tour_title: initialSubject || '',
       group_type: 'Couple',
       guests_count: 2,
       travel_styles: ['Luxury', 'Culture'],
@@ -157,6 +169,12 @@ export default function PlanYourTripPage() {
       special_requests: '',
     },
   });
+
+  useEffect(() => {
+    if (initialSubject) {
+      setValue('tour_title', initialSubject, { shouldValidate: true });
+    }
+  }, [initialSubject, setValue]);
 
   const selectedDestination = watch('tour_title');
   const selectedGroup = watch('group_type');
@@ -373,9 +391,17 @@ export default function PlanYourTripPage() {
                   >
                     {/* Destination Input */}
                     <div className="space-y-2">
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                        Where would you like to travel? *
-                      </label>
+                      <div className="flex items-center justify-between">
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                          Where would you like to travel? *
+                        </label>
+                        {initialSubject && (
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-ink-black text-[10px] font-label-caps uppercase tracking-wider font-semibold">
+                            <Sparkles className="w-3 h-3 text-bronze-hover" />
+                            Pre-Selected
+                          </span>
+                        )}
+                      </div>
                       <Input
                         type="text"
                         placeholder="e.g. Rajasthan, Kerala, Ladakh, or Custom Route"
@@ -613,7 +639,7 @@ export default function PlanYourTripPage() {
                             className="w-7 h-7 rounded flex items-center justify-center text-sm font-bold bg-muted/60 hover:bg-muted text-foreground transition-colors"
                             aria-label="Decrease days"
                           >
-                            –
+                            -
                           </button>
                           <span className="text-xs font-bold px-1 min-w-8 text-center">{selectedDurationDays}d</span>
                           <button
@@ -871,5 +897,24 @@ export default function PlanYourTripPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function PlanYourTripPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-alabaster-cream text-ink-black pt-28">
+          <div className="flex flex-col items-center gap-3">
+            <Loader2 className="w-8 h-8 animate-spin text-bronze-hover" />
+            <span className="font-label-caps text-xs uppercase tracking-widest text-slate-taupe">
+              Loading Custom Atelier...
+            </span>
+          </div>
+        </div>
+      }
+    >
+      <PlanYourTripForm />
+    </Suspense>
   );
 }

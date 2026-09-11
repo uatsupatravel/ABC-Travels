@@ -49,9 +49,10 @@ export default function ContactPage() {
               <Button
                 variant="secondary"
                 size="sm"
-                className="w-full text-xs font-semibold uppercase tracking-wider"
+                className="w-full text-xs font-semibold uppercase tracking-widest font-label-caps gap-2 h-10 whitespace-nowrap"
               >
-                Chat on WhatsApp: +91 87004 06415
+                <PhoneCall className="w-3.5 h-3.5" />
+                <span>WhatsApp Concierge</span>
               </Button>
             </a>
           </Card>

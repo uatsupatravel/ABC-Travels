@@ -21,7 +21,7 @@ const IMAGES_TO_DOWNLOAD = [
   { url: 'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1600&q=85', dest: 'public/images/realms/ranthambore-tiger-wild.jpg' },
 
   // Destinations - Rajasthan
-  { url: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=2000&q=85', dest: 'public/images/destinations/rajasthan/hero.jpg' },
+  { url: 'https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=2000&q=85', dest: 'public/images/destinations/rajasthan/hero.jpg' },
   { url: 'https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1600&q=85', dest: 'public/images/destinations/rajasthan/udaipur-lake-palace.jpg' },
   { url: 'https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=1600&q=85', dest: 'public/images/destinations/rajasthan/jaipur-hawa-mahal.jpg' },
   { url: 'https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?auto=format&fit=crop&w=1600&q=85', dest: 'public/images/destinations/rajasthan/jodhpur-blue-city.jpg' },
@@ -53,7 +53,7 @@ const IMAGES_TO_DOWNLOAD = [
   { url: 'https://images.unsplash.com/photo-1587922546307-776227941871?auto=format&fit=crop&w=1600&q=85', dest: 'public/images/destinations/goa/secluded-cove-sunset.jpg' },
 
   // Tours - Royal Odyssey
-  { url: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=2000&q=85', dest: 'public/images/tours/royal-odyssey/hero.jpg' },
+  { url: 'https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=2000&q=85', dest: 'public/images/tours/royal-odyssey/hero.jpg' },
   { url: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1600&q=85', dest: 'public/images/tours/royal-odyssey/day1-delhi-imperial.jpg' },
   { url: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1600&q=85', dest: 'public/images/tours/royal-odyssey/day2-agra-amarvilas.jpg' },
   { url: 'https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1600&q=85', dest: 'public/images/tours/royal-odyssey/day3-jaipur-rambagh.jpg' },

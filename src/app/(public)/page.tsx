@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import TourCard from '@/components/tours/TourCard';
 import ContactSpecialistDialog from '@/components/inquiry/ContactSpecialistDialog';
 import HeroSlider from '@/components/home/HeroSlider';
@@ -41,24 +41,16 @@ export default function HomePage() {
     offset: ['start start', 'end start'],
   });
 
-  // Section 2: Smooth Asymmetric Parallax with Spring Physics
+  // Section 2: Direct 1:1 Parallax Coupling (Hardware-synchronized with scroll)
   const welcomeRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: welcomeScrollY } = useScroll({
     target: welcomeRef,
     offset: ['start end', 'end start'],
   });
 
-  // Spring smoothing absorbs Windows mouse-wheel stepping for 60fps/120fps fluid glide
-  const smoothWelcomeScroll = useSpring(welcomeScrollY, {
-    stiffness: 90,
-    damping: 26,
-    mass: 0.4,
-    restDelta: 0.001,
-  });
-
-  // Pure numeric transforms (hardware accelerated on GPU, no string parsing)
-  const leftPhotoY = useTransform(smoothWelcomeScroll, [0, 1], [20, -25]);
-  const rightPhotoY = useTransform(smoothWelcomeScroll, [0, 1], [-15, 30]);
+  // Pure numeric transforms directly coupled to scroll progress for crisp, instantaneous response
+  const leftPhotoY = useTransform(welcomeScrollY, [0, 1], [15, -20]);
+  const rightPhotoY = useTransform(welcomeScrollY, [0, 1], [-12, 24]);
 
   useEffect(() => {
     async function loadInitialData() {
@@ -89,6 +81,15 @@ export default function HomePage() {
   const handleContactSpecialist = (tour: Tour) => {
     setSelectedTourForInquiry(tour);
     setIsDrawerOpen(true);
+  };
+
+  const handleAnchorScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      const targetY = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+    }
   };
 
   // Select 3 standout signature tours for the homepage showcase
@@ -156,7 +157,10 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="pt-4"
             >
-              <a href="#welcome-section">
+              <a
+                href="#welcome-section"
+                onClick={(e) => handleAnchorScroll(e, 'welcome-section')}
+              >
                 <Button size="lg" variant="accent" className="gap-2 px-8 shadow-md">
                   <span>Explore Journeys</span>
                   <ArrowRight className="w-4 h-4" />
@@ -191,10 +195,10 @@ export default function HomePage() {
               {/* Text Editorial with Staggered Upward Reveals */}
               <div className="lg:col-span-7 space-y-6">
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -16 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
                   className="flex items-center gap-2.5"
                 >
                   <div className="w-6 h-px bg-bronze-hover" />
@@ -203,13 +207,12 @@ export default function HomePage() {
                   </span>
                 </motion.div>
 
-                {/* Staggered Line Masked Reveal */}
-                <div className="overflow-hidden">
+                <div>
                   <motion.h2
-                    initial={{ y: '100%' }}
-                    whileInView={{ y: '0%' }}
-                    viewport={{ once: true, margin: '-100px' }}
-                    transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     className="font-serif text-3xl sm:text-4xl md:text-5xl text-ink-black font-normal leading-[1.15] text-balance"
                   >
                     Where Ancient Heritage Meets <span className="italic font-light">Serene Splendor</span>
@@ -217,30 +220,30 @@ export default function HomePage() {
                 </div>
 
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                  transition={{ duration: 0.8, delay: 0.15 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
                   className="font-body-base text-slate-taupe text-base sm:text-lg leading-relaxed"
                 >
                   The Indian subcontinent encompasses an extraordinary breadth of geography and living history, where centuries-old palace lineages, dawn river rituals along sacred ghats, and high Himalayan valleys exist in parallel rhythms.
                 </motion.p>
 
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
                   className="font-body-base text-slate-taupe text-sm sm:text-base leading-relaxed"
                 >
                   At ABC Travels, we curate private, unhurried journeys shaped around personal comfort and genuine cultural depth. Operating from our headquarters in New Delhi, we coordinate private suites in historic residences, wildlife safaris led by dedicated field naturalists, and privileged access to private palace collections across the country.
                 </motion.p>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 15 }}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
                   className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6"
                 >
                   <Link href="/about">
@@ -249,7 +252,11 @@ export default function HomePage() {
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Button>
                   </Link>
-                  <a href="#realms" className="text-xs font-label-caps uppercase tracking-widest text-slate-taupe hover:text-ink-black transition-colors">
+                  <a
+                    href="#realms"
+                    onClick={(e) => handleAnchorScroll(e, 'realms')}
+                    className="text-xs font-label-caps uppercase tracking-widest text-slate-taupe hover:text-ink-black transition-colors"
+                  >
                     Explore Landscapes ↓
                   </a>
                 </motion.div>
@@ -257,16 +264,16 @@ export default function HomePage() {
 
               {/* Asymmetric Magazine Image Pairing (Style 5: Cinematic Warm Light Sweep & Film Shimmer) */}
               <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4 relative py-4 sm:py-6">
-                {/* Left Column: Taj Balcony (Card Elevation + Spring-Damped Glide + Golden Dawn Light Sweep) */}
+                {/* Left Column: Taj Balcony (Card Elevation + Direct Glide + Golden Dawn Light Sweep) */}
                 <motion.div
                   style={{ y: leftPhotoY }}
                   className="will-change-transform transform-gpu"
                 >
                   <motion.div
-                    initial={{ opacity: 0, y: 32 }}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-60px' }}
-                    transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     className="space-y-3 sm:space-y-4"
                   >
                     <div className="relative h-56 sm:h-72 rounded-lg overflow-hidden border border-silk-border shadow-sm group bg-surface-dim">
@@ -284,8 +291,8 @@ export default function HomePage() {
                       <motion.div
                         initial={{ x: '-160%', opacity: 0.95 }}
                         whileInView={{ x: '160%', opacity: 0 }}
-                        viewport={{ once: true, margin: '-60px' }}
-                        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
                         className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/55 via-50% via-[#FEDEB1]/65 to-transparent skew-x-12 pointer-events-none transform-gpu will-change-transform z-10"
                       />
                     </div>
@@ -300,16 +307,16 @@ export default function HomePage() {
                   </motion.div>
                 </motion.div>
 
-                {/* Right Column: Kerala Backwaters (Card Elevation + Spring-Damped Counter-Glide + Staggered Golden Sweep) */}
+                {/* Right Column: Kerala Backwaters (Card Elevation + Direct Counter-Glide + Staggered Golden Sweep) */}
                 <motion.div
                   style={{ y: rightPhotoY }}
                   className="pt-6 sm:pt-8 will-change-transform transform-gpu"
                 >
                   <motion.div
-                    initial={{ opacity: 0, y: 32 }}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-60px' }}
-                    transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                     className="space-y-3 sm:space-y-4"
                   >
                     {/* Accompanying Dark Stat Badge */}
@@ -335,8 +342,8 @@ export default function HomePage() {
                       <motion.div
                         initial={{ x: '-160%', opacity: 0.95 }}
                         whileInView={{ x: '160%', opacity: 0 }}
-                        viewport={{ once: true, margin: '-60px' }}
-                        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
                         className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/55 via-50% via-[#FEDEB1]/65 to-transparent skew-x-12 pointer-events-none transform-gpu will-change-transform z-10"
                       />
                     </div>
@@ -559,33 +566,42 @@ export default function HomePage() {
                 </div>
               </Link>
 
-              {/* Atelier Custom Trip Planner Feature Card */}
-              <div className="lg:col-span-1 relative h-[420px] rounded-lg overflow-hidden border border-silk-border flex flex-col justify-between p-8 sm:p-10 bg-ink-black text-alabaster-cream shadow-sm">
-                <div className="space-y-3">
-                  <Badge variant="secondary" className="bg-white/10 text-secondary-container border border-secondary-container/20 text-[10px] uppercase tracking-widest font-label-caps">
-                    Private Travel Atelier
+              {/* Minimalist Destination Archive Gateway Plaque */}
+              <Link
+                href="/destinations"
+                className="lg:col-span-1 group relative h-[420px] rounded-lg overflow-hidden border border-silk-border/60 hover:border-secondary-container/50 flex flex-col justify-between p-8 sm:p-10 bg-ink-black text-alabaster-cream shadow-sm transition-all duration-300 hover:shadow-md"
+              >
+                {/* Header */}
+                <div className="space-y-4">
+                  <Badge
+                    variant="secondary"
+                    className="bg-white/10 text-secondary-container border border-secondary-container/20 text-[10px] uppercase tracking-widest font-label-caps"
+                  >
+                    The Archive
                   </Badge>
-                  <h3 className="font-serif text-2xl sm:text-3xl text-white font-medium">
-                    Multi-Realm Custom Routes
+
+                  <h3 className="font-serif text-3xl sm:text-[32px] text-white font-normal leading-[1.15] group-hover:text-secondary-container transition-colors">
+                    Beyond the Six Realms
                   </h3>
-                  <p className="text-alabaster-cream/70 font-body-base text-xs sm:text-sm leading-relaxed">
-                    Combine royal palaces, high-altitude mountain passes, and coastal sanctuaries into a seamless private expedition with dedicated chauffeured transit.
+
+                  <p className="text-white/70 font-body-base text-sm leading-relaxed">
+                    Private palace residencies, high Himalayan passes, and sacred river sanctuaries catalogued across all 28 states of India.
                   </p>
                 </div>
 
-                <div className="space-y-4 pt-4 border-t border-white/10">
-                  <div className="flex items-center justify-between text-xs text-secondary-container font-label-caps uppercase tracking-wider">
-                    <span>100% Tailored Routes</span>
-                    <span>24/7 Concierge</span>
+                {/* Footer Metadata & Curatorial Link */}
+                <div className="space-y-4 pt-6 border-t border-white/10">
+                  <div className="flex items-center justify-between text-[11px] text-white/50 font-label-caps uppercase tracking-widest">
+                    <span>28 States & Territories</span>
+                    <span>42 UNESCO Sites</span>
                   </div>
-                  <Link href="/plan-your-trip" className="block w-full">
-                    <Button variant="accent" className="w-full justify-between group">
-                      <span>Design Your Journey</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
+
+                  <div className="flex items-center justify-between text-secondary-container font-label-caps text-xs uppercase tracking-widest pt-1">
+                    <span>Explore Complete Directory</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         </section>
