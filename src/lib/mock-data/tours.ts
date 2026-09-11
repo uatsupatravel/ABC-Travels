@@ -27,7 +27,8 @@ export const mockTours: Tour[] = [
       "/images/tours/royal-odyssey/day6-lake-palace-arrival.jpg",
       "/images/tours/royal-odyssey/day4-udaipur-pichola.jpg",
       "/images/tours/royal-odyssey/day8-ranakpur-temple.jpg",
-      "/images/tours/royal-odyssey/day9-royal-dining.jpg"
+      "/images/tours/royal-odyssey/day9-royal-dining.jpg",
+      "/images/tours/royal-odyssey/day10-delhi-departure.jpg"
     ],
     "overview": "From the Mughal architecture of Delhi and Agra to the desert citadels of Jaipur and the island palaces of Lake Pichola, this ten-day journey follows the classic royal circuit of North India at an unhurried pace.\n\nYou travel by private chauffeured luxury sedan and short domestic flights, guided throughout by architectural historians and regional curators. In Agra, stay at The Oberoi Amarvilas with direct views of the Taj Mahal from your private balcony, entering the monument at dawn before public gates open to study its 17th-century pietra dura marble inlays. In Jaipur, stay at Rambagh Palace, former home of the Maharaja of Jaipur, with private access to the royal family's residential quarters inside the City Palace. The journey concludes on Lake Pichola in Udaipur, where private boat transfers bring you to the 18th-century white marble Taj Lake Palace, accompanied by sunset cruises aboard a ceremonial royal barge and a day trip into the Aravalli hills to examine the 1,444 carved marble pillars of Ranakpur.",
     "highlights": [
@@ -223,7 +224,7 @@ export const mockTours: Tour[] = [
           "Airport concierge assistance through luggage check-in and priority departure",
           "Access to the international business lounge prior to departure"
         ],
-        "image": "/images/tours/royal-odyssey/day1-delhi-imperial.jpg",
+        "image": "/images/tours/royal-odyssey/day10-delhi-departure.jpg",
         "transit": {
           "type": "none"
         }
@@ -310,9 +311,12 @@ export const mockTours: Tour[] = [
       "/images/tours/kerala-sanctuary/hero.jpg",
       "/images/tours/kerala-sanctuary/day1-kochi-heritage.jpg",
       "/images/tours/kerala-sanctuary/day2-munnar-plantations.jpg",
-      "/images/tours/kerala-sanctuary/day3-alleppey-kettuvallam.jpg",
+      "/images/tours/kerala-sanctuary/day3-munnar-eravikulam.jpg",
       "/images/tours/kerala-sanctuary/day4-thekkady-spice.jpg",
-      "/images/tours/kerala-sanctuary/day7-kumarakom-pool.jpg"
+      "/images/tours/kerala-sanctuary/day3-alleppey-kettuvallam.jpg",
+      "/images/tours/kerala-sanctuary/day7-kumarakom-pool.jpg",
+      "/images/tours/kerala-sanctuary/day7-kumarakom-mohiniyattam.jpg",
+      "/images/tours/kerala-sanctuary/day8-kerala-departure.jpg"
     ],
     "overview": "From the historic trading ports of the Arabian Sea to the high tea estates of the Western Ghats and the interconnected backwaters of Alleppey, this eight-day journey explores Kerala by road and water at a measured, restful pace.\n\nYou begin in Fort Kochi, walking through 16th-century synagogues, Dutch palaces, and harbor spice godowns before watching the slow, two-hour makeup preparation for an evening Kathakali dance performance. Travel inland into the Western Ghats to stay on a 60-acre working tea and cardamom plantation at 5,200 feet, exploring orthodox tea production and the high grasslands of Eravikulam National Park. In Thekkady, an organic spice botanist guides you through vanilla, pepper, and nutmeg groves, followed by bamboo rafting with indigenous guides inside Periyar Tiger Reserve. The journey transitions to the water aboard a private, crewed Kettuvallam houseboat on the Alleppey canals, culminating at Kumarakom Lake Resort on Lake Vembanad with doctor-guided Ayurvedic treatments including Abhyanga, Shirodhara, and Pizhichil.",
     "highlights": [
@@ -374,7 +378,7 @@ export const mockTours: Tour[] = [
           "Forest picnic lunch among cardamom groves",
           "Wildlife excursion into Eravikulam National Park to observe the Nilgiri Tahr"
         ],
-        "image": "/images/tours/kerala-sanctuary/day2-munnar-plantations.jpg",
+        "image": "/images/tours/kerala-sanctuary/day3-munnar-eravikulam.jpg",
         "transit": {
           "type": "none"
         }
@@ -450,7 +454,7 @@ export const mockTours: Tour[] = [
           "Private lakeside performance of Mohiniyattam dance",
           "Farewell Malabar dinner beneath the trees"
         ],
-        "image": "/images/tours/kerala-sanctuary/day7-kumarakom-pool.jpg",
+        "image": "/images/tours/kerala-sanctuary/day7-kumarakom-mohiniyattam.jpg",
         "transit": {
           "type": "none"
         }
@@ -467,7 +471,7 @@ export const mockTours: Tour[] = [
           "Private chauffeured transfer to Cochin International Airport",
           "Baggage assistance and airport departure coordination"
         ],
-        "image": "/images/tours/kerala-sanctuary/day1-kochi-heritage.jpg",
+        "image": "/images/tours/kerala-sanctuary/day8-kerala-departure.jpg",
         "transit": {
           "type": "drive",
           "duration": "1.5 hrs",
@@ -553,10 +557,15 @@ export const mockTours: Tour[] = [
     "hero_image": "/images/tours/himalayan-expedition/hero.jpg",
     "gallery": [
       "/images/tours/himalayan-expedition/hero.jpg",
-      "/images/tours/himalayan-expedition/day1-leh-palace.jpg",
+      "/images/tours/himalayan-expedition/day1-leh-acclimatization.jpg",
+      "/images/tours/himalayan-expedition/day2-leh-palace.jpg",
       "/images/tours/himalayan-expedition/day3-thiksey-monastery.jpg",
+      "/images/tours/himalayan-expedition/day4-khardungla-pass.jpg",
+      "/images/tours/himalayan-expedition/day5-hunder-bactrian.jpg",
       "/images/tours/himalayan-expedition/day6-pangong-lake.jpg",
-      "/images/tours/himalayan-expedition/day2-nubra-valley.jpg"
+      "/images/tours/himalayan-expedition/day7-changthang-plateau.jpg",
+      "/images/tours/himalayan-expedition/day8-indus-zanskar-sangam.jpg",
+      "/images/tours/himalayan-expedition/day9-leh-flight-departure.jpg"
     ],
     "overview": "Set between the Great Himalaya and the Karakoram ranges, Ladakh is a high-altitude desert plateau defined by glaciated passes, ancient Tibetan Buddhist gompas, and river valleys that once carried central Asian caravan trade.\n\nThis nine-day private expedition moves across the region at a measured pace designed for proper altitude adjustment. You begin in Leh at 11,500 feet, taking time to acclimatize at The Grand Dragon before visiting the 17th-century Leh Palace, observing dawn prayers with telescoping copper horns at Thiksey Monastery, and examining 11th-century Buddhist frescoes at Alchi. Travel north across the Khardung La pass at 17,582 feet into the Nubra Valley, where apricot orchards and sand dunes frame double-humped Bactrian camels, with an optional visit to the border village of Turtuk. The journey continues along the remote Shyok River route to Pangong Tso, a 134-kilometer lake sitting at 14,270 feet across the Tibetan border, staying in heated lakeside yurts before returning to Leh across the Chang La pass.",
     "highlights": [
@@ -582,7 +591,7 @@ export const mockTours: Tour[] = [
           "Traditional Ladakhi silk Khatak welcome",
           "Medical pulse-oximeter check and rest day for altitude acclimatization"
         ],
-        "image": "/images/tours/himalayan-expedition/day1-leh-palace.jpg",
+        "image": "/images/tours/himalayan-expedition/day1-leh-acclimatization.jpg",
         "transit": {
           "type": "flight",
           "duration": "1h 15m",
@@ -601,6 +610,7 @@ export const mockTours: Tour[] = [
           "Walk through the historic bazaar lanes of Leh",
           "Sunset panorama of the Indus Valley from Shanti Stupa"
         ],
+        "image": "/images/tours/himalayan-expedition/day2-leh-palace.jpg",
         "transit": {
           "type": "none"
         }
@@ -634,7 +644,7 @@ export const mockTours: Tour[] = [
           "Descent into the greener, lower-altitude landscapes of the Nubra Valley",
           "Check-in to luxury heated glamping tents with private mountain views"
         ],
-        "image": "/images/tours/himalayan-expedition/day2-nubra-valley.jpg",
+        "image": "/images/tours/himalayan-expedition/day4-khardungla-pass.jpg",
         "transit": {
           "type": "drive",
           "duration": "4.5 hrs",
@@ -653,6 +663,7 @@ export const mockTours: Tour[] = [
           "Visit to Diskit Monastery and the 106-foot Maitreya Buddha statue",
           "Cultural walk and traditional lunch in the border village of Turtuk"
         ],
+        "image": "/images/tours/himalayan-expedition/day5-hunder-bactrian.jpg",
         "transit": {
           "type": "none"
         }
@@ -688,6 +699,7 @@ export const mockTours: Tour[] = [
           "Wildlife sightings of wild Tibetan ass (kiang) on the Changthang plateau",
           "High-altitude crossing of Chang La pass at 17,586 feet"
         ],
+        "image": "/images/tours/himalayan-expedition/day7-changthang-plateau.jpg",
         "transit": {
           "type": "drive",
           "duration": "5.5 hrs",
@@ -706,6 +718,7 @@ export const mockTours: Tour[] = [
           "Guided visit to Alchi Monastery to view 11th-century Kashmiri-Buddhist wall murals",
           "Farewell dinner of traditional Ladakhi and North Indian dishes"
         ],
+        "image": "/images/tours/himalayan-expedition/day8-indus-zanskar-sangam.jpg",
         "transit": {
           "type": "none"
         }
@@ -722,6 +735,7 @@ export const mockTours: Tour[] = [
           "Private chauffeur transfer to Leh Airport",
           "Morning mountain flight from Leh to Delhi"
         ],
+        "image": "/images/tours/himalayan-expedition/day9-leh-flight-departure.jpg",
         "transit": {
           "type": "flight",
           "duration": "1h 15m",
@@ -806,10 +820,13 @@ export const mockTours: Tour[] = [
     "hero_image": "/images/tours/sovereign-wild/hero.jpg",
     "gallery": [
       "/images/tours/sovereign-wild/hero.jpg",
-      "/images/tours/sovereign-wild/day2-ranthambore-morning-drive.jpg",
+      "/images/tours/sovereign-wild/day1-delhi-safari-transit.jpg",
+      "/images/tours/sovereign-wild/day2-sujan-sher-bagh.jpg",
+      "/images/tours/sovereign-wild/day3-padam-talao-safari.jpg",
       "/images/tours/sovereign-wild/day4-ranthambore-fort.jpg",
+      "/images/tours/sovereign-wild/day5-chambal-sanctuary.jpg",
       "/images/tours/sovereign-wild/day6-jaipur-rambagh.jpg",
-      "/images/tours/sovereign-wild/day1-delhi-safari-transit.jpg"
+      "/images/tours/sovereign-wild/day7-jaipur-chandra-mahal.jpg"
     ],
     "overview": "In the dry deciduous forests of southeastern Rajasthan, Ranthambore preserves an extraordinary convergence of natural history and medieval architecture. Royal Bengal tigers navigate the perimeter walls of 10th-century Chauhan fortresses, while marsh mugger crocodiles bask along the lake margins of Padam Talao and Rajbagh. Led by a dedicated senior naturalist with decades of field tracking experience across Core Zones 1 through 5, each morning and late-afternoon drive is conducted in a private open-top 4x4 Gypsy. Accommodations center on the Edwardian campaign aesthetic of Suján Sher Bagh, a Relais & Châteaux property of twelve hand-stitched canvas tents, or the private walled enclosures of The Oberoi Vanyavilas. Beyond the tiger reserve, a river safari on the protected Chambal River reveals critically endangered gharials and South Asian river dolphins, before the expedition concludes with two nights at Rambagh Palace in Jaipur.",
     "highlights": [
@@ -852,7 +869,7 @@ export const mockTours: Tour[] = [
           "Arrival at Suján Sher Bagh, an intimate Relais & Châteaux tented retreat",
           "Orientation and territory movement briefing with your senior naturalist"
         ],
-        "image": "/images/tours/sovereign-wild/day2-ranthambore-morning-drive.jpg",
+        "image": "/images/tours/sovereign-wild/day2-sujan-sher-bagh.jpg",
         "transit": {
           "type": "train",
           "duration": "4.5 hrs",
@@ -871,6 +888,7 @@ export const mockTours: Tour[] = [
           "Tracking Bengal tigers along the lake margins of Padam Talao and Rajbagh",
           "Observation of marsh crocodiles, sambar deer herds, and birdlife among medieval ruins"
         ],
+        "image": "/images/tours/sovereign-wild/day3-padam-talao-safari.jpg",
         "transit": {
           "type": "safari",
           "duration": "Morning Safari (3.5 hrs) + Afternoon Safari (3.5 hrs)"
@@ -906,6 +924,7 @@ export const mockTours: Tour[] = [
           "Up-close sightings of critically endangered gharials, river turtles, and river dolphins",
           "Riverside field lunch and lantern-lit farewell dinner in the wilderness"
         ],
+        "image": "/images/tours/sovereign-wild/day5-chambal-sanctuary.jpg",
         "transit": {
           "type": "drive",
           "duration": "90 min each way",
@@ -944,6 +963,7 @@ export const mockTours: Tour[] = [
           "Private curator-led access to the living Chandra Mahal royal quarters within City Palace",
           "Chauffeured luxury highway transfer directly to New Delhi IGI Airport for onward departures"
         ],
+        "image": "/images/tours/sovereign-wild/day7-jaipur-chandra-mahal.jpg",
         "transit": {
           "type": "drive",
           "duration": "4.0 hrs",
@@ -1029,10 +1049,13 @@ export const mockTours: Tour[] = [
     "hero_image": "/images/tours/sacred-ganges/hero.jpg",
     "gallery": [
       "/images/tours/sacred-ganges/hero.jpg",
+      "/images/tours/sacred-ganges/day1-delhi-imperial.jpg",
+      "/images/tours/sacred-ganges/day2-brijrama-river-arrival.jpg",
       "/images/tours/sacred-ganges/day3-subah-e-banaras.jpg",
-      "/images/tours/sacred-ganges/day2-ganga-aarti.jpg",
       "/images/tours/sacred-ganges/day4-sarnath-dhamek.jpg",
-      "/images/tours/sacred-ganges/day5-ramnagar-fort.jpg"
+      "/images/tours/sacred-ganges/day5-ramnagar-fort.jpg",
+      "/images/tours/sacred-ganges/taj-nadesar-palace.jpg",
+      "/images/tours/sacred-ganges/day6-ganges-morning-departure.jpg"
     ],
     "overview": "Where the Ganges curves north toward the Himalayas, Varanasi has maintained an unbroken daily rhythm along its riverfront for nearly three millennia. Life here unfolds on 84 stone ghats that step down into the water, from morning ablutions at Assi to the cremation fires at Manikarnika.\n\nThis six-day journey explores the city by water and on foot. You travel by private wooden bajra at dawn, listening to sitar and bansuri musicians from the Benares Gharana play morning ragas across the mist. At dusk, your boat moors directly in front of Dashashwamedh Ghat for the fire ceremony, with alternative access to a private haveli terrace above the crowds. On land, an architectural historian leads you through the narrow alleys of Pucca Mahal, and a half-day excursion to Sarnath brings you to the 5th-century Dhamek Stupa and the original Ashoka Lion Capital. Evenings are divided between BrijRama Palace, an 1812 Maratha fortress on Darbhanga Ghat, and the 40-acre mango orchards of Taj Nadesar Palace.",
     "highlights": [
@@ -1057,7 +1080,7 @@ export const mockTours: Tour[] = [
           "Curator-led tour of 18th-century Daniell aquatints of Varanasi at The Imperial",
           "Dinner at The Spice Route with Kerala heritage temple woodwork"
         ],
-        "image": "/images/tours/royal-odyssey/day1-delhi-imperial.jpg",
+        "image": "/images/tours/sacred-ganges/day1-delhi-imperial.jpg",
         "transit": {
           "type": "none"
         }
@@ -1074,7 +1097,7 @@ export const mockTours: Tour[] = [
           "Direct river landing and check-in at BrijRama Palace on Darbhanga Ghat",
           "Front-row boat mooring for the evening Dashashwamedh Ghat fire ceremony"
         ],
-        "image": "/images/tours/sacred-ganges/day2-ganga-aarti.jpg",
+        "image": "/images/tours/sacred-ganges/day2-brijrama-river-arrival.jpg",
         "transit": {
           "type": "flight",
           "duration": "1h 15m Flight + 45m Riverboat",
@@ -1153,7 +1176,7 @@ export const mockTours: Tour[] = [
           "Downriver boat transfer to Rajghat and chauffeured drive to the airport",
           "Flight to Delhi with transit assistance for connecting flights"
         ],
-        "image": "/images/tours/royal-odyssey/day1-delhi-imperial.jpg",
+        "image": "/images/tours/sacred-ganges/day6-ganges-morning-departure.jpg",
         "transit": {
           "type": "flight",
           "duration": "1h 15m Flight",
@@ -1212,7 +1235,7 @@ export const mockTours: Tour[] = [
         "name": "The Imperial, New Delhi",
         "location": "New Delhi (Janpath)",
         "tier": "Heritage Legend 5-Star",
-        "image": "/images/tours/royal-odyssey/day1-delhi-imperial.jpg",
+        "image": "/images/tours/sacred-ganges/day1-delhi-imperial.jpg",
         "description": "Opened in 1936 along Janpath, The Imperial was designed by F.B. Blomfield and served as a regular gathering place for Indian and British political figures before independence. The property houses more than 5,000 prints, maps, and paintings from the colonial period, including late-18th-century Daniell aquatints. Suites are finished with teak flooring, Persian carpets, and high ceilings, with dining options that include The Spice Route."
       },
       {
@@ -1244,7 +1267,9 @@ export const mockTours: Tour[] = [
       "/images/tours/goa-portuguese-sanctuary/hero.jpg",
       "/images/tours/goa-portuguese-sanctuary/day2-fontainhas.jpg",
       "/images/tours/goa-portuguese-sanctuary/day3-catamaran-mandovi.jpg",
-      "/images/tours/goa-portuguese-sanctuary/day4-taj-exotica.jpg"
+      "/images/tours/goa-portuguese-sanctuary/day4-taj-exotica.jpg",
+      "/images/tours/goa-portuguese-sanctuary/the-leela-goa.jpg",
+      "/images/tours/goa-portuguese-sanctuary/postcard-moira.jpg"
     ],
     "overview": "Along the western coast of the Konkan subcontinent, Goa preserves a distinct cultural and architectural rhythm shaped by four centuries of maritime Portuguese rule. Journeys begin in the serene enclave of Nerul at Ahilya by the Sea, an intimate Relais & Châteaux style property constructed from local red laterite stone overlooking Dolphin Bay. Accompanied by a conservation architect, you walk the cobblestone lanes of Fontainhas and Sao Tome in Panaji, where pastel-toned villas feature wrought-iron balconies and translucent oyster-shell window panes. An afternoon private catamaran charter sails along the Mandovi estuary at golden hour, followed by private access to the 16th-century Manueline cathedrals of Old Goa. Moving south to the white sands of Benaulim, stay at Taj Exotica Resort & Spa, exploring certified organic spice estates in the Western Ghats foothills, sampling small-batch cashew feni with a hereditary distiller, and dining on fresh coastal seafood under open skies.",
     "highlights": [
@@ -1344,6 +1369,7 @@ export const mockTours: Tour[] = [
           "Masterclass and tasting with a generational heritage feni distiller",
           "Lantern-lit private multi-course seafood dinner on the white sands of Benaulim Beach"
         ],
+        "image": "/images/tours/goa-portuguese-sanctuary/day5-benaulim-sunset-dining.jpg",
         "transit": {
           "type": "none"
         }
@@ -1360,6 +1386,7 @@ export const mockTours: Tour[] = [
           "Private luxury sedan transfer to Goa International Airport",
           "Fast-track airport departure assistance"
         ],
+        "image": "/images/tours/goa-portuguese-sanctuary/day6-heritage-coastal-departure.jpg",
         "transit": {
           "type": "drive",
           "duration": "45 min",
